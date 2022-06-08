@@ -14,7 +14,6 @@
     "@fontsource/inter": "^4.5.10",
     "dayjs": "^1.11.3",
     "framer-motion": "^6",
-    "lodash.once": "^4.1.1",
     "react": "^18.0.0",
     "react-color": "^2.19.3",
     "react-colorful": "^5.5.1",
