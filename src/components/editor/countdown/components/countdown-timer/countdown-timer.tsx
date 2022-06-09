@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import useTimerSelector from "../../context/hooks/useTimerSelector";
+import useCountdownSelector from "../../context/hooks/useCountdownSelector";
 import useCountdown from "../../hooks/useCountdown";
 import { toMs } from "../../utils/time";
 import CounterTitle from "../counter-title/counter-title";
@@ -10,7 +10,7 @@ import Counter from "../counter/counter";
 // TODO: add padToZeros settings
 
 const CountdownTimer = () => {
-  const { targetDate } = useTimerSelector();
+  const { targetDate } = useCountdownSelector();
   const targetDateDayJs = dayjs(targetDate);
   const targetDateMs = toMs(targetDateDayJs);
 

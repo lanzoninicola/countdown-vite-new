@@ -1,7 +1,7 @@
 import { useContextSelector } from "use-context-selector";
-import { CountdownTimerContext } from "../countdow-timer-context";
+import { CountdownTimerContext } from "../context/countdown-timer-context";
 
-export default function useTimerSelector() {
+export default function useCountdownSelector() {
   const targetDate = useContextSelector(
     CountdownTimerContext,
     (ctx) => ctx?.targetDate

@@ -1,5 +1,5 @@
 import { VStack, Text } from "@chakra-ui/react";
-import useCounterSelector from "../../../context/hooks/useCounterSelector";
+import useCounterSelector from "../../../../countdown-provider/hooks/useCounterSelector";
 import { StringOrNumber } from "../../../types";
 
 interface DigitProps {
