@@ -1,34 +1,34 @@
 import { useContextSelector } from "use-context-selector";
-import { CountdownTimerContext } from "../context/countdown-timer-context";
+import { CountdownContext } from "../context/countdown-context";
 
 export default function useCountdownSelector() {
   const targetDate = useContextSelector(
-    CountdownTimerContext,
+    CountdownContext,
     (ctx) => ctx?.targetDate
   );
 
   const setTargetDate = useContextSelector(
-    CountdownTimerContext,
+    CountdownContext,
     (ctx) => ctx?.setTargetDate
   );
 
   const userTimezone = useContextSelector(
-    CountdownTimerContext,
+    CountdownContext,
     (ctx) => ctx?.userTimezone
   );
 
   const setTargetTimezone = useContextSelector(
-    CountdownTimerContext,
+    CountdownContext,
     (ctx) => ctx?.setTargetTimezone
   );
 
   const timerExpired = useContextSelector(
-    CountdownTimerContext,
+    CountdownContext,
     (ctx) => ctx?.timerExpired
   );
 
   const setTimerExpired = useContextSelector(
-    CountdownTimerContext,
+    CountdownContext,
     (ctx) => ctx?.setTimerExpired
   );
 

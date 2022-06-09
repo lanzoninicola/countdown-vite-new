@@ -1,5 +1,5 @@
 import { Grid } from "@chakra-ui/react";
-import useTimerSelector from "../../../countdown-provider/hooks/useTimerSelector";
+import useThemeTimerSelector from "../../../countdown-theme-provider/hooks/useThemeTimerSelector";
 
 import { RemainingTime } from "../../types";
 import Digit from "./digit/digit";
@@ -17,7 +17,7 @@ export default function Counter({
     digitFontWeight,
     digitFontColor,
     lastDigitColor,
-  } = useTimerSelector();
+  } = useThemeTimerSelector();
 
   //TODO: based on configuration some values might be hidden
   // TODO: check the responsiveness of the timer

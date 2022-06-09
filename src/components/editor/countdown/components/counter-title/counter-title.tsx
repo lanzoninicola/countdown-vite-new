@@ -1,11 +1,11 @@
 import { Heading } from "@chakra-ui/react";
-import useTitleSelector from "../../../countdown-provider/hooks/useTitleSelector";
+import useThemeTitleSelector from "../../../countdown-theme-provider/hooks/useThemeTitleSelector";
 
 // TODO: custom unit size for the fontSize
 
 export default function CounterTitle() {
   const { text, fontColor, fontFamily, fontSize, fontWeight } =
-    useTitleSelector();
+    useThemeTitleSelector();
 
   return (
     <Heading

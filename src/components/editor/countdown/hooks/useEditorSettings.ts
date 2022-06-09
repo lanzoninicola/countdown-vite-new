@@ -1,4 +1,5 @@
-import { CountdownTimerEditorStateData } from "../../countdown-provider/types";
+import { CountdownSettingsStateData } from "../../countdown-provider/types";
+import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
 import useMockEditorSettings from "./useMockEditorSettings";
 
 interface UseEditorSettingsProps {
@@ -6,8 +7,9 @@ interface UseEditorSettingsProps {
   isMockMode?: boolean;
 }
 
-interface UseEditorSettings {
-  editorSettings: CountdownTimerEditorStateData | undefined;
+export interface UseEditorSettingsAPIResponse {
+  settings: CountdownSettingsStateData | undefined;
+  theme: CountdownThemeStateData | undefined;
   isLoading?: boolean;
   isError?: any;
 }
@@ -17,13 +19,14 @@ interface UseEditorSettings {
  */
 export default function useEditorSettings({
   isMockMode,
-}: UseEditorSettingsProps): UseEditorSettings {
+}: UseEditorSettingsProps): UseEditorSettingsAPIResponse {
   if (isMockMode) {
     return useMockEditorSettings();
   }
 
   return {
-    editorSettings: undefined,
+    settings: undefined,
+    theme: undefined,
     isLoading: false,
     isError: undefined,
   };

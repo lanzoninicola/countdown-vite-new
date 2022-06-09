@@ -1,53 +1,33 @@
 import { useState } from "react";
-import { CountdownTimerContext } from "./context/countdown-timer-context";
-import {
-  CountdownTimerEditorStateData,
-  CountdownTimerStateData,
-} from "./types";
+import { CountdownContext } from "./context/countdown-context";
+import { CountdownSettingsStateData, CountdownStateData } from "./types";
 
-const initState: CountdownTimerStateData = {
+const initState: CountdownStateData = {
   timerExpired: false,
   targetDate: "2022-11-09T01:00",
   userTimezone: "Europe/Berlin", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles
-  title: {
-    text: "Countdown to New Year",
-    fontFamily: "Inter",
-    fontWeight: "400",
-    fontSize: 24,
-    fontColor: "#000000",
-  },
-  timer: {
-    unitsShown: ["dd", "hh", "mm", "ss"],
-    digitFontFamily: "Inter",
-    digitFontWeight: "400",
-    digitFontSize: 48,
-    digitFontColor: "#000000",
-    lastDigitColor: "#e10b0b",
-  },
 };
 
-interface CountdownTimerProviderProps {
+interface CountdownProviderProps {
   children: React.ReactNode;
-  editorSettings: CountdownTimerEditorStateData | undefined;
+  settings: CountdownSettingsStateData | undefined;
 }
 
 // TODO: set the editor setting for the other properties
-export function CountdownTimerProvider({
+export function CountdownProvider({
   children,
-  editorSettings,
-}: CountdownTimerProviderProps) {
+  settings,
+}: CountdownProviderProps) {
   const [timerExpired, setTimerExpired] = useState(initState.timerExpired);
   const [targetDate, setTargetDate] = useState(
-    editorSettings?.targetDate || initState.targetDate
+    settings?.targetDate || initState.targetDate
   );
   const [userTimezone, setTargetTimezone] = useState(
-    editorSettings?.userTimezone || initState.userTimezone
+    settings?.userTimezone || initState.userTimezone
   );
-  const [title, setTitle] = useState(editorSettings?.title || initState.title);
-  const [timer, setTimer] = useState(editorSettings?.timer || initState.timer);
 
   return (
-    <CountdownTimerContext.Provider
+    <CountdownContext.Provider
       value={{
         timerExpired,
         setTimerExpired,
@@ -55,13 +35,9 @@ export function CountdownTimerProvider({
         setTargetDate,
         userTimezone,
         setTargetTimezone,
-        title,
-        setTitle,
-        timer,
-        setTimer,
       }}
     >
       {children}
-    </CountdownTimerContext.Provider>
+    </CountdownContext.Provider>
   );
 }

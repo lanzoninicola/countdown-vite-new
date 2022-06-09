@@ -1,8 +1,8 @@
 import { Divider } from "@chakra-ui/react";
 import GroupTitle from "../../layout/group-title/group-title";
 import PropertyGroupWrapper from "../../layout/property-group-wrapper/property-group-wrapper";
-import useTimerSelector from "../countdown-provider/hooks/useTimerSelector";
-import useTitleSelector from "../countdown-provider/hooks/useTitleSelector";
+import useThemeTimerSelector from "../countdown-theme-provider/hooks/useThemeTimerSelector";
+import useThemeTitleSelector from "../countdown-theme-provider/hooks/useThemeTitleSelector";
 import CountdownTitle from "./properties/countdown-title/countdown-title";
 import FontColor from "./properties/font-color/font-color";
 import FontFamily from "./properties/font-family/font-family";
@@ -12,8 +12,8 @@ import Timezone from "./properties/timezone/timezone";
 import Units from "./properties/units/units";
 
 export default function PropertyEditor() {
-  const title = useTitleSelector();
-  const timer = useTimerSelector();
+  const title = useThemeTitleSelector();
+  const timer = useThemeTimerSelector();
 
   return (
     <>

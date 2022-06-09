@@ -4,7 +4,10 @@ import TitleContextData from "./title";
 export type CountdownThemeContextData = CountdownThemeStateData &
   CountdownThemeStateSetter;
 
-/** This inteface is shared with the Editor */
+/**
+ * This describes the shape of data coming from the Editor related to the theme customization.
+ * This is used in the Editor component to maintain syncrhronized between them.
+ */
 export interface CountdownThemeStateData {
   /** All the properties related to the customization of title */
   title: TitleContextData;
