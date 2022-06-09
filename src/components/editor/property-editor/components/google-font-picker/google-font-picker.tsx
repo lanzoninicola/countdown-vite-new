@@ -1,48 +1,30 @@
 import "../../../../../style/global.css";
 
-import { Button, HStack } from "@chakra-ui/react";
-import { useRef, useState } from "react";
-
-import { Typography } from "../../../../../services/typography/types";
-import DialogWrapper from "../dialog-wrapper/dialog-wrapper";
+import { GOOGLE_FONTS_LIST } from "../../../../../services/typography/constants";
+import GoogleFontsLinkTag from "../google-fonts-link-tag/google-fonts-link-tag";
 import FontList from "./font-list/font-list";
-import TextPreview from "./text-preview/text-preview";
 
 interface GoogleFontPicker {
-  fontSelected: Typography;
-  onFontSelected: (fontSelected: Typography) => void;
+  /** Derived state from the FontFamily component */
+  fontFamily: string;
+  /** Derived state from the FontFamily component */
+  onSelectFontFamily: (fontFamily: string) => void;
 }
 
 export default function GoogleFontPicker({
-  fontSelected,
-  onFontSelected,
+  fontFamily,
+  onSelectFontFamily,
 }: GoogleFontPicker) {
-  const [showDialog, setShowDialog] = useState(false);
-  let ref = useRef(null);
+  const googleFontFamilies = GOOGLE_FONTS_LIST.map((font) => font.fontFamily);
 
   return (
     <>
-      <Button
-        ref={ref}
-        gridColumn={"2 / -1"}
-        size="xs"
-        className="theme-font"
-        onClick={() => setShowDialog(!showDialog)}
-        lineHeight="1"
-      >
-        {fontSelected ? fontSelected.fontFamily : "Select font"}
-      </Button>
-      {showDialog && (
-        <DialogWrapper
-          callerRef={ref}
-          onCloseDialog={() => setShowDialog(!showDialog)}
-        >
-          <HStack gap={1}>
-            <FontList onFontSelected={onFontSelected} />
-            <TextPreview fontSelected={fontSelected} />
-          </HStack>
-        </DialogWrapper>
-      )}
+      <GoogleFontsLinkTag googleFonts={GOOGLE_FONTS_LIST} />
+      <FontList
+        fontFamilies={googleFontFamilies}
+        fontFamilySelected={fontFamily}
+        onSelectFontFamily={onSelectFontFamily}
+      />
     </>
   );
 }

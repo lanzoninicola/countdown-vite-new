@@ -1,34 +1,19 @@
-import { Flex, Divider } from "@chakra-ui/react";
-import { useState } from "react";
-import { Typography } from "../../../services/typography/types";
+import { Divider } from "@chakra-ui/react";
 import GroupTitle from "../../layout/group-title/group-title";
 import PropertyGroupWrapper from "../../layout/property-group-wrapper/property-group-wrapper";
-import useTitleSelector from "../countdown/context/hooks/useTitleSelector";
-import useTitleStyleSelector from "./context/hooks/useTitleStyleSelector";
+import useTimerSelector from "../countdown-provider/hooks/useTimerSelector";
+import useTitleSelector from "../countdown-provider/hooks/useTitleSelector";
 import CountdownTitle from "./properties/countdown-title/countdown-title";
 import FontColor from "./properties/font-color/font-color";
 import FontFamily from "./properties/font-family/font-family";
 import FontSize from "./properties/font-size/font-size";
 import TargetDate from "./properties/target-date/target-date";
-import Time from "./properties/target-time/target-time";
 import Timezone from "./properties/timezone/timezone";
 import Units from "./properties/units/units";
 
 export default function PropertyEditor() {
-  const { titleFontSize, setTitleFontSize } = useTitleSelector();
-  const [colorTitle, setColorTitle] = useState("#aabbcc");
-  const [colorDigits, setColorDigits] = useState("#aabbcc");
-  const [colorLastDigit, setColorLastDigit] = useState("#aabbcc");
-  const [fontFamilyTitle, setFontFamilyTitle] = useState<Typography>({
-    fontFamily: "Inter",
-    fontWeight: "400",
-  });
-  const [fontFamilyDigits, setFontFamilyDigits] = useState<Typography>({
-    fontFamily: "Inter",
-    fontWeight: "400",
-  });
-  // const [fontSizeTitle, setFontSizeTitle] = useState(24);
-  const [fontSizeDigits, setFontSizeDigits] = useState(24);
+  const title = useTitleSelector();
+  const timer = useTimerSelector();
 
   return (
     <>
@@ -43,18 +28,20 @@ export default function PropertyEditor() {
         <CountdownTitle />
         <FontFamily
           label={"Text font"}
-          fontFamilySelected={fontFamilyTitle}
-          onFontFamilySelected={setFontFamilyTitle}
+          fontFamily={title.fontFamily}
+          fontWeight={title.fontWeight}
+          onSelectFontFamily={title.setFontFamily}
+          onSelectFontWeight={title.setFontWeight}
         />
         <FontSize
           label={"Text size"}
-          fontSizeSelected={titleFontSize}
-          onFontSizeSelected={setTitleFontSize}
+          fontSizeSelected={title.fontSize}
+          onFontSizeSelected={title.setFontSize}
         />
         <FontColor
           label={"Text color"}
-          colorSelected={colorTitle}
-          onColorSelected={setColorTitle}
+          colorSelected={title.fontColor}
+          onColorSelected={title.setFontColor}
         />
       </PropertyGroupWrapper>
       <Divider marginBlock={".5rem"} />
@@ -63,23 +50,25 @@ export default function PropertyEditor() {
         <Units />
         <FontFamily
           label={"Digits font"}
-          fontFamilySelected={fontFamilyDigits}
-          onFontFamilySelected={setFontFamilyDigits}
+          fontFamily={timer.digitFontFamily}
+          fontWeight={timer.digitFontWeight}
+          onSelectFontFamily={timer.setDigitFontFamily}
+          onSelectFontWeight={timer.setDigitFontWeight}
         />
         <FontSize
           label={"Digits size"}
-          fontSizeSelected={fontSizeDigits}
-          onFontSizeSelected={setFontSizeDigits}
+          fontSizeSelected={timer.digitFontSize}
+          onFontSizeSelected={timer.setDigitFontSize}
         />
         <FontColor
           label={"Digits color"}
-          colorSelected={colorDigits}
-          onColorSelected={setColorDigits}
+          colorSelected={timer.digitFontColor}
+          onColorSelected={timer.setDigitFontColor}
         />
         <FontColor
           label={"Last digit color"}
-          colorSelected={colorLastDigit}
-          onColorSelected={setColorLastDigit}
+          colorSelected={timer.lastDigitColor}
+          onColorSelected={timer.setLastDigitColor}
         />
       </PropertyGroupWrapper>
     </>

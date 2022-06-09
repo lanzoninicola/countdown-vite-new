@@ -1,19 +1,24 @@
-import { VStack, Box, Text } from "@chakra-ui/react";
+import { Box, Text, VStack } from "@chakra-ui/react";
 import useCustomScrollbar from "../../../../../../hooks/useCustomScrollbar";
-import { GOOGLE_FONTS_LIST } from "../../../../../../services/typography/constants";
-import { Typography } from "../../../../../../services/typography/types";
-import GoogleFontsLinkTag from "../../google-fonts-link-tag/google-fonts-link-tag";
+
+export interface FontListProps {
+  /** List of the font families to render */
+  fontFamilies: string[];
+  /** Selected font family used to highlight the related box */
+  fontFamilySelected: string;
+  /** Set the state of the Font Family component (no global) */
+  onSelectFontFamily: (font: string) => void;
+}
 
 export default function FontList({
-  onFontSelected,
-}: {
-  onFontSelected: (font: Typography) => void;
-}) {
+  fontFamilies,
+  fontFamilySelected,
+  onSelectFontFamily,
+}: FontListProps) {
   const customScrollbar = useCustomScrollbar();
 
   return (
     <>
-      <GoogleFontsLinkTag googleFonts={GOOGLE_FONTS_LIST} />
       <VStack
         id="font-list"
         spacing={1}
@@ -25,26 +30,27 @@ export default function FontList({
         p={1}
         marginInlineStart="0 !important"
       >
-        {GOOGLE_FONTS_LIST.map((font, idx) => (
+        {fontFamilies.map((family, idx) => (
           <Box
             key={idx}
             borderRadius={"md"}
-            onClick={() => onFontSelected(font)}
+            onClick={() => onSelectFontFamily(family)}
             p={2}
             cursor={"pointer"}
             _hover={{
               background: "gray.100",
             }}
+            bg={family === fontFamilySelected ? "gray.100" : "transparent"}
             width="100%"
           >
             <Text
               pl={1}
               fontSize={"xs"}
               style={{
-                fontFamily: font.fontFamily,
+                fontFamily: family,
               }}
             >
-              {font.fontFamily}
+              {family}
             </Text>
           </Box>
         ))}

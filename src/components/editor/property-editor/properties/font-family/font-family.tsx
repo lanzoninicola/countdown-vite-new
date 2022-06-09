@@ -1,26 +1,62 @@
-import { Typography } from "../../../../../services/typography/types";
-import GoogleFontPicker from "../../components/google-font-picker/google-font-picker";
+import { Button } from "@chakra-ui/react";
+import { useRef, useState } from "react";
+
 import PropertyWrapper from "../../../../layout/property-wrapper/property-wrapper";
+import DialogWrapper from "../../components/dialog-wrapper/dialog-wrapper";
+import FontFamilyPicker from "../../components/font-family-picker/font-family-picker";
 import Label from "../../primitives/label/label";
 
 interface FontFamilyProps {
   label: string;
-  fontFamilySelected: Typography;
-  onFontFamilySelected: (fontFamilySelected: Typography) => void;
+  fontFamily: string;
+  fontWeight: string;
+  onSelectFontFamily: (fontFamily: string) => void;
+  onSelectFontWeight: (fontWeight: string) => void;
 }
 
 export default function FontFamily({
   label,
-  fontFamilySelected,
-  onFontFamilySelected,
+  fontFamily,
+  fontWeight,
+  onSelectFontFamily,
+  onSelectFontWeight,
 }: FontFamilyProps) {
+  const [pickerFontFamily, setPickerFontFamily] = useState<string>(fontFamily);
+  const [pickerFontWeight, setPickerFontWeight] = useState<string>(fontWeight);
+  const [showDialog, setShowDialog] = useState(false);
+  let ref = useRef(null);
+
+  function onCloseDialog() {
+    setShowDialog(!showDialog);
+
+    // Update the global state
+    onSelectFontFamily(pickerFontFamily);
+    onSelectFontWeight(pickerFontWeight);
+  }
+
   return (
     <PropertyWrapper>
       <Label>{label}</Label>
-      <GoogleFontPicker
-        fontSelected={fontFamilySelected}
-        onFontSelected={onFontFamilySelected}
-      />
+      <Button
+        ref={ref}
+        gridColumn={"2 / -1"}
+        size="xs"
+        className="theme-font"
+        onClick={() => setShowDialog(!showDialog)}
+        lineHeight="1"
+      >
+        {fontFamily ? `${fontFamily} (${fontWeight})` : "Select font"}
+      </Button>
+      {showDialog && (
+        <DialogWrapper callerRef={ref} onCloseDialog={onCloseDialog}>
+          <FontFamilyPicker
+            fontFamily={pickerFontFamily}
+            fontWeight={pickerFontWeight}
+            onSelectFontFamily={setPickerFontFamily}
+            onSelectFontWeight={setPickerFontWeight}
+          />
+        </DialogWrapper>
+      )}
     </PropertyWrapper>
   );
 }
