@@ -10,6 +10,8 @@ interface UseCountdownProps {
   withZeros?: boolean;
 }
 
+// TODO: stopping the interval when the timer is expired
+
 const defaultRemainingTime = {
   seconds: 0,
   minutes: 0,
@@ -24,10 +26,10 @@ export default function useCountdown({
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 
   useEffect(() => {
-    // const intervalId = setInterval(() => {
-    //   updateRemainingTime(targetDateMs);
-    // }, 1000);
-    // return () => clearInterval(intervalId);
+    const intervalId = setInterval(() => {
+      updateRemainingTime(targetDateMs);
+    }, 1000);
+    return () => clearInterval(intervalId);
   }, [targetDateMs]);
 
   function updateRemainingTime(countdown: Milliseconds) {

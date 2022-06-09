@@ -1,22 +1,21 @@
 import { Heading } from "@chakra-ui/react";
-import useTitleSelector from "../../context/hooks/useTitleSelector";
+import useTitleSelector from "../../../countdown-provider/hooks/useTitleSelector";
 
 // TODO: custom unit size for the fontSize
 
 export default function CounterTitle() {
-  const { titleText, titleFontFamily, titleFontSize, titleFontColor } =
+  const { text, fontColor, fontFamily, fontSize, fontWeight } =
     useTitleSelector();
-
-  console.log("counter-title", titleFontSize);
 
   return (
     <Heading
       as="h2"
-      fontFamily={titleFontFamily}
-      fontSize={`${titleFontSize}px`}
-      color={titleFontColor}
+      fontFamily={fontFamily}
+      fontSize={`${fontSize}px`}
+      color={fontColor}
+      fontWeight={fontWeight}
     >
-      {titleText}
+      {text}
     </Heading>
   );
 }

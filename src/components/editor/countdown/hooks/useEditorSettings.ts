@@ -1,16 +1,13 @@
-import { PropertyEditorSettingsStateData } from "../../types";
-import useContextEditorSettings from "./useContextEditorSettings";
+import { CountdownTimerEditorStateData } from "../../countdown-provider/types";
 import useMockEditorSettings from "./useMockEditorSettings";
 
 interface UseEditorSettingsProps {
   /** if true load the mock data of the editor settings */
   isMockMode?: boolean;
-  /** if true the data came from the editor state context */
-  isEditorMode?: boolean;
 }
 
 interface UseEditorSettings {
-  editorSettings: PropertyEditorSettingsStateData | undefined;
+  editorSettings: CountdownTimerEditorStateData | undefined;
   isLoading?: boolean;
   isError?: any;
 }
@@ -20,15 +17,10 @@ interface UseEditorSettings {
  */
 export default function useEditorSettings({
   isMockMode,
-  isEditorMode,
 }: UseEditorSettingsProps): UseEditorSettings {
-  if (isEditorMode) {
-    return useContextEditorSettings();
+  if (isMockMode) {
+    return useMockEditorSettings();
   }
-
-  // if (isMockMode) {
-  //   return useMockEditorSettings();
-  // }
 
   return {
     editorSettings: undefined,

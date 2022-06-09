@@ -1,5 +1,5 @@
 import { VStack, Text } from "@chakra-ui/react";
-import useCounterSelector from "../../../../countdown-provider/hooks/useCounterSelector";
+import useTimerSelector from "../../../../countdown-provider/hooks/useTimerSelector";
 import { StringOrNumber } from "../../../types";
 
 interface DigitProps {
@@ -15,8 +15,13 @@ export default function Digit({
   isDanger,
   isLastDigit,
 }: DigitProps) {
-  const { digitFontSize, digitFontFamily, digitFontColor, lastDigitColor } =
-    useCounterSelector();
+  const {
+    digitFontSize,
+    digitFontFamily,
+    digitFontWeight,
+    digitFontColor,
+    lastDigitColor,
+  } = useTimerSelector();
 
   return (
     <VStack>

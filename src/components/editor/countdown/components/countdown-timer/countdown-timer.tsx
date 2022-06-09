@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import dayjs from "dayjs";
+import useCountdownSelector from "../../../countdown-provider/hooks/useCountdownSelector";
 
-import useCountdownSelector from "../../context/hooks/useCountdownSelector";
 import useCountdown from "../../hooks/useCountdown";
 import { toMs } from "../../utils/time";
 import CounterTitle from "../counter-title/counter-title";

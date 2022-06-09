@@ -1,13 +1,19 @@
 {
   "targetDate": "2022-06-10T13:09",
   "userTimezone": "Europe/Berlin",
-  "titleText": "Countdown to New Year",
-  "titleFontFamily": "Inter",
-  "titleFontSize": 24,
-  "titleFontColor": "#000000",
-  "unitsShown": ["dd", "hh", "mm", "ss"],
-  "digitFontFamily": "Inter",
-  "digitFontSize": 48,
-  "digitFontColor": "#000000",
-  "lastDigitColor": "#e10b0b"
+  "title": {
+    "text": "Countdown to New Year",
+    "fontFamily": "Inter",
+    "fontWeight": "400",
+    "fontSize": 24,
+    "fontColor": "#000000"
+  },
+  "timer": {
+    "unitsShown": ["dd", "hh", "mm", "ss"],
+    "digitFontFamily": "Inter",
+    "digitFontWeight": "400",
+    "digitFontSize": 48,
+    "digitFontColor": "#000000",
+    "lastDigitColor": "#e10b0b"
+  }
 }

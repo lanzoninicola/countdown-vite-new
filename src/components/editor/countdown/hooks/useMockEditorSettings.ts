@@ -1,9 +1,9 @@
 import useSWR from "swr";
-import { PropertyEditorSettingsStateData } from "../../types";
+import { CountdownTimerEditorStateData } from "../../countdown-provider/types";
 import mockData from "../mock-data/data.json";
 
 interface useMockEditorSettings {
-  editorSettings: PropertyEditorSettingsStateData | undefined;
+  editorSettings: CountdownTimerEditorStateData | undefined;
   isLoading: boolean;
   isError: any;
 }
@@ -14,7 +14,7 @@ interface useMockEditorSettings {
  */
 export default function useMockEditorSettings(): useMockEditorSettings {
   const fetcher = async () => mockData;
-  let { data, error } = useSWR<PropertyEditorSettingsStateData | undefined>(
+  let { data, error } = useSWR<CountdownTimerEditorStateData | undefined>(
     "editor-mockData",
     fetcher
   );
