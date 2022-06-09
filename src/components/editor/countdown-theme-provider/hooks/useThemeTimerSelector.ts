@@ -1,41 +1,41 @@
 import { useContextSelector } from "use-context-selector";
-import { CountdownTimerContext } from "../context/countdown-timer-context";
+import { CountdownThemeContext } from "../context/countdown-theme-context";
 
-export default function useTimerSelector() {
-  const timer = useContextSelector(CountdownTimerContext, (ctx) => ctx?.timer);
+export default function useThemeTimerSelector() {
+  const timer = useContextSelector(CountdownThemeContext, (ctx) => ctx?.timer);
 
   const unitsShown = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.timer.unitsShown
   );
 
   const digitFontFamily = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.timer.digitFontFamily
   );
 
   const digitFontWeight = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.timer.digitFontWeight
   );
 
   const digitFontSize = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.timer.digitFontSize
   );
 
   const digitFontColor = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.timer.digitFontColor
   );
 
   const lastDigitColor = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.timer.lastDigitColor
   );
 
   const setTimer = useContextSelector(
-    CountdownTimerContext,
+    CountdownThemeContext,
     (ctx) => ctx?.setTimer
   );
 

@@ -1,26 +1,30 @@
 import useSWR from "swr";
-import { CountdownTimerEditorStateData } from "../../countdown-provider/types";
-import mockData from "../mock-data/data.json";
 
-interface useMockEditorSettings {
-  editorSettings: CountdownTimerEditorStateData | undefined;
-  isLoading: boolean;
-  isError: any;
-}
+import { CountdownSettingsStateData } from "../../countdown-provider/types";
+import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
+import mockedSettings from "../mock-data/settings.json";
+import mocketTheme from "../mock-data/theme.json";
+import { UseEditorSettingsAPIResponse } from "./useEditorSettings";
 
 /**
- * Hook used to returns the editor settings from a local json file.
+ * Hook used to returns the settings from a local json file.
  * This is used in development mode to load the mock data.
  */
-export default function useMockEditorSettings(): useMockEditorSettings {
-  const fetcher = async () => mockData;
-  let { data, error } = useSWR<CountdownTimerEditorStateData | undefined>(
-    "editor-mockData",
-    fetcher
-  );
+export default function useMockEditorSettings(): UseEditorSettingsAPIResponse {
+  const fetcher = async () => {
+    return {
+      settings: { ...mockedSettings },
+      theme: { ...mocketTheme },
+    };
+  };
+  let { data, error } = useSWR<
+    | { settings: CountdownSettingsStateData; theme: CountdownThemeStateData }
+    | undefined
+  >("mockData-editorSettings", fetcher);
 
   return {
-    editorSettings: data,
+    settings: data?.settings,
+    theme: data?.theme,
     isLoading: !error && !data,
     isError: error,
   };

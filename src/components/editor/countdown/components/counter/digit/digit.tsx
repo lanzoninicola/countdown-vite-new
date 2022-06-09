@@ -1,5 +1,5 @@
 import { VStack, Text } from "@chakra-ui/react";
-import useTimerSelector from "../../../../countdown-provider/hooks/useTimerSelector";
+import useThemeTimerSelector from "../../../../countdown-theme-provider/hooks/useThemeTimerSelector";
 import { StringOrNumber } from "../../../types";
 
 interface DigitProps {
@@ -21,7 +21,7 @@ export default function Digit({
     digitFontWeight,
     digitFontColor,
     lastDigitColor,
-  } = useTimerSelector();
+  } = useThemeTimerSelector();
 
   return (
     <VStack>
