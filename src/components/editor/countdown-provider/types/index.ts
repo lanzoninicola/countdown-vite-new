@@ -1,5 +1,5 @@
 import { TimerContextData } from "./timer";
-import TitleContextData from "./title";
+import TitleContextData from "../../countdown-theme-provider/types/title";
 
 export type CountdownTimerContextData = CountdownTimerStateData &
   CountdownTimerStateSetter;
