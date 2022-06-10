@@ -1,47 +1,61 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import { useEffect, useState } from "react";
-
-import useCountdownSelector from "../../countdown-provider/hooks/useCountdownSelector";
 import { RemainingTime } from "../types";
-import { getRemainingTime } from "../utils/countdown-timer";
+import { DEFAULT_REMAINING_TIME, diff } from "../utils/time-calculation";
 import padWithZeros from "../utils/padWithZeros";
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 interface UseCountdownProps {
+  /** The target date from the (input type="datetime-local") editor*/
+  HTMLInputTargetDate: string;
+  /** the timezone of the target date */
+  HTMLInputTargetTimezone: string;
   /** flag that indicates if need to add 0 to the digits. It depends on the editor settings */
   withZeros?: boolean;
 }
 
 // TODO: stopping the interval when the timer is expired
 
-const defaultRemainingTime = {
-  seconds: 0,
-  minutes: 0,
-  hours: 0,
-  days: 0,
-};
-
-export default function useCountdown(
-  { withZeros }: UseCountdownProps = { withZeros: false }
-): RemainingTime {
-  const { targetDate, targetTimezone } = useCountdownSelector();
-  const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
+/**
+ * @param {string} HTMLInputTargetDate the target date/time in the desired timezone
+ * @param {string} HTMLInputTargetTimezone the desired timezone
+ * @param {boolean} withZeros flag that indicates if need to add 0 to the digits. It depends on the editor settings
+ * @returns the difference between the target and the current date/time in time units (seconds, minutes, hours, days)
+ */
+export default function useCountdown({
+  HTMLInputTargetDate,
+  HTMLInputTargetTimezone,
+  withZeros,
+}: UseCountdownProps): RemainingTime {
+  const [remainingTime, setRemainingTime] = useState(DEFAULT_REMAINING_TIME);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       updateRemainingTime();
     }, 1000);
     return () => clearInterval(intervalId);
-  }, [targetDate]);
+  }, [HTMLInputTargetDate, HTMLInputTargetTimezone]);
 
   function updateRemainingTime() {
-    setRemainingTime(getRemainingTime(targetDate, targetTimezone));
+    setRemainingTime(diff(todayLocalTime(), targetLocalTime()));
   }
 
   function shouldPadWithZeros(number: number, digits: number = 2) {
-    if (withZeros) {
-      return padWithZeros(number, digits);
-    }
+    return withZeros ? padWithZeros(number, digits) : number;
+  }
 
-    return number;
+  /** convert the given target date/time (string format) from the given timezone to the final-user timezone **/
+  function targetLocalTime(): dayjs.Dayjs {
+    return dayjs.tz(HTMLInputTargetDate, HTMLInputTargetTimezone);
+  }
+
+  /* get the current date/time in the user timezone */
+  function todayLocalTime(): dayjs.Dayjs {
+    return dayjs();
   }
 
   return {

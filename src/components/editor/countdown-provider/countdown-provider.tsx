@@ -4,8 +4,8 @@ import { CountdownSettingsStateData, CountdownStateData } from "./types";
 
 const initState: CountdownStateData = {
   timerExpired: false,
-  targetDate: "2022-06-10T21:30",
-  targetTimezone: "America/Sao_Paulo", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles
+  targetDate: "2022-06-10T23:00",
+  targetTimezone: "Europe/Berlin", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles
 };
 
 interface CountdownProviderProps {
