@@ -24,7 +24,7 @@ export interface CountdownSettingsStateData {
   /** format: 'YYYY-MM-DDTHH:MM' */
   targetDate: string;
   /** The timezone to which the target date refers  */
-  userTimezone: string;
+  targetTimezone: string;
 }
 
 /**

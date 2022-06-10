@@ -12,9 +12,9 @@ export default function useCountdownSelector() {
     (ctx) => ctx?.setTargetDate
   );
 
-  const userTimezone = useContextSelector(
+  const targetTimezone = useContextSelector(
     CountdownContext,
-    (ctx) => ctx?.userTimezone
+    (ctx) => ctx?.targetTimezone
   );
 
   const setTargetTimezone = useContextSelector(
@@ -35,7 +35,7 @@ export default function useCountdownSelector() {
   return {
     targetDate,
     setTargetDate,
-    userTimezone,
+    targetTimezone,
     setTargetTimezone,
     timerExpired,
     setTimerExpired,

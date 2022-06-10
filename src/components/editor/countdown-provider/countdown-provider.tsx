@@ -4,8 +4,8 @@ import { CountdownSettingsStateData, CountdownStateData } from "./types";
 
 const initState: CountdownStateData = {
   timerExpired: false,
-  targetDate: "2022-11-09T01:00",
-  userTimezone: "Europe/Berlin", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles
+  targetDate: "2022-06-10T21:30",
+  targetTimezone: "America/Sao_Paulo", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles
 };
 
 interface CountdownProviderProps {
@@ -13,7 +13,6 @@ interface CountdownProviderProps {
   settings: CountdownSettingsStateData | undefined;
 }
 
-// TODO: set the editor setting for the other properties
 export function CountdownProvider({
   children,
   settings,
@@ -22,8 +21,8 @@ export function CountdownProvider({
   const [targetDate, setTargetDate] = useState(
     settings?.targetDate || initState.targetDate
   );
-  const [userTimezone, setTargetTimezone] = useState(
-    settings?.userTimezone || initState.userTimezone
+  const [targetTimezone, setTargetTimezone] = useState(
+    settings?.targetTimezone || initState.targetTimezone
   );
 
   return (
@@ -33,7 +32,7 @@ export function CountdownProvider({
         setTimerExpired,
         targetDate,
         setTargetDate,
-        userTimezone,
+        targetTimezone,
         setTargetTimezone,
       }}
     >

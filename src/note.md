@@ -7,7 +7,7 @@ WP local timezone
 
 targetDate: the date in the future
 targetTime: the time in the future
-userTimezone
+targetTimezone
 titleText
 titleFontFamily
 titleFontSize

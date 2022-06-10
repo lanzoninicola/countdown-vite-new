@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { Milliseconds, RemainingTime } from "../types";
-import { getRemainingTimeUntilMsTimestamp } from "../utils/countdown-timer";
+import { useEffect, useState } from "react";
+
+import useCountdownSelector from "../../countdown-provider/hooks/useCountdownSelector";
+import { RemainingTime } from "../types";
+import { getRemainingTime } from "../utils/countdown-timer";
 import padWithZeros from "../utils/padWithZeros";
 
 interface UseCountdownProps {
-  /** the target date in milliseconds */
-  targetDateMs: Milliseconds;
   /** flag that indicates if need to add 0 to the digits. It depends on the editor settings */
   withZeros?: boolean;
 }
@@ -19,21 +19,21 @@ const defaultRemainingTime = {
   days: 0,
 };
 
-export default function useCountdown({
-  targetDateMs,
-  withZeros,
-}: UseCountdownProps): RemainingTime {
+export default function useCountdown(
+  { withZeros }: UseCountdownProps = { withZeros: false }
+): RemainingTime {
+  const { targetDate, targetTimezone } = useCountdownSelector();
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      updateRemainingTime(targetDateMs);
+      updateRemainingTime();
     }, 1000);
     return () => clearInterval(intervalId);
-  }, [targetDateMs]);
+  }, [targetDate]);
 
-  function updateRemainingTime(countdown: Milliseconds) {
-    setRemainingTime(getRemainingTimeUntilMsTimestamp(countdown));
+  function updateRemainingTime() {
+    setRemainingTime(getRemainingTime(targetDate, targetTimezone));
   }
 
   function shouldPadWithZeros(number: number, digits: number = 2) {
