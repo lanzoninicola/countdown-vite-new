@@ -4,6 +4,7 @@ import { Input } from "@chakra-ui/react";
 
 import PropertyWrapper from "../../../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
+import useThemeTimer from "../../../countdown-theme-provider/hooks/useThemeTimer";
 
 interface SeparatorCharProps {
   showSeparator: boolean;
@@ -16,6 +17,8 @@ export default function SeparatorChar({
   separatorChar,
   onChangeSeparatorChar,
 }: SeparatorCharProps) {
+  const { digitFontSize } = useThemeTimer("unit-digit");
+
   return (
     <PropertyWrapper>
       <Label htmlFor="separatorChar">Separator</Label>

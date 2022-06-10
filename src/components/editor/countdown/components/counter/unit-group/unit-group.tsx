@@ -22,6 +22,8 @@ export default function UnitGroup({
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 
+  const separatorFontSize = digitTheme.digitFontSize * 0.5;
+
   return (
     <UnitGroupWrapper>
       <Digit
@@ -38,7 +40,7 @@ export default function UnitGroup({
         theme={labelTheme}
       />
       {!isLastDigit && separatorTheme.showSeparator && (
-        <UnitSeparator gridArea={"separator"}>
+        <UnitSeparator gridArea={"separator"} fontSize={separatorFontSize}>
           {separatorTheme.separatorChar}
         </UnitSeparator>
       )}

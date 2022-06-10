@@ -10,7 +10,7 @@ export default function UnitSeparator({
   ...props
 }: UnitSeparatorProps) {
   return (
-    <Text as="span" {...props}>
+    <Text as="span" {...props} marginInline="1rem">
       {children}
     </Text>
   );
