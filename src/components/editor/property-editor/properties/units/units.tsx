@@ -1,4 +1,5 @@
 import "../../../../../style/global.css";
+
 import {
   Box,
   Checkbox,
@@ -6,41 +7,67 @@ import {
   Stack,
   useCheckboxGroup,
 } from "@chakra-ui/react";
+
 import PropertyWrapper from "../../../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
-import { StringOrNumber } from "@chakra-ui/utils";
 
-export interface Option {
-  key: string;
-  value: string;
+// TODO: lot of logics in this component
+
+interface UnitsProps {
+  unitsShown: string[];
+  onChangeUnitsShown: (unitsShown: string[]) => void;
 }
 
-const unitOptions: Option[] = [
-  {
-    key: "dd",
-    value: "DD",
-  },
-  {
-    key: "hh",
-    value: "HH",
-  },
-  {
-    key: "mm",
-    value: "MM",
-  },
-  {
-    key: "ss",
-    value: "SS",
-  },
-];
-
-export default function Units() {
+export default function Units({ unitsShown, onChangeUnitsShown }: UnitsProps) {
   const { value } = useCheckboxGroup({
-    value: ["dd", "hh", "mm", "ss"],
+    value: unitsShown,
   });
 
-  function onChangeSelection(optionsKey: StringOrNumber[]) {
-    //TODO: implement
+  function onChangeSelection(optionsKey: string[]) {
+    let nextUnitsShown = [...optionsKey];
+    nextUnitsShown = reorderUnitsShown(nextUnitsShown);
+    onChangeUnitsShown(nextUnitsShown);
+  }
+
+  function reorderUnitsShown(unitsShown: string[]) {
+    // "ss" must always be the last unit
+    if (unitsShown.includes("ss")) {
+      const ssIndex = unitsShown.indexOf("ss");
+      if (ssIndex !== unitsShown.length - 1) {
+        unitsShown.splice(ssIndex, 1);
+        unitsShown.push("ss");
+      }
+    }
+
+    // "mm" must after "hh"
+    if (unitsShown.includes("mm")) {
+      const indexOfMm = unitsShown.indexOf("mm");
+      const indexOfHh = unitsShown.indexOf("hh");
+      if (indexOfMm > indexOfHh) {
+        unitsShown.splice(indexOfMm, 1);
+        unitsShown.splice(indexOfHh + 1, 0, "mm");
+      }
+    }
+    // "hh" must after "dd"
+    if (unitsShown.includes("hh")) {
+      const indexOfHh = unitsShown.indexOf("hh");
+      const indexOfDd = unitsShown.indexOf("dd");
+      if (indexOfHh > indexOfDd) {
+        unitsShown.splice(indexOfHh, 1);
+        unitsShown.splice(indexOfDd + 1, 0, "hh");
+      }
+    }
+
+    // "dd" must be the first unit
+    if (unitsShown.includes("dd")) {
+      const indexOfDd = unitsShown.indexOf("dd");
+      if (indexOfDd !== 0) {
+        unitsShown.splice(indexOfDd, 1);
+        unitsShown.splice(0, 0, "dd");
+      }
+    }
+
+    return unitsShown;
   }
 
   return (
@@ -53,15 +80,15 @@ export default function Units() {
           onChange={onChangeSelection}
         >
           <Stack direction={["column", "row"]}>
-            {unitOptions.map((option) => {
+            {unitsShown.map((unit, key) => {
               return (
                 <Checkbox
-                  key={option.key}
-                  value={option.key}
+                  key={key}
+                  value={unit}
                   className="theme-font"
                   size="sm"
                 >
-                  {option.value}
+                  {unit}
                 </Checkbox>
               );
             })}

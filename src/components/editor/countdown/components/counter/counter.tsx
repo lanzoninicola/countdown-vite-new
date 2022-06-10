@@ -1,8 +1,8 @@
 import { Grid } from "@chakra-ui/react";
-import useThemeTimerSelector from "../../../countdown-theme-provider/hooks/useThemeTimerSelector";
 
+import useThemeTimerSelector from "../../../countdown-theme-provider/hooks/useThemeTimerSelector";
 import { RemainingTime } from "../../types";
-import Digit from "./digit/digit";
+import UnitGroup from "./unit-group/unit-group";
 
 export default function Counter({
   days,
@@ -10,36 +10,70 @@ export default function Counter({
   minutes,
   seconds,
 }: RemainingTime) {
-  const {
-    unitsShown,
-    digitFontSize,
-    digitFontFamily,
-    digitFontWeight,
-    digitFontColor,
-    lastDigitColor,
-  } = useThemeTimerSelector();
-
+  const { unitsShown, showSeparator, separatorChar } = useThemeTimerSelector();
   //TODO: based on configuration some values might be hidden
   // TODO: check the responsiveness of the timer
   //TODO: check if the digit has two digits
+  // TODO: check isDanger
+
+  const columnsNumber = unitsShown.length;
+  const templateColumnsGrid: string = unitsShown.map(() => "1fr").join(" ");
 
   return (
     <Grid
-      gridTemplateColumns={"1fr .1fr 1fr .1fr 1fr .1fr 1fr"}
+      // gridTemplateColumns={"1fr .1fr 1fr .1fr 1fr .1fr 1fr"}
+      gridTemplateColumns={templateColumnsGrid}
       gridTemplateRows={"auto"}
-      style={{
-        fontSize: digitFontSize,
-        fontFamily: digitFontFamily,
-        color: digitFontColor,
-      }}
+      w="100%"
     >
-      <Digit value={days} label={"Days"} isDanger={days <= 3} />
-      <span>:</span>
-      <Digit value={hours} label={"Hours"} isDanger={false} />
-      <span>:</span>
-      <Digit value={minutes} label={"Mins"} isDanger={false} />
-      <span>:</span>
-      <Digit value={seconds} label={"Seconds"} isDanger={false} />
+      {unitsShown.map((unit, index) => {
+        switch (unit) {
+          case "dd":
+            return (
+              <UnitGroup
+                key={index}
+                label="Days"
+                value={days}
+                isLastDigit={index === columnsNumber - 1}
+                showSeparator={showSeparator}
+                separatorChar={separatorChar}
+              />
+            );
+          case "hh":
+            return (
+              <UnitGroup
+                key={index}
+                label="Hours"
+                value={hours}
+                isLastDigit={index === columnsNumber - 1}
+                showSeparator={showSeparator}
+                separatorChar={separatorChar}
+              />
+            );
+          case "mm":
+            return (
+              <UnitGroup
+                key={index}
+                label="Minutes"
+                value={minutes}
+                isLastDigit={index === columnsNumber - 1}
+                showSeparator={showSeparator}
+                separatorChar={separatorChar}
+              />
+            );
+          case "ss":
+            return (
+              <UnitGroup
+                key={index}
+                label="Seconds"
+                value={seconds}
+                isLastDigit={index === columnsNumber - 1}
+              />
+            );
+          default:
+            return null;
+        }
+      })}
     </Grid>
   );
 }

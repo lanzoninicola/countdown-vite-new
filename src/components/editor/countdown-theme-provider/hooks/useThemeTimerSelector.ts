@@ -9,6 +9,16 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.unitsShown
   );
 
+  const showSeparator = useContextSelector(
+    CountdownThemeContext,
+    (ctx) => ctx?.timer.showSeparator
+  );
+
+  const separatorChar = useContextSelector(
+    CountdownThemeContext,
+    (ctx) => ctx?.timer.separatorChar
+  );
+
   const digitFontFamily = useContextSelector(
     CountdownThemeContext,
     (ctx) => ctx?.timer.digitFontFamily
@@ -34,6 +44,26 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.lastDigitColor
   );
 
+  const labelFontFamily = useContextSelector(
+    CountdownThemeContext,
+    (ctx) => ctx?.timer.labelFontFamily
+  );
+
+  const labelFontWeight = useContextSelector(
+    CountdownThemeContext,
+    (ctx) => ctx?.timer.labelFontWeight
+  );
+
+  const labelFontSize = useContextSelector(
+    CountdownThemeContext,
+    (ctx) => ctx?.timer.labelFontSize
+  );
+
+  const labelFontColor = useContextSelector(
+    CountdownThemeContext,
+    (ctx) => ctx?.timer.labelFontColor
+  );
+
   const setTimer = useContextSelector(
     CountdownThemeContext,
     (ctx) => ctx?.setTimer
@@ -41,6 +71,14 @@ export default function useThemeTimerSelector() {
 
   function setUnitsShown(unitsShown: string[]) {
     setTimer({ ...timer, unitsShown });
+  }
+
+  function setShowSeparator(showSeparator: boolean) {
+    setTimer({ ...timer, showSeparator });
+  }
+
+  function setSeparatorChar(separatorChar: string) {
+    setTimer({ ...timer, separatorChar });
   }
 
   function setDigitFontFamily(digitFontFamily: string) {
@@ -63,18 +101,46 @@ export default function useThemeTimerSelector() {
     setTimer({ ...timer, lastDigitColor });
   }
 
+  function setLabelFontFamily(labelFontFamily: string) {
+    setTimer({ ...timer, labelFontFamily });
+  }
+
+  function setLabelFontWeight(labelFontWeight: string) {
+    setTimer({ ...timer, labelFontWeight });
+  }
+
+  function setLabelFontSize(labelFontSize: number) {
+    setTimer({ ...timer, labelFontSize });
+  }
+
+  function setLabelFontColor(labelFontColor: string) {
+    setTimer({ ...timer, labelFontColor });
+  }
+
   return {
     unitsShown,
+    showSeparator,
+    separatorChar,
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
     digitFontColor,
     lastDigitColor,
+    labelFontFamily,
+    labelFontWeight,
+    labelFontSize,
+    labelFontColor,
     setUnitsShown,
+    setShowSeparator,
+    setSeparatorChar,
     setDigitFontFamily,
     setDigitFontWeight,
     setDigitFontSize,
     setDigitFontColor,
     setLastDigitColor,
+    setLabelFontFamily,
+    setLabelFontWeight,
+    setLabelFontSize,
+    setLabelFontColor,
   };
 }

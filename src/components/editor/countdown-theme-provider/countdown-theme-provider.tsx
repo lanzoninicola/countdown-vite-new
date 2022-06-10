@@ -2,6 +2,8 @@ import { useState } from "react";
 import { CountdownThemeContext } from "./context/countdown-theme-context";
 import { CountdownThemeStateData } from "./types";
 
+// TODO: define the props in PRO licensing e verify if they are used. But HOW?. Limit client hacking.
+
 const initState: CountdownThemeStateData = {
   title: {
     text: "Countdown to New Year",
@@ -12,11 +14,17 @@ const initState: CountdownThemeStateData = {
   },
   timer: {
     unitsShown: ["dd", "hh", "mm", "ss"],
+    showSeparator: true,
+    separatorChar: ":",
     digitFontFamily: "Inter",
     digitFontWeight: "400",
     digitFontSize: 48,
     digitFontColor: "#000000",
     lastDigitColor: "#e10b0b",
+    labelFontFamily: "Inter",
+    labelFontWeight: "400",
+    labelFontSize: 16,
+    labelFontColor: "#000000",
   },
 };
 
