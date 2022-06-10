@@ -20,7 +20,7 @@ const initState: CountdownThemeStateData = {
     digitFontWeight: "400",
     digitFontSize: 48,
     digitFontColor: "#000000",
-    lastDigitColor: "#e10b0b",
+    lastUnitColor: "#e10b0b",
     labelFontFamily: "Inter",
     labelFontWeight: "400",
     labelFontSize: 16,

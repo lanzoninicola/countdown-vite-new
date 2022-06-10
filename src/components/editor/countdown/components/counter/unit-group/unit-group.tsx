@@ -1,6 +1,7 @@
-import { Box, HStack, VStack } from "@chakra-ui/react";
+import useThemeTimer from "../../../../countdown-theme-provider/hooks/useThemeTimer";
 import { StringOrNumber } from "../../../types";
 import Digit from "./digit/digit";
+import UnitGroupWrapper from "./unit-group-wrapper/unit-group-wrapper";
 import UnitLabel from "./unit-label/unit-label";
 import UnitSeparator from "./unit-separator/unit-separator";
 
@@ -9,8 +10,6 @@ interface UnitGroupProps {
   value: StringOrNumber;
   isDanger?: boolean;
   isLastDigit?: boolean;
-  showSeparator?: boolean;
-  separatorChar?: string;
 }
 
 export default function UnitGroup({
@@ -18,16 +17,31 @@ export default function UnitGroup({
   value,
   isDanger,
   isLastDigit,
-  showSeparator,
-  separatorChar,
 }: UnitGroupProps) {
+  const digitTheme = useThemeTimer("unit-digit");
+  const labelTheme = useThemeTimer("unit-label");
+  const separatorTheme = useThemeTimer("unit-separator");
+
   return (
-    <HStack spacing={1}>
-      <VStack>
-        <Digit value={value} isDanger={isDanger} isLastDigit={isLastDigit} />
-        <UnitLabel label={label} isLastDigit={isLastDigit} />
-      </VStack>
-      {!isLastDigit && showSeparator && <UnitSeparator value={separatorChar} />}
-    </HStack>
+    <UnitGroupWrapper>
+      <Digit
+        value={value}
+        isDanger={isDanger}
+        isLastDigit={isLastDigit}
+        gridArea={"digit"}
+        theme={digitTheme}
+      />
+      <UnitLabel
+        label={label}
+        isLastDigit={isLastDigit}
+        gridArea={"label"}
+        theme={labelTheme}
+      />
+      {!isLastDigit && separatorTheme.showSeparator && (
+        <UnitSeparator gridArea={"separator"}>
+          {separatorTheme.separatorChar}
+        </UnitSeparator>
+      )}
+    </UnitGroupWrapper>
   );
 }

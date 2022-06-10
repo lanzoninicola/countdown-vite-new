@@ -72,9 +72,9 @@ export default function PropertyEditor() {
         <Divider marginBlock={".5rem"} />
 
         <FontColor
-          label={"Last digit color"}
-          colorSelected={timer.lastDigitColor}
-          onColorSelected={timer.setLastDigitColor}
+          label={"Last unit color"}
+          colorSelected={timer.lastUnitColor}
+          onColorSelected={timer.setLastUnitColor}
         />
 
         <Divider marginBlock={".5rem"} />
@@ -95,11 +95,6 @@ export default function PropertyEditor() {
           label={"Digits color"}
           colorSelected={timer.digitFontColor}
           onColorSelected={timer.setDigitFontColor}
-        />
-        <FontColor
-          label={"Last digit color"}
-          colorSelected={timer.lastDigitColor}
-          onColorSelected={timer.setLastDigitColor}
         />
 
         <Divider marginBlock={".5rem"} />

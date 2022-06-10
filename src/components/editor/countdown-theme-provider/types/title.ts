@@ -1,4 +1,4 @@
-export default interface TitleContextData {
+export default interface ThemeTitleContextData {
   /** The text used for the countdown title */
   text: string;
   /** The font family of the title text */

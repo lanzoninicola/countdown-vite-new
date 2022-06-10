@@ -1,5 +1,5 @@
 import { ThemeTimerContextData } from "./timer";
-import TitleContextData from "./title";
+import ThemeTitleContextData from "./title";
 
 export type CountdownThemeContextData = CountdownThemeStateData &
   CountdownThemeStateSetter;
@@ -10,13 +10,13 @@ export type CountdownThemeContextData = CountdownThemeStateData &
  */
 export interface CountdownThemeStateData {
   /** All the properties related to the customization of title */
-  title: TitleContextData;
+  title: ThemeTitleContextData;
   /** All the properties related to the customization of timer */
   timer: ThemeTimerContextData;
 }
 
 /** This inteface is shared with the Editor */
 export interface CountdownThemeStateSetter {
-  setTitle: (title: TitleContextData) => void;
+  setTitle: (title: ThemeTitleContextData) => void;
   setTimer: (timer: ThemeTimerContextData) => void;
 }

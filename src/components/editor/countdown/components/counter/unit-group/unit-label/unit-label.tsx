@@ -1,31 +1,29 @@
-import { Text, VStack } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
-import useThemeTimerSelector from "../../../../../countdown-theme-provider/hooks/useThemeTimerSelector";
+import { ThemeUnitLabel } from "../../../../../countdown-theme-provider/types/timer";
 
 interface UnitLabelProps {
   label: string;
   isDanger?: boolean;
   isLastDigit?: boolean;
+  theme: ThemeUnitLabel;
+  [key: string]: any;
 }
 
-export default function UnitLabel({ label, isLastDigit }: UnitLabelProps) {
-  const {
-    labelFontSize,
-    labelFontFamily,
-    labelFontWeight,
-    labelFontColor,
-    lastDigitColor,
-  } = useThemeTimerSelector();
-
+export default function UnitLabel({
+  label,
+  isLastDigit,
+  theme,
+  ...props
+}: UnitLabelProps) {
   return (
     <Text
       as="span"
-      style={{
-        fontSize: labelFontSize,
-        fontFamily: labelFontFamily,
-        fontWeight: labelFontWeight,
-        color: isLastDigit ? lastDigitColor : labelFontColor,
-      }}
+      fontSize={theme.labelFontSize}
+      fontWeight={theme.labelFontWeight}
+      fontFamily={theme.labelFontFamily}
+      color={isLastDigit ? theme.lastUnitColor : theme.labelFontColor}
+      {...props}
     >
       {label}
     </Text>

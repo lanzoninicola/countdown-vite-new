@@ -39,9 +39,9 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.digitFontColor
   );
 
-  const lastDigitColor = useContextSelector(
+  const lastUnitColor = useContextSelector(
     CountdownThemeContext,
-    (ctx) => ctx?.timer.lastDigitColor
+    (ctx) => ctx?.timer.lastUnitColor
   );
 
   const labelFontFamily = useContextSelector(
@@ -97,8 +97,8 @@ export default function useThemeTimerSelector() {
     setTimer({ ...timer, digitFontColor });
   }
 
-  function setLastDigitColor(lastDigitColor: string) {
-    setTimer({ ...timer, lastDigitColor });
+  function setLastUnitColor(lastUnitColor: string) {
+    setTimer({ ...timer, lastUnitColor });
   }
 
   function setLabelFontFamily(labelFontFamily: string) {
@@ -125,7 +125,7 @@ export default function useThemeTimerSelector() {
     digitFontWeight,
     digitFontSize,
     digitFontColor,
-    lastDigitColor,
+    lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
@@ -137,7 +137,7 @@ export default function useThemeTimerSelector() {
     setDigitFontWeight,
     setDigitFontSize,
     setDigitFontColor,
-    setLastDigitColor,
+    setLastUnitColor,
     setLabelFontFamily,
     setLabelFontWeight,
     setLabelFontSize,

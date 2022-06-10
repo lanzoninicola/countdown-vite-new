@@ -1,9 +1,17 @@
 import { Text } from "@chakra-ui/react";
 
 interface UnitSeparatorProps {
-  value?: string;
+  children?: React.ReactNode;
+  [key: string]: any;
 }
 
-export default function UnitSeparator({ value }: UnitSeparatorProps) {
-  return <Text as="span">{value}</Text>;
+export default function UnitSeparator({
+  children,
+  ...props
+}: UnitSeparatorProps) {
+  return (
+    <Text as="span" {...props}>
+      {children}
+    </Text>
+  );
 }

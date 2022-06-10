@@ -10,7 +10,7 @@ export default function Counter({
   minutes,
   seconds,
 }: RemainingTime) {
-  const { unitsShown, showSeparator, separatorChar } = useThemeTimerSelector();
+  const { unitsShown } = useThemeTimerSelector();
   //TODO: based on configuration some values might be hidden
   // TODO: check the responsiveness of the timer
   //TODO: check if the digit has two digits
@@ -35,8 +35,6 @@ export default function Counter({
                 label="Days"
                 value={days}
                 isLastDigit={index === columnsNumber - 1}
-                showSeparator={showSeparator}
-                separatorChar={separatorChar}
               />
             );
           case "hh":
@@ -46,8 +44,6 @@ export default function Counter({
                 label="Hours"
                 value={hours}
                 isLastDigit={index === columnsNumber - 1}
-                showSeparator={showSeparator}
-                separatorChar={separatorChar}
               />
             );
           case "mm":
@@ -57,8 +53,6 @@ export default function Counter({
                 label="Minutes"
                 value={minutes}
                 isLastDigit={index === columnsNumber - 1}
-                showSeparator={showSeparator}
-                separatorChar={separatorChar}
               />
             );
           case "ss":

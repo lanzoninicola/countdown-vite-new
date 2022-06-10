@@ -13,8 +13,3 @@ export interface RemainingTime {
   /** The number of days in the countdown */
   days: StringOrNumber;
 }
-
-export type SecondsUnit = "ss";
-export type MinutesUnit = "mm";
-export type HoursUnit = "hh";
-export type DaysUnit = "dd";

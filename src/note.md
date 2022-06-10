@@ -16,7 +16,7 @@ unitsShown
 digitFontFamily
 digitFontSize
 digitColor
-lastDigitColor
+lastUnitColor
 
 expirationOption: what to do when the timer expires
 
