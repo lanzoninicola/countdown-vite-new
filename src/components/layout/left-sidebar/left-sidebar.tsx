@@ -11,6 +11,7 @@ export default function LeftSidebar({ children, ...props }: LeftSidebarProps) {
       pr="1rem"
       borderRight={"1px solid"}
       borderColor={"gray.200"}
+      left="0"
       {...props}
     >
       {children}
