@@ -6,6 +6,7 @@ import { Box, Text } from "@chakra-ui/react";
 import Editor from "./components/editor/editor";
 import MainContent from "./components/layout/main-content/main-content";
 import FakeWrapper from "./FakeWrapper";
+import CountdownsList from "./components/list/countdowns-list/countdown-list";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Box>
           <Text>This is the Header</Text>
         </Box>
-        <Editor />
+        <CountdownsList />
+        {/* <Editor /> */}
       </MainContent>
     </FakeWrapper>
   );
