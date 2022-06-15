@@ -12,7 +12,7 @@ export default function MainContent({
     <Box
       id="ctd-main"
       minW={`calc(100vw - ${WP_ADMIN_SIDEBAR_WIDTH_PX})`}
-      minH={`calc(100vh - ${WP_ADMIN_TOPBAR_HEIGHT_PX})`}
+      h={`calc(100vh - ${WP_ADMIN_TOPBAR_HEIGHT_PX})`}
       position="relative"
     >
       {children}

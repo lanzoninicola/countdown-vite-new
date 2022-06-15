@@ -5,5 +5,12 @@ interface CenterContentProps {
 }
 
 export default function CenterContent({ children }: CenterContentProps) {
-  return <VStack flex={"1 1 100%"}>{children}</VStack>;
+  return (
+    <VStack
+      bg="gray.50"
+      // bg="linear-gradient(0deg, rgba(237,242,247,1) 50%, rgba(247,250,252,1) 100%)"
+    >
+      {children}
+    </VStack>
+  );
 }

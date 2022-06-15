@@ -7,7 +7,14 @@ interface SidebarProps {
 
 export default function Sidebar({ children, ...props }: SidebarProps) {
   return (
-    <Flex flexDirection={"column"} minW="350px" {...props}>
+    <Flex
+      flexDirection={"column"}
+      minW="350px"
+      {...props}
+      position="absolute"
+      top="0"
+      bg="white"
+    >
       {children}
     </Flex>
   );

@@ -18,7 +18,7 @@ const CountdownTimer = () => {
   });
 
   return (
-    <VStack>
+    <VStack id="countdown" p="1rem" bg="white">
       <CounterTitle />
       <Counter days={days} hours={hours} minutes={minutes} seconds={seconds} />
     </VStack>

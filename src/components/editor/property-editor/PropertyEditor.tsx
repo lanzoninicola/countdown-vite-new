@@ -19,12 +19,13 @@ export default function PropertyEditor() {
 
   return (
     <>
-      <PropertyGroupWrapper>
+      {/* <PropertyGroupWrapper>
         <GroupTitle>General</GroupTitle>
         <TargetDate />
         <Timezone />
-      </PropertyGroupWrapper>
+      </PropertyGroupWrapper> 
       <Divider marginBlock={".5rem"} />
+      */}
       <PropertyGroupWrapper>
         <GroupTitle>Title style</GroupTitle>
         <CountdownTitle />
