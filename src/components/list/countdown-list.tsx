@@ -1,7 +1,6 @@
 import { Button, Heading, HStack, VStack, Text } from "@chakra-ui/react";
-import useCountdownList from "../hooks/useCountdownList";
-import { Countdown } from "../types";
-import CountdownItem from "./countdown-item/countdown-item";
+import useCountdownList from "./hooks/useCountdownList";
+import CountdownTable from "./countdowns-table/countdowns-table";
 
 export default function CountdownsList() {
   const { countdowns, isLoading, isError } = useCountdownList();
@@ -16,14 +15,14 @@ export default function CountdownsList() {
 
   return (
     <>
-      <HStack w="100%" justify={"space-between"}>
-        <Heading as="h1">Countdowns</Heading>
+      <HStack w="100%" gap="1rem">
+        <Heading as="h1" fontSize="2xl">
+          Countdowns
+        </Heading>
         <Button>Add new</Button>
       </HStack>
-      <VStack>
-        {countdowns?.map((countdown: Countdown) => (
-          <CountdownItem key={countdown.id} countdown={countdown} />
-        ))}
+      <VStack alignItems={"flex-start"}>
+        <CountdownTable countdowns={countdowns} />
       </VStack>
     </>
   );

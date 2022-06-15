@@ -1,5 +1,3 @@
-import "../../../../../style/global.css";
-
 import { GOOGLE_FONTS_LIST } from "../../../../../services/typography/constants";
 import GoogleFontsLinkTag from "../google-fonts-link-tag/google-fonts-link-tag";
 import FontList from "./font-list/font-list";

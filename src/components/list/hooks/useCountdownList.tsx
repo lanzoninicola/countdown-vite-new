@@ -20,6 +20,8 @@ export default function useCountdownList(): UseCountdownListSWR {
     fetcher
   );
 
+  console.log(error);
+
   return {
     countdowns: data,
     isLoading: !error && !data,

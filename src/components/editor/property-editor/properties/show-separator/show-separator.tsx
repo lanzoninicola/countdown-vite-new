@@ -1,5 +1,3 @@
-import "../../../../../style/global.css";
-
 import { Checkbox } from "@chakra-ui/react";
 
 import PropertyWrapper from "../../../../layout/property-wrapper/property-wrapper";
