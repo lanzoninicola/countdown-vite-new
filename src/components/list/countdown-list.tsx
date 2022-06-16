@@ -19,7 +19,7 @@ export default function CountdownsList() {
         <Heading as="h1" fontSize="2xl">
           Countdowns
         </Heading>
-        <Button>Add new</Button>
+        <Button size="sm">Add new</Button>
       </HStack>
       <VStack alignItems={"flex-start"}>
         <CountdownTable countdowns={countdowns} />
