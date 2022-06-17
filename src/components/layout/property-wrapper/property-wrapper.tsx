@@ -9,7 +9,7 @@ export default function PropertyWrapper({
 }) {
   return (
     <Grid
-      gridTemplateColumns={"minmax(0,1.25fr) repeat(2,minmax(0,1fr))"}
+      gridTemplateColumns={"minmax(0,1.35fr) repeat(2,minmax(0,1fr))"}
       gridTemplateRows={"auto"}
       paddingBlock={".25rem"}
       columnGap={".5rem"}

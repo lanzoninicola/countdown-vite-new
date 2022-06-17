@@ -1,4 +1,4 @@
-import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 
 import CenterContent from "../layout/center-content/center-content";
 import LeftSidebar from "../layout/left-sidebar/left-sidebar";
@@ -47,10 +47,17 @@ export default function Editor() {
             <PropertyEditor />
           </LeftSidebar>
           <CenterContent>
-            <Box>
-              <TargetDate />
-              <Timezone />
-            </Box>
+            <HStack
+              spacing={2}
+              bg="white"
+              borderRadius={"lg"}
+              boxShadow={"lg"}
+              p=".5rem"
+              mt="1rem"
+            >
+              <TargetDate size="lg" />
+              <Timezone size="lg" />
+            </HStack>
             <VStack h="100%" justifyContent={"center"}>
               <Box
                 bgImage={`url(${pattern})`}

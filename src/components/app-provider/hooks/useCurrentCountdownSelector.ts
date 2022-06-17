@@ -4,7 +4,7 @@ import { AppContext } from "../context";
 
 interface UseCurrentCountdownSelector {
   currentCountdown: Countdown | null;
-  setCurrentCountdown: (countdown: Countdown) => void;
+  setCurrentCountdown: (countdown: Countdown | null) => void;
 }
 
 export default function useCurrentCountdownSelector(): UseCurrentCountdownSelector {

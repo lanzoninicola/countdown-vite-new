@@ -7,5 +7,5 @@ export interface AppStateData {
 }
 
 export interface AppStateSetter {
-  setCurrentCountdown: (countdown: Countdown) => void;
+  setCurrentCountdown: (countdown: Countdown | null) => void;
 }
