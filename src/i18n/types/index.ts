@@ -1,4 +1,4 @@
-type LanguagesCode = "en" | "pt";
+export type LanguagesCode = "en" | "pt";
 
 export interface Languages {
   [key: string]: {

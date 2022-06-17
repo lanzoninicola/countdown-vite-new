@@ -1,11 +1,12 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import TableCellText from "../table-cell-text/table-cell-text";
-import CustomizeModal from "../../../countdown-edit/cutomize-modal/customize-modal";
+import ButtonSettings from "../../../../layout/button-settings/button-settings";
 import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
-import { Countdown } from "../../../types";
+import { Countdown } from "../../../../../types";
+import TableCellText from "../table-cell-text/table-cell-text";
+import useCurrentCountdownSelector from "../../../../app-provider/hooks/useCurrentCountdownSelector";
 
 interface TableRowProps {
   countdown: Countdown;
@@ -15,6 +16,7 @@ interface TableRowProps {
 
 export default function TableRow({ countdown }: TableRowProps) {
   const { id, name, description, created_at, updated_at } = countdown;
+  const { setCurrentCountdown } = useCurrentCountdownSelector();
 
   const createdAt = dayjs(created_at).format("DD/MM/YYYY");
   const updatedAt = updated_at && dayjs(updated_at).format("DD/MM/YYYY");
@@ -29,7 +31,13 @@ export default function TableRow({ countdown }: TableRowProps) {
       </Td>
       <Td>
         <HStack>
-          <CustomizeModal countdownId={id} />
+          <ButtonSettings
+            label="Customize"
+            onClick={() => {
+              console.log("im clineckadsk");
+              setCurrentCountdown(countdown);
+            }}
+          />
           <EditModal countdown={countdown} />
           <DeleteModal countdown={countdown} />
         </HStack>

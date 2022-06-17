@@ -1,4 +1,4 @@
-import { Divider } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 import GroupTitle from "../../layout/group-title/group-title";
 import PropertyGroupWrapper from "../../layout/property-group-wrapper/property-group-wrapper";
 import useThemeTimerSelector from "../countdown-theme-provider/hooks/useThemeTimerSelector";
@@ -18,7 +18,7 @@ export default function PropertyEditor() {
   const timer = useThemeTimerSelector();
 
   return (
-    <>
+    <Box paddingInline={"1rem"}>
       {/* <PropertyGroupWrapper>
         <GroupTitle>General</GroupTitle>
         <TargetDate />
@@ -118,6 +118,6 @@ export default function PropertyEditor() {
           onColorSelected={timer.setLabelFontColor}
         />
       </PropertyGroupWrapper>
-    </>
+    </Box>
   );
 }

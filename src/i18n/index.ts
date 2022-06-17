@@ -1,7 +1,20 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import ptBR from "./pt-br";
+import ptBR from "./translations/pt-br";
+import enUS from "./translations/en-us";
+
+declare global {
+  interface String {
+    capitalize(): string;
+  }
+}
+
+String.prototype.capitalize = function (): string {
+  return Object.values(this)
+    .map((char, i) => (i === 0 ? char.toUpperCase() : char))
+    .join("");
+};
 
 i18n
   // detect user language
@@ -18,15 +31,7 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     resources: {
-      en: {
-        translation: {
-          global: {
-            yes: "yes",
-            Yes: "Yes",
-            no: "No",
-          },
-        },
-      },
+      ...enUS,
       ...ptBR,
     },
   });

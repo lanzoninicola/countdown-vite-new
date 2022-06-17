@@ -1,17 +1,13 @@
-import { FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
-import { Countdown } from "../../../../../types";
 import "../../../../../style/global.css";
+
+import { FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-interface EditFormProps {
+interface NewFormProps {
   initialFocusRef?: React.MutableRefObject<HTMLInputElement>;
-  countdown: Countdown;
 }
 
-export default function EditForm({
-  initialFocusRef,
-  countdown,
-}: EditFormProps) {
+export default function NewForm({ initialFocusRef }: NewFormProps) {
   const { t } = useTranslation();
   function handleTask() {}
 
@@ -29,7 +25,6 @@ export default function EditForm({
           id="countdown-name"
           ref={initialFocusRef}
           placeholder={t("countdown_edit_new.namePlaceholder")}
-          defaultValue={countdown.name}
           onChange={handleTask}
           onFocus={handleTask}
           className="theme-font"
@@ -46,7 +41,6 @@ export default function EditForm({
         <Textarea
           id="countdown-desc"
           placeholder={t("countdown_edit_new.descriptionPlaceholder")}
-          defaultValue={countdown.description}
           onChange={handleTask}
           onFocus={handleTask}
           minH={"120px"}

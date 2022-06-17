@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Countdown } from "../types";
+import { Countdown } from "../../../types";
 
 interface UseCountdownListSWR {
   countdowns: Countdown[] | undefined;

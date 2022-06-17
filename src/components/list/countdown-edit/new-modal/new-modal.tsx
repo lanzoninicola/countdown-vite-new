@@ -1,3 +1,5 @@
+import "../../../../style/global.css";
+
 import {
   Button,
   Modal,
@@ -10,25 +12,21 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
+import NewForm from "./new-form/new-form";
+import { useTranslation } from "react-i18next";
 
-import ButtonEdit from "../../../layout/button-edit/button-edit";
-import { Countdown } from "../../../../types";
-import EditForm from "./edit-form/edit-form";
-import "../../../../style/global.css";
-
-interface EditModalProps {
-  countdown: Countdown;
-}
-
-export default function EditModal({ countdown }: EditModalProps) {
+export default function NewModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { t } = useTranslation();
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  function upTask() {}
+  function createCountdown() {}
 
   return (
     <>
-      <ButtonEdit label="Edit" onClick={onOpen} />
+      <Button size="sm" onClick={onOpen}>
+        {t("countdown_edit_new.buttonLabel")}
+      </Button>
       <Modal
         isCentered
         initialFocusRef={initialRef}
@@ -37,10 +35,12 @@ export default function EditModal({ countdown }: EditModalProps) {
       >
         <ModalOverlay />
         <ModalContent w="90%">
-          <ModalHeader className="theme-font">Edit</ModalHeader>
+          <ModalHeader className="theme-font">
+            {t("countdown_edit_new.header")}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <EditForm initialFocusRef={initialRef} countdown={countdown} />
+            <NewForm initialFocusRef={initialRef} />
           </ModalBody>
 
           <ModalFooter>
@@ -48,9 +48,9 @@ export default function EditModal({ countdown }: EditModalProps) {
               className="theme-font"
               colorScheme="blue"
               size={"sm"}
-              onClick={() => upTask()}
+              onClick={() => createCountdown()}
             >
-              Save
+              {t("global.save").capitalize()}
             </Button>
           </ModalFooter>
         </ModalContent>

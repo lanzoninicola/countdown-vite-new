@@ -1,7 +1,7 @@
 import { Table, TableContainer, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
 
 import TableHeaderText from "./layout/table-header-text/table-header-text";
-import { Countdown } from "../types";
+import { Countdown } from "../../../types";
 import TableRow from "./layout/table-row/table-row";
 
 interface CountdownsTableProps {
@@ -18,7 +18,7 @@ export default function CountdownsTable({ countdowns }: CountdownsTableProps) {
   ];
 
   return (
-    <TableContainer>
+    <TableContainer bg="white">
       <Table variant="simple">
         <Thead>
           <TableHeaders titles={columnsTitle} />
