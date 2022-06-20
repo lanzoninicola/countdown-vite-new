@@ -1,7 +1,7 @@
 import { Table, TableContainer, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
+import { Countdown } from "../../editor/countdown/types";
 
 import TableHeaderText from "./layout/table-header-text/table-header-text";
-import { Countdown } from "../../../types";
 import TableRow from "./layout/table-row/table-row";
 
 interface CountdownsTableProps {
@@ -10,6 +10,7 @@ interface CountdownsTableProps {
 
 export default function CountdownsTable({ countdowns }: CountdownsTableProps) {
   const columnsTitle = [
+    "Id",
     "Name",
     "Description",
     "Actions",

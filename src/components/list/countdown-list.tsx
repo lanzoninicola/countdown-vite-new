@@ -1,15 +1,8 @@
-import {
-  Button,
-  Heading,
-  HStack,
-  VStack,
-  Text,
-  Box,
-  Flex,
-} from "@chakra-ui/react";
-import useCountdownList from "./hooks/useCountdownList";
-import CountdownTable from "./countdowns-table/countdowns-table";
+import { Flex, Heading, HStack, VStack } from "@chakra-ui/react";
+
 import CountdownNewModal from "./countdown-edit/new-modal/new-modal";
+import CountdownTable from "./countdowns-table/countdowns-table";
+import useCountdownList from "./hooks/useCountdownList";
 
 export default function CountdownsList() {
   const { countdowns, isLoading, isError } = useCountdownList();

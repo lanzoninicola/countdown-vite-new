@@ -11,16 +11,57 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import NewForm from "./new-form/new-form";
 import { useTranslation } from "react-i18next";
+import useCountdownRestApi from "../../../../services/rest-api/hooks/useCountdownRestApi";
+import useNotifications from "../../../../hooks/useNotification";
+import useCurrentCountdownSelector from "../../../app-provider/hooks/useCurrentCountdownSelector";
+import { APIResponse } from "../../../../services/rest-api/types";
+import { Countdown } from "../../../editor/countdown/types";
 
 export default function NewModal() {
+  const [name, setName] = useState<Countdown["name"]>("");
+  const [description, setDescription] = useState<Countdown["description"]>("");
+  const [isSuspense, setIsSuspense] = useState(false);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { t } = useTranslation();
+
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  function createCountdown() {}
+  const { create } = useCountdownRestApi();
+  const { successWithButton: successNotification, error: errorNotification } =
+    useNotifications();
+
+  const { setCurrentCountdown } = useCurrentCountdownSelector();
+
+  function createCountdown() {
+    setIsSuspense(true);
+    create({ name, description } as Countdown)
+      .then((response) => {
+        successResponseFromServer(response);
+      })
+      .catch(() => {
+        setIsSuspense(false);
+        errorNotification(t("global.error"), {
+          title: t("global.errorTitle"),
+        });
+      });
+  }
+
+  function successResponseFromServer(response: APIResponse<Countdown["id"]>) {
+    setIsSuspense(false);
+    onClose();
+    successNotification(t("countdown_edit_new.createSuccess"), {
+      title: t("countdown_edit_new.createSuccessTitle"),
+      buttonProps: {
+        children: t("countdown_edit_new.editCountdown"),
+        onClick: () => setCurrentCountdown(response.data.payload!),
+      },
+    });
+  }
 
   return (
     <>
@@ -40,11 +81,18 @@ export default function NewModal() {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <NewForm initialFocusRef={initialRef} />
+            <NewForm
+              initialFocusRef={initialRef}
+              onNameChange={setName}
+              onDescriptionChange={setDescription}
+              isSuspense={isSuspense}
+            />
           </ModalBody>
 
           <ModalFooter>
             <Button
+              isLoading={isSuspense}
+              loadingText={t("global.saving").capitalize()}
               className="theme-font"
               colorScheme="blue"
               size={"sm"}

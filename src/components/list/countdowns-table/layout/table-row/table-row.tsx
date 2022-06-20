@@ -4,9 +4,9 @@ import dayjs from "dayjs";
 import ButtonSettings from "../../../../layout/button-settings/button-settings";
 import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
-import { Countdown } from "../../../../../types";
 import TableCellText from "../table-cell-text/table-cell-text";
 import useCurrentCountdownSelector from "../../../../app-provider/hooks/useCurrentCountdownSelector";
+import { Countdown } from "../../../../editor/countdown/types";
 
 interface TableRowProps {
   countdown: Countdown;
@@ -23,6 +23,9 @@ export default function TableRow({ countdown }: TableRowProps) {
 
   return (
     <Tr>
+      <Td maxW="12rem" overflow={"hidden"} textOverflow={"ellipsis"}>
+        <TableCellText>{id}</TableCellText>
+      </Td>
       <Td maxW="12rem" overflow={"hidden"} textOverflow={"ellipsis"}>
         <TableCellText>{name}</TableCellText>
       </Td>

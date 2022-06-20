@@ -13,9 +13,9 @@ interface AppProviderProps {
 }
 
 export function AppProvider({ children }: AppProviderProps) {
-  const [currentCountdown, setCurrentCountdown] = useState<Countdown | null>(
-    initState.currentCountdown
-  );
+  const [currentCountdown, setCurrentCountdown] = useState<
+    Countdown | Countdown["id"] | null
+  >(initState.currentCountdown);
 
   return (
     <AppContext.Provider

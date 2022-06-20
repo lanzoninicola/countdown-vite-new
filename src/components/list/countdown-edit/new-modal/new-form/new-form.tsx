@@ -1,15 +1,34 @@
 import "../../../../../style/global.css";
 
-import { FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Textarea,
+} from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import { Countdown } from "../../../../../types";
 
 interface NewFormProps {
+  onNameChange: (value: Countdown["name"]) => void;
+  onDescriptionChange: (value: Countdown["description"]) => void;
+  /** Used to focus on an input field */
   initialFocusRef?: React.MutableRefObject<HTMLInputElement>;
+  /** Used when a side effect is fired (eg. call API). If true disabled input fields */
+  isSuspense?: boolean;
+  /** Used when an error is fired (eg. call API). If true an error message is shown */
+  isError?: boolean;
 }
 
-export default function NewForm({ initialFocusRef }: NewFormProps) {
+export default function NewForm({
+  onNameChange,
+  onDescriptionChange,
+  initialFocusRef,
+  isSuspense = false,
+  isError = false,
+}: NewFormProps) {
   const { t } = useTranslation();
-  function handleTask() {}
 
   return (
     <>
@@ -25,9 +44,11 @@ export default function NewForm({ initialFocusRef }: NewFormProps) {
           id="countdown-name"
           ref={initialFocusRef}
           placeholder={t("countdown_edit_new.namePlaceholder")}
-          onChange={handleTask}
-          onFocus={handleTask}
+          onChange={(e) => {
+            onNameChange(e.target.value);
+          }}
           className="theme-font"
+          isDisabled={isSuspense}
         />
       </FormControl>
       <FormControl>
@@ -41,12 +62,15 @@ export default function NewForm({ initialFocusRef }: NewFormProps) {
         <Textarea
           id="countdown-desc"
           placeholder={t("countdown_edit_new.descriptionPlaceholder")}
-          onChange={handleTask}
-          onFocus={handleTask}
+          onChange={(e) => {
+            onDescriptionChange(e.target.value);
+          }}
           minH={"120px"}
           className="theme-font"
+          isDisabled={isSuspense}
         />
       </FormControl>
+      {isError && <FormErrorMessage>{t("global.error")}</FormErrorMessage>}
     </>
   );
 }

@@ -1,3 +1,11 @@
+export interface Countdown {
+  id: string;
+  name: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export type StringOrNumber = string | number;
 
 export type Milliseconds = number;

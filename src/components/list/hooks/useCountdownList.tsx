@@ -1,5 +1,7 @@
 import useSWR from "swr";
-import { Countdown } from "../../../types";
+import useCountdownRestApi from "../../../services/rest-api/hooks/useCountdownRestApi";
+import { APIResponse } from "../../../services/rest-api/types";
+import { Countdown } from "../../editor/countdown/types";
 
 interface UseCountdownListSWR {
   countdowns: Countdown[] | undefined;
@@ -9,20 +11,16 @@ interface UseCountdownListSWR {
 
 //TODO: useSWR update url
 export default function useCountdownList(): UseCountdownListSWR {
-  const fetcher = async (url: string) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
-  };
+  const { apiBaseUrl, findAll } = useCountdownRestApi();
 
-  let { data, error } = useSWR<Countdown[] | undefined>(
-    "http://localhost/bb-melhor-envio/wp-json/wbg-countdown/v1/countdowns",
-    fetcher
+  let { data: response, error } = useSWR<APIResponse<Countdown[]>>(
+    apiBaseUrl,
+    findAll
   );
 
   return {
-    countdowns: data,
-    isLoading: !error && !data,
+    countdowns: response?.data.payload!,
+    isLoading: !error && !response,
     isError: error,
   };
 }

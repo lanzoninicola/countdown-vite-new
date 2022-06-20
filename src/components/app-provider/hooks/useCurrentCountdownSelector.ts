@@ -3,8 +3,8 @@ import { Countdown } from "../../../types";
 import { AppContext } from "../context";
 
 interface UseCurrentCountdownSelector {
-  currentCountdown: Countdown | null;
-  setCurrentCountdown: (countdown: Countdown | null) => void;
+  currentCountdown: Countdown | Countdown["id"] | null;
+  setCurrentCountdown: (countdown: Countdown | Countdown["id"] | null) => void;
 }
 
 export default function useCurrentCountdownSelector(): UseCurrentCountdownSelector {

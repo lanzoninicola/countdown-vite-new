@@ -1,7 +1,5 @@
-export interface Countdown {
-  id: string;
-  name: string;
-  description: string;
-  created_at: string;
-  updated_at: string;
-}
+import { CountdownSettingsStateData } from "../components/editor/countdown-provider/types";
+import { CountdownThemeStateData } from "../components/editor/countdown-theme-provider/types";
+
+export type EditorSettings = CountdownThemeStateData &
+  CountdownSettingsStateData;
