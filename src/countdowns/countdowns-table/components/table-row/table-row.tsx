@@ -5,8 +5,9 @@ import ButtonSettings from "../../primitives/button-settings/button-settings";
 import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
 import TableCellText from "../../primitives/table-cell-text/table-cell-text";
-import { Countdown } from "../../../../countdown-widget/types";
+
 import useCurrentCountdownSelector from "../../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
+import { Countdown } from "../../../../countdown-widget/types";
 
 interface TableRowProps {
   countdown: Countdown;
@@ -38,6 +39,7 @@ export default function TableRow({ countdown }: TableRowProps) {
             label="Customize"
             onClick={() => {
               console.log("im clineckadsk");
+
               setCurrentCountdown(countdown);
             }}
           />

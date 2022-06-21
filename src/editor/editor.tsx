@@ -7,11 +7,10 @@ import TargetDate from "./editor-properties/components/target-date/target-date";
 import Timezone from "./editor-properties/components/timezone/timezone";
 import EditorProperties from "./editor-properties/editor-properties";
 import pattern from "./assets/imgs/tiny-checkers.svg";
+import CountdownWidgetProvider from "../countdown-widget-provider/countdown-widget-provider";
+import CountdownWidgetThemeProvider from "../countdown-widget-theme-provider/countdown-widget-theme-provider";
+import CountdownWidget from "../countdown-widget/countdown-widget";
 import useEditorSettings from "../countdown-widget/hooks/useEditorSettings";
-import CountdownWidget from "../countdown-widget";
-
-import CountdownWidgetProvider from "../countdown-widget-provider";
-import CountdownWidgetThemeProvider from "../countdown-widget-theme-provider";
 // TODO: check if the isMockMode flag could be handled with npm scripts
 
 export default function Editor() {

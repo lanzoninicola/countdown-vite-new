@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
 import { Countdown } from "../../countdown-widget/types";
 import { CountdownWidgetContext } from "../context/countdown-widget-context";
@@ -17,6 +18,14 @@ export default function useCurrentCountdownSelector(): UseCurrentCountdownSelect
     CountdownWidgetContext,
     (state) => state.setCurrentCountdown
   );
+
+  useEffect(() => {
+    if (currentCountdown === undefined) {
+      console.error(
+        "useCurrentCountdownSelector hook must be used within a CountdownWidgetProvider"
+      );
+    }
+  }, [currentCountdown]);
 
   return { currentCountdown, setCurrentCountdown };
 }
