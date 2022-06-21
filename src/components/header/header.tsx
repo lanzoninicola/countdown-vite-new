@@ -1,8 +1,8 @@
 import { HStack, Button, Text, Grid, Box, Flex } from "@chakra-ui/react";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import useCurrentCountdownSelector from "../../countdown-provider/hooks/useCurrentCountdownSelector";
 import { Languages } from "../../i18n/types";
-import useCurrentCountdownSelector from "../app-provider/hooks/useCurrentCountdownSelector";
 import ButtonClose from "../layout/button-close/button-close";
 
 //TODO: detect language from Wordpress
