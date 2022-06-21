@@ -1,4 +1,4 @@
-import { Typography } from "../../../countdown-typography";
+import { Typography } from "../../../countdown-widget-typography";
 import { GoogleFont } from "../types";
 
 export const GOOGLE_FONTS_LIST: Typography[] = [
