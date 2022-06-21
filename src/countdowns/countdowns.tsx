@@ -1,16 +1,15 @@
 import useCurrentCountdownSelector from "../countdown-widget-provider/hooks/useCurrentCountdownSelector";
-import EditorPage from "./components/editor-page";
+import CountdownsPage from "./components/countdowns-page";
 
 /**
  *  This is the main entry point for the countdowns page.
  *
- *  This is a convenience wrapper around the EditorPage component,
+ *  This is a convenience wrapper around the CountdownsPage component,
  *  needed to determine whether or not it should be rendered based on the currentCountDown state
  *  due the position of Context providers in the app.
- *
  */
-export default function Editor() {
+export default function Countdowns() {
   const { currentCountdown } = useCurrentCountdownSelector();
 
-  return <>{currentCountdown && <EditorPage />}</>;
+  return <>{!currentCountdown && <CountdownsPage />}</>;
 }
