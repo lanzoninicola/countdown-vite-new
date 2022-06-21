@@ -19,7 +19,7 @@ const enUS = {
         descriptionPlaceholder: "Description of the countdown",
         createSuccessTitle: "Countdown created",
         createSuccess: "Now you can edit the countdown.",
-        editCountdown: "Edit",
+        openEditor: "Open editor",
       },
       countdown_edit_delete: {
         header: "Are you absolutely sure?",

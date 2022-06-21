@@ -18,7 +18,7 @@ const ptBR = {
         descriptionPlaceholder: "Descrição do contador regressivo",
         createSuccessTitle: "Contador regressivo criado",
         createSuccess: "Agora você pode editar o contador regressivo.",
-        editCountdown: "Editar",
+        openEditor: "Abrir editor",
       },
       countdown_edit_delete: {
         header: "Tem certeza absoluta?",

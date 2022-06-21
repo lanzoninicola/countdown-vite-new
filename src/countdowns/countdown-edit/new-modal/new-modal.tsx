@@ -15,10 +15,10 @@ import { useTranslation } from "react-i18next";
 
 import useNotifications from "../../../hooks/useNotification";
 
-import { Countdown } from "../../../countdown-widget/types";
 import useCurrentCountdownSelector from "../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
 import { useCountdownsRestApi } from "../../../countdowns-rest-api";
 import { APIResponse } from "../../../countdowns-rest-api/types";
+import { Countdown } from "../../../countdown-widget/types";
 
 export default function NewModal() {
   const [name, setName] = useState<Countdown["name"]>("");
@@ -57,7 +57,7 @@ export default function NewModal() {
     successNotification(t("countdown_edit_new.createSuccess"), {
       title: t("countdown_edit_new.createSuccessTitle"),
       buttonProps: {
-        children: t("countdown_edit_new.editCountdown"),
+        children: t("countdown_edit_new.openEditor"),
         onClick: () => setCurrentCountdown(response.data.payload!),
       },
     });
