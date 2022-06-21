@@ -1,5 +1,4 @@
 import { Countdown } from "../../countdown-widget/types";
-
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../constants/endpoints";
 import { APIResponse } from "../types";
 

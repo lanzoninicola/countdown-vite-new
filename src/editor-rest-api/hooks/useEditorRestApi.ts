@@ -1,8 +1,6 @@
 import { Countdown } from "../../countdown-widget/types";
-import { EditorSettings } from "../../types";
-
 import { EDITOR_REST_API_ENDPOINTS } from "../constants/endpoints";
-import { APIResponse } from "../types";
+import { APIResponse, EditorSettingsPayload } from "../types";
 
 export default function useEditorRestApi() {
   /**
@@ -16,11 +14,11 @@ export default function useEditorRestApi() {
    * - "error": An error occurred.
    * - "warning": No records exists for the given id.
    *
-   * If a record in the database is not found, the API will return the message "No rows were affected" otherwise it will return the record.
+   * If a record in the database is not found, the API will not return a payload.
    */
   const findById = async (
     id: string
-  ): Promise<APIResponse<EditorSettings | string>> => {
+  ): Promise<APIResponse<EditorSettingsPayload>> => {
     const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.findById;
 
     return await (
@@ -75,7 +73,7 @@ export default function useEditorRestApi() {
    */
   const update = async (
     id: Countdown["id"],
-    settings: EditorSettings
+    settings: EditorSettingsPayload
   ): Promise<APIResponse> => {
     const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.update;
 

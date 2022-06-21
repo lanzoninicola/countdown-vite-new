@@ -1,9 +1,10 @@
 import useSWR from "swr";
-import { Countdown } from "../../../countdown-widget/types";
+
 import useCountdownRestApi from "../../../countdowns-rest-api/hooks/useCountdownsRestApi";
 
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdowns-rest-api/constants/endpoints";
 import { APIResponse } from "../../../countdowns-rest-api/types";
+import { Countdown } from "../../../countdown-widget/types";
 
 interface UseCountdownListSWR {
   countdowns: Countdown[] | undefined;
