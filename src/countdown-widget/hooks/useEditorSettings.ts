@@ -1,5 +1,5 @@
-import { CountdownSettingsStateData } from "../../countdown-provider/types";
-import { CountdownThemeStateData } from "../../countdown-theme-provider/types";
+import { CountdownWidgetSettingsStateData } from "../../countdown-widget-provider/types";
+import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
 import { Countdown } from "../types";
 import useMockEditorSettings from "./useMockEditorSettings";
 
@@ -13,8 +13,8 @@ interface UseEditorSettingsProps {
 }
 
 export interface UseEditorSettingsAPIResponse {
-  settings: CountdownSettingsStateData | undefined;
-  theme: CountdownThemeStateData | undefined;
+  settings: CountdownWidgetSettingsStateData | undefined;
+  theme: CountdownWidgetThemeStateData | undefined;
   isLoading?: boolean;
   isError?: any;
 }

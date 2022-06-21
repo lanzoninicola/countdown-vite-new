@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import useNotifications from "../../../hooks/useNotification";
 
 import { Countdown } from "../../../countdown-widget/types";
-import useCurrentCountdownSelector from "../../../countdown-provider/hooks/useCurrentCountdownSelector";
+import useCurrentCountdownSelector from "../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
 import { useCountdownsRestApi } from "../../../countdowns-rest-api";
 import { APIResponse } from "../../../countdowns-rest-api/types";
 

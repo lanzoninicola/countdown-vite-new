@@ -2,7 +2,7 @@ import { Input } from "@chakra-ui/react";
 
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
-import useThemeTimer from "../../../../countdown-theme-provider/hooks/useThemeTimer";
+import useThemeTimer from "../../../../countdown-widget-theme-provider/hooks/useThemeTimer";
 
 interface SeparatorCharProps {
   showSeparator: boolean;

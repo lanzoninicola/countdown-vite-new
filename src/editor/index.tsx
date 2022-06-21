@@ -8,9 +8,10 @@ import Timezone from "./editor-properties/components/timezone/timezone";
 import EditorProperties from "./editor-properties/editor-properties";
 import pattern from "./assets/imgs/tiny-checkers.svg";
 import useEditorSettings from "../countdown-widget/hooks/useEditorSettings";
-import CountdownWidget from "../countdown-widget/countdown-widget";
-import { CountdownProvider } from "../countdown-provider/countdown-provider";
-import { CountdownThemeProvider } from "../countdown-theme-provider/countdown-theme-provider";
+import CountdownWidget from "../countdown-widget";
+
+import CountdownWidgetProvider from "../countdown-widget-provider";
+import CountdownWidgetThemeProvider from "../countdown-widget-theme-provider";
 // TODO: check if the isMockMode flag could be handled with npm scripts
 
 export default function Editor() {
@@ -31,8 +32,8 @@ export default function Editor() {
   }
 
   return (
-    <CountdownProvider settings={settings}>
-      <CountdownThemeProvider theme={theme}>
+    <CountdownWidgetProvider settings={settings}>
+      <CountdownWidgetThemeProvider theme={theme}>
         <Box
           id="editor-wrapper"
           w="100%"
@@ -82,7 +83,7 @@ export default function Editor() {
             <Text>This is the countdown theme area</Text>
           </RightSidebar>
         </Box>
-      </CountdownThemeProvider>
-    </CountdownProvider>
+      </CountdownWidgetThemeProvider>
+    </CountdownWidgetProvider>
   );
 }

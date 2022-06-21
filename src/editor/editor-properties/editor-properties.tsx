@@ -1,6 +1,6 @@
 import { Box, Divider } from "@chakra-ui/react";
-import useThemeTimerSelector from "../../countdown-theme-provider/hooks/useThemeTimerSelector";
-import useThemeTitleSelector from "../../countdown-theme-provider/hooks/useThemeTitleSelector";
+import useThemeTimerSelector from "../../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
+import useThemeTitleSelector from "../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
 import GroupTitle from "./layout/group-title/group-title";
 import PropertyGroupWrapper from "./layout/property-group-wrapper/property-group-wrapper";
 import CountdownTitle from "./components/countdown-title/countdown-title";

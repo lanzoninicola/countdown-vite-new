@@ -1,5 +1,5 @@
-import { CountdownSettingsStateData } from "../countdown-provider/types";
-import { CountdownThemeStateData } from "../countdown-theme-provider/types";
+import { CountdownWidgetSettingsStateData } from "../countdown-widget-provider/types";
+import { CountdownWidgetThemeStateData } from "../countdown-widget-theme-provider/types";
 
-export type EditorSettings = CountdownThemeStateData &
-  CountdownSettingsStateData;
+export type EditorSettings = CountdownWidgetThemeStateData &
+  CountdownWidgetSettingsStateData;

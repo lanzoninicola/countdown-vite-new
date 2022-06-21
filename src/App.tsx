@@ -7,7 +7,7 @@ import Header from "./components/header/header";
 import MainContent from "./components/layout/main-content/main-content";
 import Countdowns from "./countdowns";
 import FakeWrapper from "./FakeWrapper";
-import useCurrentCountdownSelector from "./countdown-provider/hooks/useCurrentCountdownSelector";
+import useCurrentCountdownSelector from "./countdown-widget-provider/hooks/useCurrentCountdownSelector";
 
 function App() {
   const { currentCountdown } = useCurrentCountdownSelector();

@@ -6,7 +6,7 @@ import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
 import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 import { Countdown } from "../../../../countdown-widget/types";
-import useCurrentCountdownSelector from "../../../../countdown-provider/hooks/useCurrentCountdownSelector";
+import useCurrentCountdownSelector from "../../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
 
 interface TableRowProps {
   countdown: Countdown;
