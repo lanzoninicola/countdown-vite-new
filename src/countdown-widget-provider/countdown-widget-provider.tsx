@@ -19,6 +19,24 @@ interface CountdownWidgetProviderProps {
   current?: Countdown | Countdown["id"] | null;
 }
 
+/**
+ * This provides the state of the countdown widget that contains the following informations:
+ *  1. the basic settings of the countdown widget (target date, timezone). Data are provided by calling the REST API.
+ *  2. the current countdown value is provided in different ways depending on the context.:
+ *
+ *     *** WHEN WORKING WITH THE EDITOR ***
+ *    - it is the countdown that is currently being edited.
+ *    - it is updated when the user choose a countdown to edit from the list of countdowns.
+ *
+ *    *** WHEN WORKING WITH THE COUNTDOWN WIDGET ***
+ *    - it is the countdown that is currently being displayed, isolated on the front-end pages.
+ *    - it is provided by the [data-id] attribute when is rendered to the DOM when the user add the shortcode with the id attribute in the page.
+ *
+ * @param settings - the basic settings of the countdown widget
+ * @param current  - the current countdown is currently being edited/displayed
+ *
+ * @returns
+ */
 export default function CountdownWidgetProvider({
   children,
   settings,
