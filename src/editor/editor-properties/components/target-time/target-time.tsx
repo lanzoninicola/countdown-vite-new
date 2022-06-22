@@ -1,4 +1,5 @@
 import { Input } from "@chakra-ui/react";
+
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 

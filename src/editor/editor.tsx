@@ -1,4 +1,5 @@
 import useCurrentCountdownSelector from "../countdown-widget-provider/hooks/useCurrentCountdownSelector";
+import useEditorSettings from "../countdown-widget/hooks/useEditorSettings";
 import EditorPage from "./components/editor-page";
 
 /**
@@ -12,5 +13,9 @@ import EditorPage from "./components/editor-page";
 export default function Editor() {
   const { currentCountdown } = useCurrentCountdownSelector();
 
-  return <>{currentCountdown && <EditorPage />}</>;
+  return (
+    <>
+      {currentCountdown && <EditorPage currentCountdown={currentCountdown} />}
+    </>
+  );
 }

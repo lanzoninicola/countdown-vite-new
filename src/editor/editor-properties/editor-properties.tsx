@@ -1,6 +1,4 @@
 import { Box, Divider } from "@chakra-ui/react";
-import useThemeTimerSelector from "../../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
-import useThemeTitleSelector from "../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
 import GroupTitle from "./layout/group-title/group-title";
 import PropertyGroupWrapper from "./layout/property-group-wrapper/property-group-wrapper";
 import CountdownTitle from "./components/countdown-title/countdown-title";
@@ -9,47 +7,41 @@ import FontFamily from "./components/font-family/font-family";
 import FontSize from "./components/font-size/font-size";
 import SeparatorChar from "./components/separator-char/separator-char";
 import ShowSeparator from "./components/show-separator/show-separator";
-import TargetDate from "./components/target-date/target-date";
-import Timezone from "./components/timezone/timezone";
-import Units from "./components/units/units";
+import useThemeTimerSelector from "../../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
+import useThemeTitleSelector from "../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
+import { useTranslation } from "react-i18next";
 
 export default function EditorProperties() {
+  const { t } = useTranslation();
   const title = useThemeTitleSelector();
   const timer = useThemeTimerSelector();
 
   return (
-    <Box paddingInline={"1rem"}>
-      {/* <PropertyGroupWrapper>
-        <GroupTitle>General</GroupTitle>
-        <TargetDate />
-        <Timezone />
-      </PropertyGroupWrapper> 
-      <Divider marginBlock={".5rem"} />
-      */}
+    <Box paddingInline={".25rem"}>
       <PropertyGroupWrapper>
-        <GroupTitle>Title style</GroupTitle>
+        <GroupTitle>{t("editor.titleStyle")}</GroupTitle>
         <CountdownTitle />
         <FontFamily
-          label={"Text font"}
+          label={t("editor.textFont")}
           fontFamily={title.fontFamily}
           fontWeight={title.fontWeight}
           onSelectFontFamily={title.setFontFamily}
           onSelectFontWeight={title.setFontWeight}
         />
         <FontSize
-          label={"Text size"}
+          label={t("editor.textSize")}
           fontSizeSelected={title.fontSize}
           onFontSizeSelected={title.setFontSize}
         />
         <FontColor
-          label={"Text color"}
+          label={t("editor.textColor")}
           colorSelected={title.fontColor}
           onColorSelected={title.setFontColor}
         />
       </PropertyGroupWrapper>
       <Divider marginBlock={".5rem"} />
       <PropertyGroupWrapper>
-        <GroupTitle>Countdown Style</GroupTitle>
+        <GroupTitle>{t("editor.countownStyle")}</GroupTitle>
         {/* 
         Disabled for the MVP
         <Units
@@ -73,7 +65,7 @@ export default function EditorProperties() {
         <Divider marginBlock={".5rem"} />
 
         <FontColor
-          label={"Last unit color"}
+          label={t("editor.lastUnitColor")}
           colorSelected={timer.lastUnitColor}
           onColorSelected={timer.setLastUnitColor}
         />
@@ -81,19 +73,19 @@ export default function EditorProperties() {
         <Divider marginBlock={".5rem"} />
 
         <FontFamily
-          label={"Digits font"}
+          label={t("editor.digitsFont")}
           fontFamily={timer.digitFontFamily}
           fontWeight={timer.digitFontWeight}
           onSelectFontFamily={timer.setDigitFontFamily}
           onSelectFontWeight={timer.setDigitFontWeight}
         />
         <FontSize
-          label={"Digits size"}
+          label={t("editor.digitsSize")}
           fontSizeSelected={timer.digitFontSize}
           onFontSizeSelected={timer.setDigitFontSize}
         />
         <FontColor
-          label={"Digits color"}
+          label={t("editor.digitsColor")}
           colorSelected={timer.digitFontColor}
           onColorSelected={timer.setDigitFontColor}
         />
@@ -101,19 +93,19 @@ export default function EditorProperties() {
         <Divider marginBlock={".5rem"} />
 
         <FontFamily
-          label={"Label font"}
+          label={t("editor.labelFont")}
           fontFamily={timer.labelFontFamily}
           fontWeight={timer.labelFontWeight}
           onSelectFontFamily={timer.setLabelFontFamily}
           onSelectFontWeight={timer.setLabelFontWeight}
         />
         <FontSize
-          label={"Label size"}
+          label={t("editor.labelSize")}
           fontSizeSelected={timer.labelFontSize}
           onFontSizeSelected={timer.setLabelFontSize}
         />
         <FontColor
-          label={"Label color"}
+          label={t("editor.labelColor")}
           colorSelected={timer.labelFontColor}
           onColorSelected={timer.setLabelFontColor}
         />

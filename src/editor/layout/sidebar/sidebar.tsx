@@ -9,7 +9,7 @@ export default function Sidebar({ children, ...props }: SidebarProps) {
   return (
     <Flex
       flexDirection={"column"}
-      minW="350px"
+      minW="300px"
       {...props}
       position="absolute"
       top="0"

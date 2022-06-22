@@ -40,7 +40,7 @@ export default function TableRow({ countdown }: TableRowProps) {
             onClick={() => {
               console.log("im clineckadsk");
 
-              setCurrentCountdown(countdown);
+              setCurrentCountdown(countdown.id);
             }}
           />
           <EditModal countdown={countdown} />

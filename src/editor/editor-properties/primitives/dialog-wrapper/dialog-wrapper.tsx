@@ -1,6 +1,5 @@
 import { Flex, Button } from "@chakra-ui/react";
 import useElementPosition from "../../../../hooks/useElementPosition";
-import { CallerPosition } from "../../../../components/editor/property-editor/components/types";
 
 interface DialogWrapperProps {
   callerRef: React.RefObject<HTMLElement>;

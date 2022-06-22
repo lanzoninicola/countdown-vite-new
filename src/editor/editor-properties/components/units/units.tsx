@@ -10,6 +10,7 @@ import {
 
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
+import { useTranslation } from "react-i18next";
 
 // TODO: lot of logics in this component
 
@@ -19,6 +20,7 @@ interface UnitsProps {
 }
 
 export default function Units({ unitsShown, onChangeUnitsShown }: UnitsProps) {
+  const { t } = useTranslation();
   const { value } = useCheckboxGroup({
     value: unitsShown,
   });
@@ -72,7 +74,7 @@ export default function Units({ unitsShown, onChangeUnitsShown }: UnitsProps) {
 
   return (
     <PropertyWrapper>
-      <Label>Units</Label>
+      <Label>{t("editor.unitsShown")}</Label>
       <Box gridColumn={"2 / -1"} borderRadius={"lg"} p={0.5}>
         <CheckboxGroup
           colorScheme="blue"

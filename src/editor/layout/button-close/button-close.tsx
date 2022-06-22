@@ -1,9 +1,4 @@
-import {
-  forwardRef,
-  IconButton,
-  IconButtonProps,
-  Tooltip,
-} from "@chakra-ui/react";
+import { Button, forwardRef, IconButtonProps, Tooltip } from "@chakra-ui/react";
 import { FiX } from "react-icons/fi";
 
 interface ButtonCloseProps extends Omit<IconButtonProps, "aria-label"> {
@@ -13,14 +8,16 @@ interface ButtonCloseProps extends Omit<IconButtonProps, "aria-label"> {
 const ButtonClose = forwardRef(({ label, ...props }: ButtonCloseProps, ref) => {
   return (
     <Tooltip label={label}>
-      <IconButton
-        ref={ref}
-        {...props}
-        icon={<FiX />}
-        isRound={true}
+      <Button
+        leftIcon={<FiX />}
+        variant="solid"
         size="sm"
         aria-label={label}
-      />
+        className="theme-font"
+        {...props}
+      >
+        {label}
+      </Button>
     </Tooltip>
   );
 });
