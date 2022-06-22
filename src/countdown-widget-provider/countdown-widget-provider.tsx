@@ -33,6 +33,9 @@ export default function CountdownWidgetProvider({
   const [currentCountdown, setCurrentCountdown] = useState<
     Countdown["id"] | null
   >(current || COUNTDOWN_WIDGET_INITIAL_STATE.currentCountdown);
+  const [isEditorMode, setIsEditorMode] = useState<boolean>(
+    COUNTDOWN_WIDGET_INITIAL_STATE.isEditorMode
+  );
   const [timerExpired, setTimerExpired] = useState(
     COUNTDOWN_WIDGET_INITIAL_STATE.timerExpired
   );
@@ -48,6 +51,8 @@ export default function CountdownWidgetProvider({
       value={{
         currentCountdown,
         setCurrentCountdown,
+        isEditorMode,
+        setIsEditorMode,
         timerExpired,
         setTimerExpired,
         targetDate,

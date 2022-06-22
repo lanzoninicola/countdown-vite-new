@@ -1,7 +1,7 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import useCurrentCountdownSelector from "../../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
+import useAppContext from "../../../../countdown-widget-provider/hooks/app/useAppContext";
 import { Countdown } from "../../../../countdown-widget/types";
 import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
@@ -16,7 +16,7 @@ interface TableRowProps {
 
 export default function TableRow({ countdown }: TableRowProps) {
   const { id, name, description, created_at, updated_at } = countdown;
-  const { setCurrentCountdown } = useCurrentCountdownSelector();
+  const { setCurrentCountdown, setIsEditorMode } = useAppContext();
 
   const createdAt = dayjs(created_at).format("DD/MM/YYYY");
   const updatedAt = updated_at && dayjs(updated_at).format("DD/MM/YYYY");
@@ -36,7 +36,10 @@ export default function TableRow({ countdown }: TableRowProps) {
         <HStack>
           <ButtonSettings
             label="Customize"
-            onClick={() => setCurrentCountdown(id)}
+            onClick={() => {
+              setCurrentCountdown(id);
+              setIsEditorMode(true);
+            }}
           />
           <EditModal countdown={countdown} />
           <DeleteModal countdown={countdown} />

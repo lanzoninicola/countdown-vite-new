@@ -1,4 +1,4 @@
-import useCurrentCountdownSelector from "../countdown-widget-provider/hooks/useCurrentCountdownSelector";
+import useCurrentCountdownSelector from "../countdown-widget-provider/hooks/app/useCurrentCountdownSelector";
 import CountdownsPage from "./components/countdowns-page";
 
 /**

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
-import { Countdown } from "../../countdown-widget/types";
-import COUNTDOWN_WIDGET_INITIAL_STATE from "../constants/initial-state";
-import { CountdownWidgetContext } from "../context/countdown-widget-context";
+import { Countdown } from "../../../countdown-widget/types";
+import COUNTDOWN_WIDGET_INITIAL_STATE from "../../constants/initial-state";
+import { CountdownWidgetContext } from "../../context/countdown-widget-context";
 
 interface UseCurrentCountdownSelector {
   currentCountdown: Countdown["id"] | null;

@@ -1,9 +1,10 @@
-import { CountdownWidgetStateData } from "../types";
-
 // TODO: Review the state structure with this subgroup: app / settings / theme
 
-const COUNTDOWN_WIDGET_INITIAL_STATE: CountdownWidgetStateData = {
+import { AppStateData } from "../types/app";
+
+const COUNTDOWN_WIDGET_INITIAL_STATE: AppStateData = {
   currentCountdown: null,
+  isEditorMode: false,
   timerExpired: false,
   targetDate: "2022-12-31T23:00",
   targetTimezone: "Europe/Berlin", // "America/Sao_Paulo" "Europe/Berlin", // America/Los_Angeles

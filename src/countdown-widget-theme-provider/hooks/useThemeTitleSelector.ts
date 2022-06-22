@@ -2,7 +2,7 @@ import { useContextSelector } from "use-context-selector";
 
 import { withUnit } from "../../countdown-widget-typography/countdown-widget-typography";
 import { CountdownWidgetThemeContext } from "../context/countdown-theme-context";
-import { ChackraUIResponsiveValuesWithUnit } from "../types/responsive";
+import { ChackraUIResponsiveValuesWithUnit, Tokens } from "../types/responsive";
 import useCurrentTokenSelector from "./useCurrentTokenSelector";
 
 /**
@@ -31,13 +31,13 @@ export default function useThemeTitleSelector() {
     (ctx) => ctx?.title.fontWeight
   );
 
-  const contextFontSize = useContextSelector(
+  const fontSize = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.title.fontSize
   );
 
-  const fontSize: ChackraUIResponsiveValuesWithUnit =
-    Object.values(contextFontSize);
+  const fontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
+    Object.values(fontSize);
 
   const fontColor = useContextSelector(
     CountdownWidgetThemeContext,
@@ -62,9 +62,10 @@ export default function useThemeTitleSelector() {
   }
 
   function setFontSize(size: number) {
-    const nextState = { ...title, contextFontSize };
+    const nextState = { ...title, fontSize };
 
     nextState.fontSize[currentToken] = withUnit(size);
+
     setTitle(nextState);
   }
 
@@ -77,6 +78,7 @@ export default function useThemeTitleSelector() {
     fontFamily,
     fontWeight,
     fontSize,
+    fontSizeChackraUI,
     fontColor,
     setText,
     setFontFamily,

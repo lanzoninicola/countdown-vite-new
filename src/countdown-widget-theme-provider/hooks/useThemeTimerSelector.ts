@@ -40,13 +40,13 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.digitFontWeight
   );
 
-  const contextDigitFontSize = useContextSelector(
+  const digitFontSize = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.digitFontSize
   );
 
-  const digitFontSize: ChackraUIResponsiveValuesWithUnit =
-    Object.values(contextDigitFontSize);
+  const digitFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
+    Object.values(digitFontSize);
 
   const digitFontColor = useContextSelector(
     CountdownWidgetThemeContext,
@@ -68,13 +68,13 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.labelFontWeight
   );
 
-  const contextLabelFontSize = useContextSelector(
+  const labelFontSize = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.labelFontSize
   );
 
-  const labelFontSize: ChackraUIResponsiveValuesWithUnit =
-    Object.values(contextLabelFontSize);
+  const labelFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
+    Object.values(labelFontSize);
 
   const labelFontColor = useContextSelector(
     CountdownWidgetThemeContext,
@@ -107,7 +107,7 @@ export default function useThemeTimerSelector() {
   }
 
   function setDigitFontSize(size: number) {
-    const nextState = { ...timer, contextDigitFontSize };
+    const nextState = { ...timer, digitFontSize };
 
     nextState.digitFontSize[currentToken] = withUnit(size);
     setTimer(nextState);
@@ -130,7 +130,7 @@ export default function useThemeTimerSelector() {
   }
 
   function setLabelFontSize(size: number) {
-    const nextState = { ...timer, contextLabelFontSize };
+    const nextState = { ...timer, labelFontSize };
 
     nextState.labelFontSize[currentToken] = withUnit(size);
     setTimer(nextState);
@@ -147,11 +147,13 @@ export default function useThemeTimerSelector() {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
+    digitFontSizeChackraUI,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
+    labelFontSizeChackraUI,
     labelFontColor,
     setUnitsShown,
     setShowSeparator,

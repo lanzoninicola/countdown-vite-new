@@ -1,3 +1,4 @@
+import { ChackraUIResponsiveValuesWithUnit } from "../types/responsive";
 import {
   ThemeUnitDigit,
   ThemeUnitsShown,
@@ -7,11 +8,19 @@ import {
 } from "../types/timer";
 import useThemeTimerSelector from "./useThemeTimerSelector";
 
+export interface ThemeUnitDigitWithChackraUIFontSize extends ThemeUnitDigit {
+  digitFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
+}
+
+export interface ThemeUnitLabelWithChackraUIFontSize extends ThemeUnitLabel {
+  labelFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit;
+}
+
 type UseThemeTimer =
   | ThemeUnitsShown
   | ThemeSeparator
-  | ThemeUnitDigit
-  | ThemeUnitLabel
+  | ThemeUnitDigitWithChackraUIFontSize
+  | ThemeUnitLabelWithChackraUIFontSize
   | ThemeTimerContextData;
 
 type ThemeTimerSlice =
@@ -28,8 +37,12 @@ type ThemeTimerSlice =
  */
 function useThemeTimer(slice: "unitsShown"): ThemeUnitsShown;
 function useThemeTimer(slice: "unit-separator"): ThemeSeparator;
-function useThemeTimer(slice: "unit-digit"): ThemeUnitDigit;
-function useThemeTimer(slice: "unit-label"): ThemeUnitLabel;
+function useThemeTimer(
+  slice: "unit-digit"
+): ThemeUnitDigitWithChackraUIFontSize;
+function useThemeTimer(
+  slice: "unit-label"
+): ThemeUnitLabelWithChackraUIFontSize;
 function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
   const {
     unitsShown,
@@ -38,11 +51,13 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
+    digitFontSizeChackraUI,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
+    labelFontSizeChackraUI,
     labelFontColor,
   } = useThemeTimerSelector();
 
@@ -62,6 +77,7 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
       digitFontFamily,
       digitFontWeight,
       digitFontSize,
+      digitFontSizeChackraUI,
       digitFontColor,
       lastUnitColor,
     };
@@ -72,6 +88,7 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
       labelFontFamily,
       labelFontWeight,
       labelFontSize,
+      labelFontSizeChackraUI,
       labelFontColor,
       lastUnitColor,
     };
@@ -84,11 +101,13 @@ function useThemeTimer(slice: ThemeTimerSlice): UseThemeTimer {
     digitFontFamily,
     digitFontWeight,
     digitFontSize,
+    digitFontSizeChackraUI,
     digitFontColor,
     lastUnitColor,
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
+    labelFontSizeChackraUI,
     labelFontColor,
   };
 }

@@ -1,4 +1,4 @@
-import { CountdownWidgetSettingsStateData } from "../../countdown-widget-provider/types";
+import { SettingsStateData } from "../../countdown-widget-provider/types";
 import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
 
 export interface APIResponse<T = undefined> {
@@ -8,4 +8,4 @@ export interface APIResponse<T = undefined> {
 }
 
 export type EditorSettingsPayload = CountdownWidgetThemeStateData &
-  CountdownWidgetSettingsStateData;
+  SettingsStateData;

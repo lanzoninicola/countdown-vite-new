@@ -1,6 +1,6 @@
 import { Grid, Input, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { Typography } from "../../../../../countdown-widget-typography";
+import { Typography } from "../../../../../countdown-widget-typography/types";
 
 import GoogleFontsLinkTag from "../../google-fonts-link-tag/google-fonts-link-tag";
 
