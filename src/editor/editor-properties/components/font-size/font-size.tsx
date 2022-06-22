@@ -7,20 +7,27 @@ interface FontSizeProps {
   label: string;
   fontSizeSelected: number;
   onFontSizeSelected: (fontSizeSelected: number) => void;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 export default function FontSize({
   label,
   fontSizeSelected,
   onFontSizeSelected,
+  min = 1,
+  max = 10,
+  step = 0.25,
 }: FontSizeProps) {
   return (
     <PropertyWrapper>
-      <Label>{label || "Font size (px)"}</Label>
+      <Label>{label}</Label>
       <Box gridColumn={"2 / -1"}>
         <SliderMarkTemplate
-          min={4}
-          max={150}
+          min={min}
+          max={max}
+          step={step}
           sliderValue={fontSizeSelected}
           onSliderChange={onFontSizeSelected}
         />

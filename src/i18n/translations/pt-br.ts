@@ -12,6 +12,9 @@ const ptBR = {
         errorTitle: "Ops!",
         success: "Suas alterações foram salvas.",
         successTitle: "Sucesso!",
+        mobile: "Móvel",
+        desktop: "Desktop",
+        tablet: "Tablet",
       },
       countdown_edit_new: {
         buttonLabel: "Adicionar novo",
@@ -31,6 +34,7 @@ const ptBR = {
         saveSettings: "Salvar configurações",
         timezone: "Fuso horário",
         targetDate: "Data de término",
+        titlePlaceholder: "Contador regressivo para Ano Novo",
         titleStyle: "Estilo do título",
         countownStyle: "Estilo do contador regressivo",
         text: "Texto",

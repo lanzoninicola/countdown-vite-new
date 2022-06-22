@@ -7,7 +7,6 @@ import { CountdownWidgetContext } from "../context/countdown-widget-context";
 interface UseCurrentCountdownSelector {
   currentCountdown: Countdown["id"] | null;
   setCurrentCountdown: (countdown: Countdown["id"] | null) => void;
-  resetState: () => void;
 }
 
 export default function useCurrentCountdownSelector(): UseCurrentCountdownSelector {
@@ -21,12 +20,6 @@ export default function useCurrentCountdownSelector(): UseCurrentCountdownSelect
     (state) => state.setCurrentCountdown
   );
 
-  const resetState = () => {
-    const { currentCountdown } = COUNTDOWN_WIDGET_INITIAL_STATE;
-
-    setCurrentCountdown(currentCountdown);
-  };
-
   useEffect(() => {
     if (currentCountdown === undefined) {
       console.error(
@@ -35,5 +28,5 @@ export default function useCurrentCountdownSelector(): UseCurrentCountdownSelect
     }
   }, [currentCountdown]);
 
-  return { currentCountdown, setCurrentCountdown, resetState };
+  return { currentCountdown, setCurrentCountdown };
 }

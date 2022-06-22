@@ -16,7 +16,7 @@ export default function CountdownTitle() {
         type="text"
         title="countdownName"
         name="countdownName"
-        placeholder="Last days of discounts"
+        placeholder={t("editor.titlePlaceholder")}
         gridColumn={"2 / -1"}
         defaultValue={text}
         onChange={(e) => setText(e.target.value)}

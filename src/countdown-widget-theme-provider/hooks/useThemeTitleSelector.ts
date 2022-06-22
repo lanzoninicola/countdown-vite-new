@@ -1,10 +1,16 @@
 import { useContextSelector } from "use-context-selector";
+
+import { withUnit } from "../../countdown-widget-typography/countdown-widget-typography";
 import { CountdownWidgetThemeContext } from "../context/countdown-theme-context";
+import { ChackraUIResponsiveValuesWithUnit } from "../types/responsive";
+import useCurrentTokenSelector from "./useCurrentTokenSelector";
 
 /**
  * Hook that let works with the single item of the "Title" state.
  */
 export default function useThemeTitleSelector() {
+  const { currentToken } = useCurrentTokenSelector();
+
   const title = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.title
@@ -25,10 +31,13 @@ export default function useThemeTitleSelector() {
     (ctx) => ctx?.title.fontWeight
   );
 
-  const fontSize = useContextSelector(
+  const contextFontSize = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.title.fontSize
   );
+
+  const fontSize: ChackraUIResponsiveValuesWithUnit =
+    Object.values(contextFontSize);
 
   const fontColor = useContextSelector(
     CountdownWidgetThemeContext,
@@ -52,8 +61,11 @@ export default function useThemeTitleSelector() {
     setTitle({ ...title, fontWeight });
   }
 
-  function setFontSize(fontSize: number) {
-    setTitle({ ...title, fontSize });
+  function setFontSize(size: number) {
+    const nextState = { ...title, contextFontSize };
+
+    nextState.fontSize[currentToken] = withUnit(size);
+    setTitle(nextState);
   }
 
   function setFontColor(fontColor: string) {

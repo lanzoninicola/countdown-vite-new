@@ -10,15 +10,16 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import NewForm from "./new-form/new-form";
 import { useTranslation } from "react-i18next";
 
-import useNotifications from "../../../hooks/useNotification";
-
 import useCurrentCountdownSelector from "../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
-import { useCountdownsRestApi } from "../../../countdowns-rest-api";
-import { APIResponse } from "../../../countdowns-rest-api/types";
 import { Countdown } from "../../../countdown-widget/types";
+import { create as createCountdownRecord } from "../../../countdowns-rest-api";
+
+import { APIResponse } from "../../../countdowns-rest-api/types";
+import { create as createCountdownSettingsRecord } from "../../../editor-rest-api";
+import useNotifications from "../../../hooks/useNotification";
+import NewForm from "./new-form/new-form";
 
 export default function NewModal() {
   const [name, setName] = useState<Countdown["name"]>("");
@@ -31,19 +32,19 @@ export default function NewModal() {
 
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const { create } = useCountdownsRestApi();
   const { successWithButton: successNotification, error: errorNotification } =
     useNotifications();
 
   const { setCurrentCountdown } = useCurrentCountdownSelector();
 
+  // TODO: refactor this chain
   function createCountdown() {
     setIsSuspense(true);
-    create({ name, description } as Countdown)
+    createCountdownRecord({ name, description } as Countdown)
       .then((response) => {
-        successResponseFromServer(response);
+        createCountdownSettings(response);
       })
-      .catch(() => {
+      .catch((e) => {
         setIsSuspense(false);
         errorNotification(t("global.error"), {
           title: t("global.errorTitle"),
@@ -51,15 +52,24 @@ export default function NewModal() {
       });
   }
 
-  function successResponseFromServer(response: APIResponse<Countdown["id"]>) {
-    setIsSuspense(false);
-    onClose();
-    successNotification(t("countdown_edit_new.createSuccess"), {
-      title: t("countdown_edit_new.createSuccessTitle"),
-      buttonProps: {
-        children: t("countdown_edit_new.openEditor"),
-        onClick: () => setCurrentCountdown(response.data.payload!),
-      },
+  function createCountdownSettings(response: APIResponse<Countdown["id"]>) {
+    if (!response.data.payload) {
+      return;
+    }
+
+    const { id } = JSON.parse(JSON.stringify(response.data.payload));
+
+    createCountdownSettingsRecord(id).then((res) => {
+      setIsSuspense(false);
+      onClose();
+
+      successNotification(t("countdown_edit_new.createSuccess"), {
+        title: t("countdown_edit_new.createSuccessTitle"),
+        buttonProps: {
+          children: t("countdown_edit_new.openEditor"),
+          onClick: () => setCurrentCountdown(id),
+        },
+      });
     });
   }
 

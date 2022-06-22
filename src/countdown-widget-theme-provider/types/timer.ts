@@ -1,3 +1,5 @@
+import { ResponsiveValue } from "./responsive";
+
 export type ThemeTimerContextData = ThemeUnitsShown &
   ThemeSeparator &
   ThemeUnitDigit &
@@ -28,7 +30,7 @@ export interface ThemeUnitDigit {
   /** The font weight of the digit text */
   digitFontWeight: string;
   /** The font size of the digit text */
-  digitFontSize: number;
+  digitFontSize: ResponsiveValue;
   /** The font color of the digit text */
   digitFontColor: string;
   /** The color of the last unit of timer text */
@@ -41,7 +43,7 @@ export interface ThemeUnitLabel {
   /** The font weight of the digit label */
   labelFontWeight: string;
   /** The font size of the digit label */
-  labelFontSize: number;
+  labelFontSize: ResponsiveValue;
   /** The font color of the digit label */
   labelFontColor: string;
   /** The color of the last unit of timer text */

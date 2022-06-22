@@ -10,11 +10,13 @@ import ShowSeparator from "./components/show-separator/show-separator";
 import useThemeTimerSelector from "../../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
 import useThemeTitleSelector from "../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
 import { useTranslation } from "react-i18next";
+import useCurrentTokenSelector from "../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
 
 export default function EditorProperties() {
   const { t } = useTranslation();
   const title = useThemeTitleSelector();
   const timer = useThemeTimerSelector();
+  const { currentToken } = useCurrentTokenSelector();
 
   return (
     <Box paddingInline={".25rem"}>
@@ -30,7 +32,7 @@ export default function EditorProperties() {
         />
         <FontSize
           label={t("editor.textSize")}
-          fontSizeSelected={title.fontSize}
+          fontSizeSelected={title.fontSize[currentToken]}
           onFontSizeSelected={title.setFontSize}
         />
         <FontColor
@@ -81,7 +83,7 @@ export default function EditorProperties() {
         />
         <FontSize
           label={t("editor.digitsSize")}
-          fontSizeSelected={timer.digitFontSize}
+          fontSizeSelected={timer.digitFontSize[currentToken]}
           onFontSizeSelected={timer.setDigitFontSize}
         />
         <FontColor
@@ -101,8 +103,9 @@ export default function EditorProperties() {
         />
         <FontSize
           label={t("editor.labelSize")}
-          fontSizeSelected={timer.labelFontSize}
+          fontSizeSelected={timer.labelFontSize[currentToken]}
           onFontSizeSelected={timer.setLabelFontSize}
+          max={3}
         />
         <FontColor
           label={t("editor.labelColor")}

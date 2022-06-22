@@ -1,5 +1,7 @@
 import { CountdownWidgetStateData } from "../types";
 
+// TODO: Review the state structure with this subgroup: app / settings / theme
+
 const COUNTDOWN_WIDGET_INITIAL_STATE: CountdownWidgetStateData = {
   currentCountdown: null,
   timerExpired: false,

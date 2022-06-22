@@ -6,6 +6,7 @@ import {
   SliderTrack,
   Text,
 } from "@chakra-ui/react";
+import { withUnit } from "../../../../countdown-widget-typography/countdown-widget-typography";
 
 interface SliderMarkTemplateProps {
   min: number;
@@ -43,14 +44,19 @@ export default function SliderMarkTemplate({
           w="12"
           top="100%"
         >
-          {sliderValue}px
+          {sliderValue}
         </SliderMark> */}
       <SliderTrack>
         <SliderFilledTrack />
       </SliderTrack>
       <SliderThumb boxSize={6}>
         <Box color="blue.500">
-          <Text as="span" fontSize="xs" className="theme-font">
+          <Text
+            as="span"
+            fontSize=".65rem"
+            className="theme-font"
+            fontWeight={600}
+          >
             {sliderValue}
           </Text>
         </Box>

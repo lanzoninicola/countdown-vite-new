@@ -1,32 +1,7 @@
 import { useState } from "react";
+
+import COUNTDOWN_WIDGET_THEME_INITIAL_STATE from "./constants/initial-state";
 import { CountdownWidgetThemeContext } from "./context/countdown-theme-context";
-import { CountdownWidgetThemeStateData } from "./types";
-
-// TODO: define the props in PRO licensing e verify if they are used. But HOW?. Limit client hacking.
-
-const initState: CountdownWidgetThemeStateData = {
-  title: {
-    text: "Countdown to New Year",
-    fontFamily: "Inter",
-    fontWeight: "400",
-    fontSize: 24,
-    fontColor: "#000000",
-  },
-  timer: {
-    unitsShown: ["dd", "hh", "mm", "ss"],
-    showSeparator: true,
-    separatorChar: ":",
-    digitFontFamily: "Inter",
-    digitFontWeight: "400",
-    digitFontSize: 48,
-    digitFontColor: "#000000",
-    lastUnitColor: "#e10b0b",
-    labelFontFamily: "Inter",
-    labelFontWeight: "400",
-    labelFontSize: 16,
-    labelFontColor: "#000000",
-  },
-};
 
 interface CountdownWidgetThemeProviderProps {
   children: React.ReactNode;
@@ -36,12 +11,21 @@ interface CountdownWidgetThemeProviderProps {
 export default function CountdownWidgetThemeProvider({
   children,
 }: CountdownWidgetThemeProviderProps) {
-  const [title, setTitle] = useState(initState.title);
-  const [timer, setTimer] = useState(initState.timer);
+  const [currentToken, setCurrentToken] = useState(
+    COUNTDOWN_WIDGET_THEME_INITIAL_STATE.currentToken
+  );
+  const [title, setTitle] = useState(
+    COUNTDOWN_WIDGET_THEME_INITIAL_STATE.title
+  );
+  const [timer, setTimer] = useState(
+    COUNTDOWN_WIDGET_THEME_INITIAL_STATE.timer
+  );
 
   return (
     <CountdownWidgetThemeContext.Provider
       value={{
+        currentToken,
+        setCurrentToken,
         title,
         setTitle,
         timer,

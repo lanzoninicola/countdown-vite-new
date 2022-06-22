@@ -1,10 +1,15 @@
 import { useContextSelector } from "use-context-selector";
+import { withUnit } from "../../countdown-widget-typography/countdown-widget-typography";
+
 import { CountdownWidgetThemeContext } from "../context/countdown-theme-context";
+import { ChackraUIResponsiveValuesWithUnit } from "../types/responsive";
+import useCurrentTokenSelector from "./useCurrentTokenSelector";
 
 /**
  * Hook that let works with the single item of the "Timer" state.
  */
 export default function useThemeTimerSelector() {
+  const { currentToken } = useCurrentTokenSelector();
   const timer = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.timer
@@ -35,10 +40,13 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.digitFontWeight
   );
 
-  const digitFontSize = useContextSelector(
+  const contextDigitFontSize = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.digitFontSize
   );
+
+  const digitFontSize: ChackraUIResponsiveValuesWithUnit =
+    Object.values(contextDigitFontSize);
 
   const digitFontColor = useContextSelector(
     CountdownWidgetThemeContext,
@@ -60,10 +68,13 @@ export default function useThemeTimerSelector() {
     (ctx) => ctx?.timer.labelFontWeight
   );
 
-  const labelFontSize = useContextSelector(
+  const contextLabelFontSize = useContextSelector(
     CountdownWidgetThemeContext,
     (ctx) => ctx?.timer.labelFontSize
   );
+
+  const labelFontSize: ChackraUIResponsiveValuesWithUnit =
+    Object.values(contextLabelFontSize);
 
   const labelFontColor = useContextSelector(
     CountdownWidgetThemeContext,
@@ -95,8 +106,11 @@ export default function useThemeTimerSelector() {
     setTimer({ ...timer, digitFontWeight });
   }
 
-  function setDigitFontSize(digitFontSize: number) {
-    setTimer({ ...timer, digitFontSize });
+  function setDigitFontSize(size: number) {
+    const nextState = { ...timer, contextDigitFontSize };
+
+    nextState.digitFontSize[currentToken] = withUnit(size);
+    setTimer(nextState);
   }
 
   function setDigitFontColor(digitFontColor: string) {
@@ -115,8 +129,11 @@ export default function useThemeTimerSelector() {
     setTimer({ ...timer, labelFontWeight });
   }
 
-  function setLabelFontSize(labelFontSize: number) {
-    setTimer({ ...timer, labelFontSize });
+  function setLabelFontSize(size: number) {
+    const nextState = { ...timer, contextLabelFontSize };
+
+    nextState.labelFontSize[currentToken] = withUnit(size);
+    setTimer(nextState);
   }
 
   function setLabelFontColor(labelFontColor: string) {

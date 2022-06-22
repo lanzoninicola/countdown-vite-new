@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+
 import useCountdownSelector from "../../countdown-widget-provider/hooks/useCountdownSelector";
 import useThemeSelector from "../../countdown-widget-theme-provider/hooks/useThemeSelector";
 import { Countdown } from "../../countdown-widget/types";
-import { create, update } from "../../editor-rest-api";
+import { update } from "../../editor-rest-api";
 import useNotifications from "../../hooks/useNotification";
 import ButtonSave from "../layout/button-save/button-save";
 

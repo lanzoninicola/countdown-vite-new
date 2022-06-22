@@ -10,8 +10,9 @@ export default function CenterContent({
 }: CenterContentProps) {
   return (
     <VStack
+      id="center-content"
+      justifyContent={"space-around"}
       bg="gray.50"
-      // bg="linear-gradient(0deg, rgba(237,242,247,1) 50%, rgba(247,250,252,1) 100%)"
       {...props}
     >
       {children}

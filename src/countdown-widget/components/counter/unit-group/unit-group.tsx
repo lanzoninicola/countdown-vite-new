@@ -1,4 +1,5 @@
 import useThemeTimer from "../../../../countdown-widget-theme-provider/hooks/useThemeTimer";
+import { withUnit } from "../../../../countdown-widget-typography/countdown-widget-typography";
 import { StringOrNumber } from "../../../types";
 import Digit from "./digit/digit";
 import UnitGroupWrapper from "./unit-group-wrapper/unit-group-wrapper";
@@ -22,25 +23,23 @@ export default function UnitGroup({
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
 
-  const separatorFontSize = digitTheme.digitFontSize * 0.5;
-
   return (
     <UnitGroupWrapper>
       <Digit
+        gridArea={"digit"}
         value={value}
         isDanger={isDanger}
         isLastDigit={isLastDigit}
-        gridArea={"digit"}
         theme={digitTheme}
       />
       <UnitLabel
+        gridArea={"label"}
         label={label}
         isLastDigit={isLastDigit}
-        gridArea={"label"}
         theme={labelTheme}
       />
       {!isLastDigit && separatorTheme.showSeparator && (
-        <UnitSeparator gridArea={"separator"} fontSize={separatorFontSize}>
+        <UnitSeparator gridArea={"separator"} theme={digitTheme}>
           {separatorTheme.separatorChar}
         </UnitSeparator>
       )}

@@ -18,14 +18,17 @@ import { APIResponse, EditorSettingsPayload } from "../types";
  */
 const create = async (
   id: Countdown["id"],
-  settings: EditorSettingsPayload
+  settings?: EditorSettingsPayload
 ): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.create;
 
   return await (
     await fetch(endpoint(id), {
       method: method,
-      body: JSON.stringify(settings),
+      body: JSON.stringify({
+        countdown_id: id,
+        settings: settings ? JSON.stringify(settings) : null,
+      }),
       headers: {
         "Content-Type": "application/json",
       },

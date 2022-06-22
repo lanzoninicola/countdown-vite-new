@@ -1,13 +1,12 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import ButtonSettings from "../../primitives/button-settings/button-settings";
-import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
-import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
-import TableCellText from "../../primitives/table-cell-text/table-cell-text";
-
 import useCurrentCountdownSelector from "../../../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
 import { Countdown } from "../../../../countdown-widget/types";
+import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
+import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
+import ButtonSettings from "../../primitives/button-settings/button-settings";
+import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 
 interface TableRowProps {
   countdown: Countdown;
@@ -37,11 +36,7 @@ export default function TableRow({ countdown }: TableRowProps) {
         <HStack>
           <ButtonSettings
             label="Customize"
-            onClick={() => {
-              console.log("im clineckadsk");
-
-              setCurrentCountdown(countdown.id);
-            }}
+            onClick={() => setCurrentCountdown(id)}
           />
           <EditModal countdown={countdown} />
           <DeleteModal countdown={countdown} />

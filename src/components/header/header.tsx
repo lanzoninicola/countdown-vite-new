@@ -2,11 +2,11 @@ import { Box, Button, Flex, Grid, HStack, Text } from "@chakra-ui/react";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
-import useCountdownSelector from "../../countdown-widget-provider/hooks/useCountdownSelector";
+import useCountdownContextReset from "../../countdown-widget-provider/hooks/useCountdownContextReset";
 import useCurrentCountdownSelector from "../../countdown-widget-provider/hooks/useCurrentCountdownSelector";
+import useThemeContextReset from "../../countdown-widget-theme-provider/hooks/useThemeContextReset";
 import EditorSave from "../../editor/components/editor-save";
 import ButtonClose from "../../editor/layout/button-close/button-close";
-import ButtonSave from "../../editor/layout/button-save/button-save";
 import { Languages } from "../../i18n/types";
 
 //TODO: detect language from Wordpress
@@ -17,9 +17,9 @@ const lngs: Languages = {
 
 export default function Header() {
   const { t, i18n } = useTranslation();
-  const { currentCountdown, resetState: resetCurrentCountdown } =
-    useCurrentCountdownSelector();
-  const { resetState: resetCountdownSettings } = useCountdownSelector();
+  const { currentCountdown } = useCurrentCountdownSelector();
+  const { resetState: resetCountdownContext } = useCountdownContextReset();
+  const { resetState: resetThemeContext } = useThemeContextReset();
 
   const isEditorShown = currentCountdown !== null;
 
@@ -56,8 +56,8 @@ export default function Header() {
           <ButtonClose
             label={t("editor.close")}
             onClick={() => {
-              resetCountdownSettings();
-              resetCurrentCountdown();
+              resetCountdownContext();
+              resetThemeContext();
             }}
           />
         )}

@@ -12,6 +12,9 @@ const enUS = {
         errorTitle: "Oops!",
         success: "Your changes have been saved.",
         successTitle: "Success!",
+        mobile: "Mobile",
+        desktop: "Desktop",
+        tablet: "Tablet",
       },
 
       countdown_edit_new: {
@@ -32,6 +35,7 @@ const enUS = {
         saveSettings: "Save settings",
         timezone: "Timezone",
         targetDate: "Target date",
+        titlePlaceholder: "Countown to New Year",
         titleStyle: "Title style",
         countdownStyle: "Countdown style",
         text: "Text",

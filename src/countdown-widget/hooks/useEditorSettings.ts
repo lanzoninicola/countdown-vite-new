@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useCountdownSelector from "../../countdown-widget-provider/hooks/useCountdownSelector";
 import { CountdownWidgetSettingsStateData } from "../../countdown-widget-provider/types";
 import { findById } from "../../countdown-widget-rest-api/services/find-by-id";
+import { EditorSettings } from "../../countdown-widget-rest-api/types";
 import useThemeSelector from "../../countdown-widget-theme-provider/hooks/useThemeSelector";
 import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
 import targetDate from "../../editor/editor-properties/components/target-date/target-date";
@@ -53,14 +54,18 @@ export default function useEditorSettings({
         const { data } = res;
 
         if (data.payload) {
-          const { targetDate, targetTimezone, timer, title } = JSON.parse(
+          const settingsParsed: EditorSettings = JSON.parse(
             data.payload.settings
           );
 
-          targetDate && setTargetDate(targetDate);
-          targetTimezone && setTargetTimezone(targetTimezone);
-          timer && setTimer(timer);
-          title && setTitle(title);
+          if (settingsParsed) {
+            const { targetDate, targetTimezone, timer, title } = settingsParsed;
+
+            targetDate && setTargetDate(targetDate);
+            targetTimezone && setTargetTimezone(targetTimezone);
+            timer && setTimer(timer);
+            title && setTitle(title);
+          }
         }
 
         setIsLoading(false);
