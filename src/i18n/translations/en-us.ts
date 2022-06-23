@@ -15,6 +15,12 @@ const enUS = {
         mobile: "Mobile",
         desktop: "Desktop",
         tablet: "Tablet",
+        i18n: {
+          languages: "Change language",
+          popover: {
+            header: "Select your language",
+          },
+        },
         pagination: {
           currentPage: "Page",
           previousPage: "Previous page",

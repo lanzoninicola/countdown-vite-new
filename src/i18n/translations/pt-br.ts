@@ -15,6 +15,12 @@ const ptBR = {
         mobile: "Móvel",
         desktop: "Desktop",
         tablet: "Tablet",
+        i18n: {
+          languages: "Mudar idioma",
+          popover: {
+            header: "Selecione seu idioma",
+          },
+        },
         pagination: {
           currentPage: "Página",
           previousPage: "Página anterior",
