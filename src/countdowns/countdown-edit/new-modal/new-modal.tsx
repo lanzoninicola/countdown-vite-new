@@ -13,17 +13,19 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import useCurrentCountdownSelector from "../../../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import { Countdown } from "../../../countdown-widget/types";
-import { create as createCountdownRecord } from "../../../countdowns-rest-api";
+import { CountdownModel } from "../../../countdown-widget/types";
+import { create as createCountdownRecord } from "../../../countdown-rest-api/services/countdowns";
 
-import { APIResponse } from "../../../countdowns-rest-api/types";
-import { create as createCountdownSettingsRecord } from "../../../editor-rest-api";
+import { create as createCountdownSettingsRecord } from "../../../countdown-rest-api/services/editor";
 import useNotifications from "../../../hooks/useNotification";
 import NewForm from "./new-form/new-form";
+import { APIResponse } from "../../../countdown-rest-api/types";
+import { CreateCountdownResponse } from "../../../countdown-rest-api/types/editor";
 
 export default function NewModal() {
-  const [name, setName] = useState<Countdown["name"]>("");
-  const [description, setDescription] = useState<Countdown["description"]>("");
+  const [name, setName] = useState<CountdownModel["name"]>("");
+  const [description, setDescription] =
+    useState<CountdownModel["description"]>("");
   const [isSuspense, setIsSuspense] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -40,7 +42,7 @@ export default function NewModal() {
   // TODO: refactor this chain
   function createCountdown() {
     setIsSuspense(true);
-    createCountdownRecord({ name, description } as Countdown)
+    createCountdownRecord({ name, description })
       .then((response) => {
         createCountdownSettings(response);
       })
@@ -52,7 +54,7 @@ export default function NewModal() {
       });
   }
 
-  function createCountdownSettings(response: APIResponse<Countdown["id"]>) {
+  function createCountdownSettings(response: CreateCountdownResponse) {
     if (!response.data.payload) {
       return;
     }

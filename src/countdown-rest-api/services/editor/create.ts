@@ -1,10 +1,14 @@
-import { Countdown } from "../../countdown-widget/types";
-import { EDITOR_REST_API_ENDPOINTS } from "../constants/endpoints";
-import { APIResponse, EditorSettingsPayload } from "../types";
+import {
+  CountdownModel,
+  CountdownSettingsAndTheme,
+  CountdownSettingsAndThemeModel,
+} from "../../../countdown-widget/types";
+import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
+import { APIResponse } from "../../types";
 
 /**
  * Creates a new editor settings record for the given countdown id.
- * @param id - Countdown ID
+ * @param id - CountdownModel ID
  * @param editorSettings - Editor settings
  * @returns APIResponse
  *
@@ -17,9 +21,13 @@ import { APIResponse, EditorSettingsPayload } from "../types";
  *
  */
 const create = async (
-  id: Countdown["id"],
-  settings?: EditorSettingsPayload
-): Promise<APIResponse> => {
+  id: CountdownModel["id"],
+  settings?: CountdownSettingsAndTheme
+): Promise<
+  APIResponse<{
+    id: CountdownSettingsAndThemeModel["id"];
+  }>
+> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.create;
 
   return await (

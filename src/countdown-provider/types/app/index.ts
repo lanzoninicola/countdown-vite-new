@@ -1,5 +1,5 @@
 import { Tokens } from "../theme/responsive";
-import { Countdown } from "../../../countdown-widget/types";
+import { CountdownModel } from "../../../countdown-widget/types";
 
 export type AppContext = AppStateData & AppStateSetter;
 
@@ -8,7 +8,7 @@ export type AppContext = AppStateData & AppStateSetter;
  */
 export interface AppStateData {
   /** The current countdown rendered to the DOM by data-id attribute */
-  currentCountdown: Countdown["id"] | null;
+  currentCountdown: CountdownModel["id"] | null;
   /** The timer related to the theme customization */
   currentToken: Tokens;
   /** Flag that tell us if the timer is expired */
@@ -18,7 +18,7 @@ export interface AppStateData {
 }
 
 export interface AppStateSetter {
-  setCurrentCountdown: (countdown: Countdown["id"] | null) => void;
+  setCurrentCountdown: (countdown: CountdownModel["id"] | null) => void;
   /** Set the current token */
   setCurrentToken: (token: Tokens) => void;
   setTimerExpired: (timerExpired: boolean) => void;

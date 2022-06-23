@@ -1,16 +1,18 @@
-import { Countdown } from "../../countdown-widget/types";
-import { EDITOR_REST_API_ENDPOINTS } from "../../editor-rest-api/constants/endpoints";
-import { COUNTDOWN_WIDGET_REST_API_ENDPOINTS } from "../constants/endpoints";
-
-import { APIResponse, EditorSettingsPayload } from "../types";
+import {
+  CountdownSettingsAndTheme,
+  CountdownSettingsAndThemeModel,
+  StringOrNumber,
+} from "../../../countdown-widget/types";
+import { WIDGET_REST_API_ENDPOINTS } from "../../constants/widget/endpoints";
+import { APIResponse } from "../../types";
 
 //TODO: IMPORTANT!!! use AbortController https://wanago.io/2022/04/11/abort-controller-race-conditions-react/
 
 /**
  * Returns the editor settings for the given countdown id.
  *
- * @param id - Countdown ID
- * @returns APIResponse<Countdown[]>
+ * @param id - CountdownModel ID
+ * @returns APIResponse<CountdownModel[]>
  *
  * Response codes:
  * - "success": The record was found.
@@ -20,8 +22,8 @@ import { APIResponse, EditorSettingsPayload } from "../types";
  * If a record in the database is not found, the API will not return a payload.
  */
 export const findById = async (
-  id: string | null | undefined
-): Promise<APIResponse<EditorSettingsPayload>> => {
+  id: StringOrNumber | null | undefined
+): Promise<APIResponse<CountdownSettingsAndThemeModel>> => {
   if (id === null || id === undefined) {
     return {
       code: "error",
@@ -30,7 +32,7 @@ export const findById = async (
     };
   }
 
-  const { endpoint, method } = COUNTDOWN_WIDGET_REST_API_ENDPOINTS.findById;
+  const { endpoint, method } = WIDGET_REST_API_ENDPOINTS.findById;
 
   return await (
     await fetch(endpoint(id), {

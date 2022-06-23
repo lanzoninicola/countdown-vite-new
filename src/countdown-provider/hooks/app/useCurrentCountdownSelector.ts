@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useContextSelector } from "use-context-selector";
-import { Countdown } from "../../../countdown-widget/types";
+import { CountdownModel } from "../../../countdown-widget/types";
 import { CountdownContext } from "../../context/countdown-context";
 
 interface UseCurrentCountdownSelector {
-  currentCountdown: Countdown["id"] | null;
-  setCurrentCountdown: (countdown: Countdown["id"] | null) => void;
+  currentCountdown: CountdownModel["id"] | null;
+  setCurrentCountdown: (countdown: CountdownModel["id"] | null) => void;
 }
 
 export default function useCurrentCountdownSelector(): UseCurrentCountdownSelector {

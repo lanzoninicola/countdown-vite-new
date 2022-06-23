@@ -1,10 +1,13 @@
-import { Countdown } from "../../countdown-widget/types";
-import { EDITOR_REST_API_ENDPOINTS } from "../constants/endpoints";
-import { APIResponse, EditorSettingsPayload } from "../types";
+import {
+  CountdownModel,
+  CountdownSettingsAndTheme,
+} from "../../../countdown-widget/types";
+import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
+import { APIResponse } from "../../types";
 
 /**
  * Updates the editor settings record for the given countdown id.
- * @param id - Countdown ID
+ * @param id - CountdownModel ID
  * @param editorSettings - Editor settings
  * @returns APIResponse
  *
@@ -16,8 +19,8 @@ import { APIResponse, EditorSettingsPayload } from "../types";
  * No payload is returned.
  */
 const update = async (
-  id: Countdown["id"],
-  settings: EditorSettingsPayload
+  id: CountdownModel["id"],
+  payload: CountdownSettingsAndTheme
 ): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.update;
 
@@ -26,7 +29,7 @@ const update = async (
       method: method,
       body: JSON.stringify({
         countdown_id: id,
-        settings,
+        settings: payload,
       }),
       headers: {
         "Content-Type": "application/json",

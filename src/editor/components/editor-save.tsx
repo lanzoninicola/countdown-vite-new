@@ -3,13 +3,16 @@ import { useTranslation } from "react-i18next";
 
 import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
 import useTheme from "../../countdown-provider/hooks/theme/useTheme";
-import { Countdown } from "../../countdown-widget/types";
-import { update } from "../../editor-rest-api";
+import {
+  CountdownModel,
+  CountdownSettingsAndTheme,
+} from "../../countdown-widget/types";
+import { update } from "../../countdown-rest-api/services/editor";
 import useNotifications from "../../hooks/useNotification";
 import ButtonSave from "../layout/button-save/button-save";
 
 interface EditorSaveProps {
-  currentCountdown: Countdown["id"] | null;
+  currentCountdown: CountdownModel["id"] | null;
 }
 
 export default function EditorSave({ currentCountdown }: EditorSaveProps) {
@@ -19,7 +22,7 @@ export default function EditorSave({ currentCountdown }: EditorSaveProps) {
   const { success, error } = useNotifications();
   const [isLoading, setIsLoading] = useState(false);
 
-  const savePayload = {
+  const savePayload: CountdownSettingsAndTheme = {
     targetDate,
     targetTimezone,
     timer,
@@ -42,12 +45,13 @@ export default function EditorSave({ currentCountdown }: EditorSaveProps) {
               title: t("global.successTitle"),
             });
           }
-          setIsLoading(false);
         })
         .catch(() => {
           error(t("global.error"), {
             title: t("global.errorTitle"),
           });
+        })
+        .finally(() => {
           setIsLoading(false);
         });
     }

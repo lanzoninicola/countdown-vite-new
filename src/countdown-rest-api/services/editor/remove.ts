@@ -1,10 +1,10 @@
-import { Countdown } from "../../countdown-widget/types";
-import { EDITOR_REST_API_ENDPOINTS } from "../constants/endpoints";
-import { APIResponse, EditorSettingsPayload } from "../types";
+import { CountdownModel } from "../../../countdown-widget/types";
+import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
+import { APIResponse } from "../../types";
 
 /**
  * Removes the editor settings record for the given countdown id.
- * @param id - Countdown ID
+ * @param id - CountdownModel ID
  * @returns APIResponse
  *
  * Response codes:
@@ -14,7 +14,7 @@ import { APIResponse, EditorSettingsPayload } from "../types";
  *
  * No payload is returned.
  */
-const remove = async (id: Countdown["id"]): Promise<APIResponse> => {
+const remove = async (id: CountdownModel["id"]): Promise<APIResponse> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.delete;
   return await (
     await fetch(endpoint(id), {

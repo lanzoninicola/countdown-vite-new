@@ -13,7 +13,7 @@ export interface SettingsStateData {
 }
 
 /**
- * This inteface describes the group of setters for the Countdown Settings
+ * This inteface describes the group of setters for the CountdownModel Settings
  */
 export interface SettingsStateSetter {
   setTargetDate: (date: string) => void;

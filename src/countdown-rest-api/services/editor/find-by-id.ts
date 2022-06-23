@@ -1,10 +1,11 @@
-import { EDITOR_REST_API_ENDPOINTS } from "../constants/endpoints";
-import { APIResponse, EditorSettingsPayload } from "../types";
+import { CountdownSettingsAndThemeModel } from "../../../countdown-widget/types";
+import { EDITOR_REST_API_ENDPOINTS } from "../../constants/editor/endpoints";
+import { APIResponse } from "../../types";
 
 /**
  * Returns the editor settings for the given countdown id.
  *
- * @param id - Countdown ID
+ * @param id - CountdownModel ID
  * @returns APIResponse<EditorSettings | string>
  *
  * Response codes:
@@ -15,8 +16,8 @@ import { APIResponse, EditorSettingsPayload } from "../types";
  * If a record in the database is not found, the API will not return a payload.
  */
 const findById = async (
-  id: string
-): Promise<APIResponse<EditorSettingsPayload>> => {
+  id: number
+): Promise<APIResponse<CountdownSettingsAndThemeModel>> => {
   const { endpoint, method } = EDITOR_REST_API_ENDPOINTS.findById;
 
   return await (

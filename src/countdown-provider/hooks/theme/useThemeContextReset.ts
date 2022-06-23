@@ -4,9 +4,7 @@ import THEME_INITIAL_STATE from "../../constants/theme/initial-state";
 import { CountdownContext } from "../../context/countdown-context";
 
 /**
- *
- * Hook that let works with the macro-groups of Theme state.
- *
+ * Reset the Theme state (timer, title).
  */
 export default function useThemeContextReset() {
   const setTimer = useContextSelector(

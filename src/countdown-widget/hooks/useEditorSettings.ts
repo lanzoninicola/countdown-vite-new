@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 
 import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
-import { SettingsStateData } from "../../countdown-provider/types";
-import { findById } from "../../countdown-widget-rest-api/services/find-by-id";
-import { EditorSettings } from "../../countdown-widget-rest-api/types";
-import useTheme from "../../countdown-provider/hooks/theme/useTheme";
+import { findById } from "../../countdown-rest-api/services/widget/find-by-id";
 import { ThemeStateData } from "../../countdown-provider/types/theme";
-import targetDate from "../../editor/editor-properties/components/target-date/target-date";
-import { Countdown } from "../types";
+import { CountdownModel, CountdownSettingsAndTheme } from "../types";
+import { SettingsStateData } from "../../countdown-provider/types/settings";
+import useThemeContext from "../../countdown-provider/hooks/theme/useThemeContext";
 
 interface UseEditorSettingsProps {
   /** if true load the mock data of the editor settings */
@@ -15,8 +13,10 @@ interface UseEditorSettingsProps {
   /** The current countdown rendered to the DOM by data-id attribute.
    * This value must be set to NULL if the component is used inside the editor
    */
-  current?: Countdown["id"] | null | undefined;
+  current?: CountdownModel["id"] | null | undefined;
 }
+
+// TODO: AbortController
 
 export interface UseEditorSettingsAPIResponse {
   settings?: SettingsStateData;
@@ -42,7 +42,7 @@ export default function useEditorSettings({
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { setTargetDate, setTargetTimezone } = useSettingsContext();
-  const { setTimer, setTitle } = useTheme();
+  const { setTimer, setTitle } = useThemeContext();
 
   useEffect(() => {
     findById(current)
@@ -54,7 +54,7 @@ export default function useEditorSettings({
         const { data } = res;
 
         if (data.payload) {
-          const settingsParsed: EditorSettings = JSON.parse(
+          const settingsParsed: CountdownSettingsAndTheme = JSON.parse(
             data.payload.settings
           );
 
@@ -67,13 +67,12 @@ export default function useEditorSettings({
             title && setTitle(title);
           }
         }
-
         setIsLoading(false);
       })
       .catch(() => {
         setIsError(true);
-        setIsLoading(false);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return {

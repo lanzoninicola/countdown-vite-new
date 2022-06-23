@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Countdown } from "../countdown-widget/types";
+import { CountdownModel } from "../countdown-widget/types";
 import APP_INITIAL_STATE from "./constants/app/initial-state";
 import SETTINGS_INITIAL_STATE from "./constants/settings/initial-state";
 import THEME_INITIAL_STATE from "./constants/theme/initial-state";
@@ -8,7 +8,7 @@ import { CountdownContext } from "./context/countdown-context";
 
 interface CountdownProviderProps {
   children: React.ReactNode;
-  current?: Countdown["id"] | null;
+  current?: CountdownModel["id"] | null;
 }
 
 /**
@@ -33,7 +33,7 @@ export default function CountdownProvider({
   current,
 }: CountdownProviderProps) {
   const [currentCountdown, setCurrentCountdown] = useState<
-    Countdown["id"] | null
+    CountdownModel["id"] | null
   >(current || APP_INITIAL_STATE.currentCountdown);
   const [currentToken, setCurrentToken] = useState(
     APP_INITIAL_STATE.currentToken

@@ -1,12 +1,12 @@
-import { Countdown } from "../../countdown-widget/types";
-import { COUNTDOWNS_REST_API_ENDPOINTS } from "../constants/endpoints";
-import { APIResponse } from "../types";
+import { CountdownModel } from "../../../countdown-widget/types";
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../constants/countdowns/endpoints";
+import { APIResponse } from "../../types";
 
 /**
  * Returns the editor settings for the given countdown id.
  *
- * @param id - Countdown ID
- * @returns APIResponse<Countdown[]>
+ * @param id - CountdownModel ID
+ * @returns APIResponse<CountdownModel[]>
  *
  * Response codes:
  * - "success": The record was found.
@@ -15,7 +15,7 @@ import { APIResponse } from "../types";
  *
  * If a record in the database is not found, the API will not return a payload.
  */
-const findById = async (id: string): Promise<APIResponse<Countdown>> => {
+const findById = async (id: string): Promise<APIResponse<CountdownModel>> => {
   const { endpoint, method } = COUNTDOWNS_REST_API_ENDPOINTS.findById;
 
   return await (
