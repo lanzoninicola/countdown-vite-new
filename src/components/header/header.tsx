@@ -2,13 +2,13 @@ import { Box, Button, Flex, Grid, HStack, Text } from "@chakra-ui/react";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
-import useSettingsContextReset from "../../countdown-widget-provider/hooks/settings/useSettingsContextReset";
-import useCurrentCountdownSelector from "../../countdown-widget-provider/hooks/app/useCurrentCountdownSelector";
-import useThemeContextReset from "../../countdown-widget-theme-provider/hooks/useThemeContextReset";
+import useSettingsContextReset from "../../countdown-provider/hooks/settings/useSettingsContextReset";
+import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
+import useThemeContextReset from "../../countdown-provider/hooks/theme/useThemeContextReset";
 import EditorSave from "../../editor/components/editor-save";
 import ButtonClose from "../../editor/layout/button-close/button-close";
 import { Languages } from "../../i18n/types";
-import useAppContextReset from "../../countdown-widget-provider/hooks/app/useAppContextReset";
+import useAppContextReset from "../../countdown-provider/hooks/app/useAppContextReset";
 import Logo from "../logo/logo";
 import LanguagesBar from "../language-bar/languages-bar";
 
@@ -21,9 +21,9 @@ const lngs: Languages = {
 export default function Header() {
   const { t } = useTranslation();
   const { currentCountdown } = useCurrentCountdownSelector();
-  const { resetState: resetSettingsContext } = useSettingsContextReset();
-  const { resetState: resetAppContext } = useAppContextReset();
-  const { resetState: resetThemeContext } = useThemeContextReset();
+  const { resetSettingsContext } = useSettingsContextReset();
+  const { resetAppContext } = useAppContextReset();
+  const { resetThemeContext } = useThemeContextReset();
 
   const isEditorShown = currentCountdown !== null;
 

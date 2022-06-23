@@ -1,7 +1,7 @@
 import { Badge, Box, Flex } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import { Tokens } from "../../../../../countdown-widget-theme-provider/types/responsive";
+import { Tokens } from "../../../../../countdown-provider/types/theme/responsive";
 import DEFAULT_BREAKPOINTS from "../../../constants/default-breakpoints";
 
 interface DisplaySizeBar {

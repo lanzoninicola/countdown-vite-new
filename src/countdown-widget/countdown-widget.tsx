@@ -1,4 +1,4 @@
-import useThemeTimerSelector from "../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
+import useThemeTimerSelector from "../countdown-provider/hooks/theme/useThemeTimerSelector";
 import { GoogleFontsLinkTag } from "../countdown-widget-typography/countdown-widget-typography";
 import CountdownTimer from "./components/countdown-timer/countdown-timer";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import useCountdownSelector from "../../countdown-widget-provider/hooks/useCountdownSelector";
-import useThemeSelector from "../../countdown-widget-theme-provider/hooks/useThemeSelector";
+import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
+import useTheme from "../../countdown-provider/hooks/theme/useTheme";
 import { Countdown } from "../../countdown-widget/types";
 import { update } from "../../editor-rest-api";
 import useNotifications from "../../hooks/useNotification";
@@ -13,8 +13,8 @@ interface EditorSaveProps {
 }
 
 export default function EditorSave({ currentCountdown }: EditorSaveProps) {
-  const { targetDate, targetTimezone } = useCountdownSelector();
-  const { timer, title } = useThemeSelector();
+  const { targetDate, targetTimezone } = useSettingsContext();
+  const { timer, title } = useTheme();
   const { t } = useTranslation();
   const { success, error } = useNotifications();
   const [isLoading, setIsLoading] = useState(false);

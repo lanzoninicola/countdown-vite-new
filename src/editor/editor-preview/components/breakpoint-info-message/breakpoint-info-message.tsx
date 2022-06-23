@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useCurrentTokenSelector from "../../../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
+import useCurrentTokenSelector from "../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";
 
 export default function BreakpointInfoMessage() {

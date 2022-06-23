@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import useCountdownSelector from "../../countdown-widget-provider/hooks/useCountdownSelector";
-import { SettingsStateData } from "../../countdown-widget-provider/types";
+import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
+import { SettingsStateData } from "../../countdown-provider/types";
 import { findById } from "../../countdown-widget-rest-api/services/find-by-id";
 import { EditorSettings } from "../../countdown-widget-rest-api/types";
-import useThemeSelector from "../../countdown-widget-theme-provider/hooks/useThemeSelector";
-import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
+import useTheme from "../../countdown-provider/hooks/theme/useTheme";
+import { ThemeStateData } from "../../countdown-provider/types/theme";
 import targetDate from "../../editor/editor-properties/components/target-date/target-date";
 import { Countdown } from "../types";
 
@@ -20,7 +20,7 @@ interface UseEditorSettingsProps {
 
 export interface UseEditorSettingsAPIResponse {
   settings?: SettingsStateData;
-  theme?: CountdownWidgetThemeStateData;
+  theme?: ThemeStateData;
   isLoading?: boolean;
   isError?: any;
 }
@@ -41,8 +41,8 @@ export default function useEditorSettings({
 }: UseEditorSettingsProps): UseEditorSettingsAPIResponse {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { setTargetDate, setTargetTimezone } = useCountdownSelector();
-  const { setTimer, setTitle } = useThemeSelector();
+  const { setTargetDate, setTargetTimezone } = useSettingsContext();
+  const { setTimer, setTitle } = useTheme();
 
   useEffect(() => {
     findById(current)

@@ -1,8 +1,8 @@
 import { Text } from "@chakra-ui/react";
 
-import useAppContext from "../../../../../countdown-widget-provider/hooks/app/useAppContext";
-import useCurrentTokenSelector from "../../../../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
-import { ThemeUnitDigitWithChackraUIFontSize } from "../../../../../countdown-widget-theme-provider/hooks/useThemeTimer";
+import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
+import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import { ThemeUnitDigitWithChackraUIFontSize } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../../types";
 
 interface DigitProps {

@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useThemeTitleSelector from "../../../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
+import useThemeTitleSelector from "../../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 

@@ -4,17 +4,14 @@ import App from "./App";
 import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./chackra-ui/theme/theme";
-import CountdownWidgetProvider from "./countdown-widget-provider/countdown-widget-provider";
-import CountdownWidgetThemeProvider from "./countdown-widget-theme-provider/countdown-widget-theme-provider";
+import CountdownProvider from "./countdown-provider/countdown-provider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <CountdownWidgetProvider>
-        <CountdownWidgetThemeProvider>
-          <App />
-        </CountdownWidgetThemeProvider>
-      </CountdownWidgetProvider>
+      <CountdownProvider>
+        <App />
+      </CountdownProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

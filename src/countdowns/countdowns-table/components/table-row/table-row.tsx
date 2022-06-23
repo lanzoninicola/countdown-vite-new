@@ -1,7 +1,7 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import useAppContext from "../../../../countdown-widget-provider/hooks/app/useAppContext";
+import useAppContext from "../../../../countdown-provider/hooks/app/useAppContext";
 import { Countdown } from "../../../../countdown-widget/types";
 import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";

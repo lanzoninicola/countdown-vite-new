@@ -1,7 +1,7 @@
 import { Box, Flex, HStack, VStack } from "@chakra-ui/react";
 
-import useCurrentTokenSelector from "../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
-import { Tokens } from "../../countdown-widget-theme-provider/types/responsive";
+import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import { Tokens } from "../../countdown-provider/types/theme/responsive";
 import CountdownWidget from "../../countdown-widget/countdown-widget";
 import useCustomScrollbar from "../../hooks/useCustomScrollbar";
 import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";

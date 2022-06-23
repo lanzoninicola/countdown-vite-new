@@ -1,5 +1,5 @@
-import { SettingsStateData } from "../../countdown-widget-provider/types";
-import { CountdownWidgetThemeStateData } from "../../countdown-widget-theme-provider/types";
+import { SettingsStateData } from "../../countdown-provider/types";
+import { ThemeStateData } from "../../countdown-provider/types/theme";
 
 export interface APIResponse<T> {
   code: "error" | "success" | "warning";
@@ -13,4 +13,4 @@ export interface EditorSettingsPayload {
 }
 
 export type EditorSettings = SettingsStateData &
-  Omit<CountdownWidgetThemeStateData, "currentToken">;
+  Omit<ThemeStateData, "currentToken">;

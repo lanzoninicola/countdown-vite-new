@@ -12,7 +12,7 @@ import {
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import useCurrentCountdownSelector from "../../../countdown-widget-provider/hooks/app/useCurrentCountdownSelector";
+import useCurrentCountdownSelector from "../../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import { Countdown } from "../../../countdown-widget/types";
 import { create as createCountdownRecord } from "../../../countdowns-rest-api";
 
