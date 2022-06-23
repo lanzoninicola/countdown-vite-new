@@ -1,8 +1,8 @@
 import { Heading } from "@chakra-ui/react";
 
-import useAppContext from "../../../countdown-widget-provider/hooks/app/useAppContext";
-import useCurrentTokenSelector from "../../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
-import useThemeTitleSelector from "../../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
+import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
+import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import { GoogleFontsLinkTag } from "../../../countdown-widget-typography/countdown-widget-typography";
 
 // TODO: custom unit size for the fontSize

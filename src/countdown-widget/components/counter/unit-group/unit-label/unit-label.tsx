@@ -1,8 +1,8 @@
 import { Text } from "@chakra-ui/react";
-import useAppContext from "../../../../../countdown-widget-provider/hooks/app/useAppContext";
+import useAppContext from "../../../../../countdown-provider/hooks/app/useAppContext";
 
-import useCurrentTokenSelector from "../../../../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
-import { ThemeUnitLabelWithChackraUIFontSize } from "../../../../../countdown-widget-theme-provider/hooks/useThemeTimer";
+import useCurrentTokenSelector from "../../../../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import { ThemeUnitLabelWithChackraUIFontSize } from "../../../../../countdown-provider/hooks/theme/useThemeTimer";
 
 interface UnitLabelProps {
   label: string;

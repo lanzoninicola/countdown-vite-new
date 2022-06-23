@@ -1,19 +1,19 @@
 import useSWR from "swr";
 
-import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdowns-rest-api/constants/endpoints";
-import { APIResponse } from "../../../countdowns-rest-api/types";
-import { Countdown } from "../../../countdown-widget/types";
-import findAll from "../../../countdowns-rest-api/services/find-all";
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
+import { findAll } from "../../../countdown-rest-api/services/countdowns";
+import { APIResponse } from "../../../countdown-rest-api/types";
+import { CountdownModel } from "../../../countdown-widget/types";
 
 interface UseCountdownListSWR {
-  countdowns: Countdown[] | undefined;
+  countdowns: CountdownModel[] | undefined;
   isLoading: boolean;
   isError: boolean;
 }
 
 //TODO: useSWR update url
 export default function useCountdownsList(): UseCountdownListSWR {
-  let { data: response, error } = useSWR<APIResponse<Countdown[]>>(
+  let { data: response, error } = useSWR<APIResponse<CountdownModel[]>>(
     COUNTDOWNS_REST_API_ENDPOINTS,
     findAll
   );

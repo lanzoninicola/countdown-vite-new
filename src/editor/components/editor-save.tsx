@@ -1,25 +1,28 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import useCountdownSelector from "../../countdown-widget-provider/hooks/useCountdownSelector";
-import useThemeSelector from "../../countdown-widget-theme-provider/hooks/useThemeSelector";
-import { Countdown } from "../../countdown-widget/types";
-import { update } from "../../editor-rest-api";
+import useSettingsContext from "../../countdown-provider/hooks/settings/useSettingsContext";
+import useTheme from "../../countdown-provider/hooks/theme/useTheme";
+import {
+  CountdownModel,
+  CountdownSettingsAndTheme,
+} from "../../countdown-widget/types";
+import { update } from "../../countdown-rest-api/services/editor";
 import useNotifications from "../../hooks/useNotification";
 import ButtonSave from "../layout/button-save/button-save";
 
 interface EditorSaveProps {
-  currentCountdown: Countdown["id"] | null;
+  currentCountdown: CountdownModel["id"] | null;
 }
 
 export default function EditorSave({ currentCountdown }: EditorSaveProps) {
-  const { targetDate, targetTimezone } = useCountdownSelector();
-  const { timer, title } = useThemeSelector();
+  const { targetDate, targetTimezone } = useSettingsContext();
+  const { timer, title } = useTheme();
   const { t } = useTranslation();
   const { success, error } = useNotifications();
   const [isLoading, setIsLoading] = useState(false);
 
-  const savePayload = {
+  const savePayload: CountdownSettingsAndTheme = {
     targetDate,
     targetTimezone,
     timer,
@@ -42,12 +45,13 @@ export default function EditorSave({ currentCountdown }: EditorSaveProps) {
               title: t("global.successTitle"),
             });
           }
-          setIsLoading(false);
         })
         .catch(() => {
           error(t("global.error"), {
             title: t("global.errorTitle"),
           });
+        })
+        .finally(() => {
           setIsLoading(false);
         });
     }

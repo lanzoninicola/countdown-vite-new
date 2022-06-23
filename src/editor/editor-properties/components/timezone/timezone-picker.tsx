@@ -1,7 +1,7 @@
 import { Select, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import useCountdownSelector from "../../../../countdown-widget-provider/hooks/useCountdownSelector";
+import useSettingsContext from "../../../../countdown-provider/hooks/settings/useSettingsContext";
 import TIMEZONES_LIST from "../../constants/timezones";
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
@@ -12,7 +12,7 @@ interface TargetTimezoneProps {
 
 export default function TimezonePicker({ size }: TargetTimezoneProps) {
   const { t } = useTranslation();
-  const { targetTimezone, setTargetTimezone } = useCountdownSelector();
+  const { targetTimezone, setTargetTimezone } = useSettingsContext();
 
   function onChangeTimezone(e: React.ChangeEvent<HTMLSelectElement>) {
     setTargetTimezone(e.target.value);

@@ -14,10 +14,10 @@ import { useRef } from "react";
 import ButtonEdit from "../../countdowns-table/primitives/button-edit/button-edit";
 
 import EditForm from "./edit-form/edit-form";
-import { Countdown } from "../../../countdown-widget/types";
+import { CountdownModel } from "../../../countdown-widget/types";
 
 interface EditModalProps {
-  countdown: Countdown;
+  countdown: CountdownModel;
 }
 
 export default function EditModal({ countdown }: EditModalProps) {

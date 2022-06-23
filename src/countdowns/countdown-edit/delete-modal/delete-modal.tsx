@@ -10,12 +10,12 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import { Countdown } from "../../../countdown-widget/types";
+import { CountdownModel } from "../../../countdown-widget/types";
 import ButtonDelete from "../../countdowns-table/primitives/button-delete/button-delete";
 import Teext from "../../../components/layout/teext/teext";
 
 interface ButtonDeleteProps {
-  countdown: Countdown;
+  countdown: CountdownModel;
 }
 
 export default function DeleteModal({ countdown }: ButtonDeleteProps) {

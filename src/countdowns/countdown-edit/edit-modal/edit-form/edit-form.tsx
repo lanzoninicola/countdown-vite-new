@@ -1,10 +1,10 @@
 import { FormControl, FormLabel, Input, Textarea } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { Countdown } from "../../../../countdown-widget/types";
+import { CountdownModel } from "../../../../countdown-widget/types";
 
 interface EditFormProps {
   initialFocusRef?: React.MutableRefObject<HTMLInputElement>;
-  countdown: Countdown;
+  countdown: CountdownModel;
 }
 
 export default function EditForm({

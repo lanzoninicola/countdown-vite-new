@@ -2,7 +2,7 @@ import { Box, HStack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import useEditorSettings from "../../countdown-widget/hooks/useEditorSettings";
-import { Countdown } from "../../countdown-widget/types";
+import { CountdownModel } from "../../countdown-widget/types";
 import EditorPreview from "../editor-preview/editor-preview";
 import TargetDate from "../editor-properties/components/target-date/target-date";
 import TimezonePicker from "../editor-properties/components/timezone/timezone-picker";
@@ -15,7 +15,7 @@ import RightSidebar from "../layout/right-sidebar/right-sidebar";
 // TODO: check if the isMockMode flag could be handled with npm scripts
 
 interface EditorPageProps {
-  currentCountdown?: Countdown["id"];
+  currentCountdown?: CountdownModel["id"];
 }
 
 export default function EditorPage({ currentCountdown }: EditorPageProps) {

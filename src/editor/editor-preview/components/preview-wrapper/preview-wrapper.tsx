@@ -1,6 +1,6 @@
 import { Flex, FlexProps, forwardRef, VStack } from "@chakra-ui/react";
 
-import { Tokens } from "../../../../countdown-widget-theme-provider/types/responsive";
+import { Tokens } from "../../../../countdown-provider/types/theme/responsive";
 import useCustomScrollbar from "../../../../hooks/useCustomScrollbar";
 import DEFAULT_BREAKPOINTS from "../../constants/default-breakpoints";
 import DisplaySizeBar from "./display-size-bar/display-size-bar";

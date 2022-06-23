@@ -6,11 +6,11 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { Countdown } from "../../../../countdown-widget/types";
+import { CountdownModel } from "../../../../countdown-widget/types";
 
 interface NewFormProps {
-  onNameChange: (value: Countdown["name"]) => void;
-  onDescriptionChange: (value: Countdown["description"]) => void;
+  onNameChange: (value: CountdownModel["name"]) => void;
+  onDescriptionChange: (value: CountdownModel["description"]) => void;
   /** Used to focus on an input field */
   initialFocusRef?: React.MutableRefObject<HTMLInputElement>;
   /** Used when a side effect is fired (eg. call API). If true disabled input fields */

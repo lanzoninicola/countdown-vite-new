@@ -7,10 +7,10 @@ import FontFamily from "./components/font-family/font-family";
 import FontSize from "./components/font-size/font-size";
 import SeparatorChar from "./components/separator-char/separator-char";
 import ShowSeparator from "./components/show-separator/show-separator";
-import useThemeTimerSelector from "../../countdown-widget-theme-provider/hooks/useThemeTimerSelector";
-import useThemeTitleSelector from "../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
+import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
+import useThemeTitleSelector from "../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import { useTranslation } from "react-i18next";
-import useCurrentTokenSelector from "../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
+import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import Units from "./components/units/units";
 
 export default function EditorProperties() {

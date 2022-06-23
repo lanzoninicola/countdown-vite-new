@@ -1,6 +1,6 @@
 import { Input, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import useCountdownSelector from "../../../../countdown-widget-provider/hooks/useCountdownSelector";
+import useSettingsContext from "../../../../countdown-provider/hooks/settings/useSettingsContext";
 
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
@@ -11,7 +11,7 @@ interface TargetDateProps {
 
 export default function TargetDate({ size }: TargetDateProps) {
   const { t } = useTranslation();
-  const { targetDate, setTargetDate } = useCountdownSelector();
+  const { targetDate, setTargetDate } = useSettingsContext();
 
   function onChangeDate(e: React.ChangeEvent<HTMLInputElement>) {
     setTargetDate(e.target.value);

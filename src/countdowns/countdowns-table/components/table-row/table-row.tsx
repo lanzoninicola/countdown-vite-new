@@ -1,15 +1,15 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import useAppContext from "../../../../countdown-widget-provider/hooks/app/useAppContext";
-import { Countdown } from "../../../../countdown-widget/types";
+import useAppContext from "../../../../countdown-provider/hooks/app/useAppContext";
+import { CountdownModel } from "../../../../countdown-widget/types";
 import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
 import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
 import ButtonSettings from "../../primitives/button-settings/button-settings";
 import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 
 interface TableRowProps {
-  countdown: Countdown;
+  countdown: CountdownModel;
 }
 
 //TODO: how to present the Date in the right format?

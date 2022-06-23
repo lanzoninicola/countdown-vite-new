@@ -2,12 +2,12 @@ import "../../style/global.css";
 
 import { Table, TableContainer, Tbody, Thead } from "@chakra-ui/react";
 
-import { Countdown } from "../../countdown-widget/types";
+import { CountdownModel } from "../../countdown-widget/types";
 import TableRow from "./components/table-row/table-row";
 import TableHeaders from "./primitives/table-headers/table-headers";
 
 interface CountdownsTableProps {
-  paginatedData?: Countdown[] | undefined;
+  paginatedData?: CountdownModel[] | undefined;
 }
 
 export default function CountdownsTable({

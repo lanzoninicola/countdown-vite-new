@@ -1,5 +1,5 @@
 import { VStack } from "@chakra-ui/react";
-import useCountdownSelector from "../../../countdown-widget-provider/hooks/useCountdownSelector";
+import useSettingsContext from "../../../countdown-provider/hooks/settings/useSettingsContext";
 
 import useCountdown from "../../hooks/useCountdown";
 import CounterTitle from "../counter-title/counter-title";
@@ -11,7 +11,7 @@ const CountdownTimer = () => {
   const {
     targetDate: HTMLInputTargetDate,
     targetTimezone: HTMLInputTargetTimezone,
-  } = useCountdownSelector();
+  } = useSettingsContext();
 
   // const [isLoading, setIsLoading] = useState(true);
 

@@ -1,5 +1,5 @@
 import { Text } from "@chakra-ui/react";
-import { ThemeUnitDigit } from "../../../../../countdown-widget-theme-provider/types/timer";
+import { ThemeUnitDigit } from "../../../../../countdown-provider/types/theme/timer";
 
 interface UnitSeparatorProps {
   children?: React.ReactNode;
