@@ -47,6 +47,7 @@ export default function NewForm({
           }}
           className="theme-font"
           isDisabled={isSuspense}
+          autoComplete="off"
         />
       </FormControl>
       <FormControl>

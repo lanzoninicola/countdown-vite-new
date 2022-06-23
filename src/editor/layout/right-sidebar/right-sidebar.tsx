@@ -15,7 +15,6 @@ export default function RightSidebar({
       borderLeft={"1px solid"}
       borderColor={"gray.200"}
       position="absolute"
-      top="0"
       right="0"
       {...props}
     >

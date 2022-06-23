@@ -10,7 +10,7 @@ export default function Label({
       className="theme-font"
       fontSize={size}
       color="#666666"
-      pl="15px"
+      pl={1}
       fontWeight={500}
       m={0}
       {...props}

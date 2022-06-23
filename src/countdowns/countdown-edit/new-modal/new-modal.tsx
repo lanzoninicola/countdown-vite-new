@@ -75,7 +75,7 @@ export default function NewModal() {
 
   return (
     <>
-      <Button size="sm" onClick={onOpen}>
+      <Button size="sm" onClick={onOpen} colorScheme={"blue"}>
         {t("countdown_edit_new.buttonLabel")}
       </Button>
       <Modal

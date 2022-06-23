@@ -1,4 +1,4 @@
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import useEditorSettings from "../../countdown-widget/hooks/useEditorSettings";
@@ -10,6 +10,7 @@ import EditorProperties from "../editor-properties/editor-properties";
 import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";
 import CenterContent from "../layout/center-content/center-content";
 import LeftSidebar from "../layout/left-sidebar/left-sidebar";
+import RightSidebar from "../layout/right-sidebar/right-sidebar";
 
 // TODO: check if the isMockMode flag could be handled with npm scripts
 
@@ -50,9 +51,9 @@ export default function EditorPage({ currentCountdown }: EditorPageProps) {
             </BoxRadiusLg>
             <EditorPreview />
           </CenterContent>
-          {/* <RightSidebar>
-        <Text>This is the countdown theme area</Text>
-      </RightSidebar> */}
+          <RightSidebar>
+            <Text>This is the countdown theme area</Text>
+          </RightSidebar>
         </Box>
       )}
     </>

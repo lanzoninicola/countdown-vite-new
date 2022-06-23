@@ -1,7 +1,7 @@
 import { Box, Divider } from "@chakra-ui/react";
 import GroupTitle from "./layout/group-title/group-title";
 import PropertyGroupWrapper from "./layout/property-group-wrapper/property-group-wrapper";
-import CountdownTitle from "./components/countdown-title/countdown-title";
+import CountdownTitleText from "./components/countdown-title-text/countdown-title-text";
 import FontColor from "./components/font-color/font-color";
 import FontFamily from "./components/font-family/font-family";
 import FontSize from "./components/font-size/font-size";
@@ -11,6 +11,7 @@ import useThemeTimerSelector from "../../countdown-widget-theme-provider/hooks/u
 import useThemeTitleSelector from "../../countdown-widget-theme-provider/hooks/useThemeTitleSelector";
 import { useTranslation } from "react-i18next";
 import useCurrentTokenSelector from "../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
+import Units from "./components/units/units";
 
 export default function EditorProperties() {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ export default function EditorProperties() {
     <Box paddingInline={".25rem"}>
       <PropertyGroupWrapper>
         <GroupTitle>{t("editor.titleStyle")}</GroupTitle>
-        <CountdownTitle />
+        <CountdownTitleText />
         <FontFamily
           label={t("editor.textFont")}
           fontFamily={title.fontFamily}
@@ -44,15 +45,13 @@ export default function EditorProperties() {
       <Divider marginBlock={".5rem"} />
       <PropertyGroupWrapper>
         <GroupTitle>{t("editor.countdownStyle")}</GroupTitle>
-        {/* 
-        Disabled for the MVP
-        <Units
+
+        {/* <Units
           unitsShown={timer.unitsShown}
           onChangeUnitsShown={timer.setUnitsShown}
-        /> 
-        
+        /> */}
+
         <Divider marginBlock={".5rem"} />
-        */}
 
         <ShowSeparator
           showSeparator={timer.showSeparator}

@@ -12,8 +12,13 @@ export default function Sidebar({ children, ...props }: SidebarProps) {
       minW="300px"
       {...props}
       position="absolute"
-      top="0"
+      top="2"
       bg="white"
+      borderRadius={"lg"}
+      boxShadow={"lg"}
+      zIndex={1}
+      h="max-content"
+      p={"1rem"}
     >
       {children}
     </Flex>
