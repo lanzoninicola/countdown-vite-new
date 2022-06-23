@@ -1,13 +1,4 @@
-import {
-  Badge,
-  Box,
-  Flex,
-  FlexProps,
-  forwardRef,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
+import { Flex, FlexProps, forwardRef, VStack } from "@chakra-ui/react";
 
 import { Tokens } from "../../../../countdown-widget-theme-provider/types/responsive";
 import useCustomScrollbar from "../../../../hooks/useCustomScrollbar";
