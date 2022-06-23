@@ -9,6 +9,8 @@ import EditorSave from "../../editor/components/editor-save";
 import ButtonClose from "../../editor/layout/button-close/button-close";
 import { Languages } from "../../i18n/types";
 import useAppContextReset from "../../countdown-widget-provider/hooks/app/useAppContextReset";
+import Logo from "../logo/logo";
+import LanguagesBar from "../language-bar/languages-bar";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -17,7 +19,7 @@ const lngs: Languages = {
 };
 
 export default function Header() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { currentCountdown } = useCurrentCountdownSelector();
   const { resetState: resetSettingsContext } = useSettingsContextReset();
   const { resetState: resetAppContext } = useAppContextReset();
@@ -32,24 +34,10 @@ export default function Header() {
       alignItems={"center"}
       minH="50px"
     >
-      <Box>
-        <Text>Clockdown</Text>
-      </Box>
+      <Logo />
       <Box>
         <HStack justifyContent={"space-between"}>
-          <Box>
-            {Object.keys(lngs).map((lng) => (
-              <Button
-                key={lng}
-                style={{
-                  fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
-                }}
-                onClick={() => i18n.changeLanguage(lng)}
-              >
-                {lngs[lng].nativeName}
-              </Button>
-            ))}
-          </Box>
+          <LanguagesBar languages={lngs} />
           {isEditorShown && <EditorSave currentCountdown={currentCountdown} />}
         </HStack>
       </Box>
