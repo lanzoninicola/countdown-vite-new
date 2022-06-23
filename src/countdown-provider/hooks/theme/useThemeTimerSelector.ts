@@ -3,6 +3,7 @@ import { withUnit } from "../../../countdown-widget-typography/countdown-widget-
 import { CountdownContext } from "../../context/countdown-context";
 
 import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
+import { TimeUnits } from "../../types/theme/timer";
 import useCurrentTokenSelector from "../app/useCurrentTokenSelector";
 
 /**
@@ -38,7 +39,7 @@ export default function useThemeTimerSelector() {
   const labelFontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
     Object.values(labelFontSize);
 
-  function setUnitsShown(unitsShown: string[]) {
+  function setUnitsShown(unitsShown: TimeUnits[]) {
     setTimer({ ...timer, unitsShown });
   }
 
