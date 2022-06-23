@@ -4,7 +4,7 @@ import useThemeTitleSelector from "../../../../countdown-widget-theme-provider/h
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 
-export default function CountdownTitle() {
+export default function CountdownTitleText() {
   const { t } = useTranslation();
   const { text, setText } = useThemeTitleSelector();
 
