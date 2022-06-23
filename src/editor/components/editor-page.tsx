@@ -7,6 +7,7 @@ import EditorPreview from "../editor-preview/editor-preview";
 import TargetDate from "../editor-properties/components/target-date/target-date";
 import TimezonePicker from "../editor-properties/components/timezone/timezone-picker";
 import EditorProperties from "../editor-properties/editor-properties";
+import BoxRadiusLg from "../layout/box-radius-lg/box-radius-lg";
 import CenterContent from "../layout/center-content/center-content";
 import LeftSidebar from "../layout/left-sidebar/left-sidebar";
 
@@ -43,18 +44,10 @@ export default function EditorPage({ currentCountdown }: EditorPageProps) {
             <EditorProperties />
           </LeftSidebar>
           <CenterContent>
-            <HStack
-              spacing={2}
-              bg={"gray.200"}
-              borderRadius={"lg"}
-              boxShadow={"lg"}
-              p=".5rem"
-              mt="1rem"
-              maxW="650px"
-            >
+            <BoxRadiusLg bg={"gray.200"}>
               <TargetDate size="sm" />
               <TimezonePicker size="sm" />
-            </HStack>
+            </BoxRadiusLg>
             <EditorPreview />
           </CenterContent>
           {/* <RightSidebar>

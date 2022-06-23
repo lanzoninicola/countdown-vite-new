@@ -4,6 +4,8 @@ import { COUNTDOWN_WIDGET_REST_API_ENDPOINTS } from "../constants/endpoints";
 
 import { APIResponse, EditorSettingsPayload } from "../types";
 
+//TODO: IMPORTANT!!! use AbortController https://wanago.io/2022/04/11/abort-controller-race-conditions-react/
+
 /**
  * Returns the editor settings for the given countdown id.
  *

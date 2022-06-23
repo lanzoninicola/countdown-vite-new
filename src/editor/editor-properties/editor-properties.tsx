@@ -43,7 +43,7 @@ export default function EditorProperties() {
       </PropertyGroupWrapper>
       <Divider marginBlock={".5rem"} />
       <PropertyGroupWrapper>
-        <GroupTitle>{t("editor.countownStyle")}</GroupTitle>
+        <GroupTitle>{t("editor.countdownStyle")}</GroupTitle>
         {/* 
         Disabled for the MVP
         <Units

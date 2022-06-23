@@ -15,6 +15,23 @@ const ptBR = {
         mobile: "Móvel",
         desktop: "Desktop",
         tablet: "Tablet",
+        pagination: {
+          currentPage: "Página",
+          previousPage: "Página anterior",
+          nextPage: "Próxima página",
+          totalPages: "Total de páginas:",
+        },
+      },
+      countdowns: {
+        title: "Contadores regressivos",
+        table: {
+          id: "ID",
+          name: "Nome",
+          description: "Descrição",
+          actions: "Ações",
+          createdAt: "Criado em",
+          updatedAt: "Atualizado em",
+        },
       },
       countdown_edit_new: {
         buttonLabel: "Adicionar novo",
@@ -36,7 +53,7 @@ const ptBR = {
         targetDate: "Data de término",
         titlePlaceholder: "Contador regressivo para Ano Novo",
         titleStyle: "Estilo do título",
-        countownStyle: "Estilo do contador regressivo",
+        countdownStyle: "Estilo do contador regressivo",
         text: "Texto",
         textFont: "Fonte do texto",
         textSize: "Tamanho do texto",
@@ -49,6 +66,15 @@ const ptBR = {
         labelSize: "Tamanho da etiqueta",
         labelColor: "Cor da etiqueta",
         unitsShown: "Unidades mostradas",
+        breakpointInfoMessage: {
+          prefix: "Este contador regressivo será exibido em ",
+          mobile: "dispositivos Móveis.",
+          desktop: "dispositivos Desktop.",
+          tablet: "dispositivos Tablet.",
+        },
+        preview: {
+          tokenBadge: "Tamanho do display:",
+        },
       },
     },
   },

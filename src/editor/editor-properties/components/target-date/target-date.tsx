@@ -18,17 +18,15 @@ export default function TargetDate({ size }: TargetDateProps) {
   }
 
   return (
-    <PropertyWrapper>
-      <Label size={size} minW="">
-        {t("editor.targetDate").capitalize()}
-      </Label>
+    <PropertyWrapper firstColumnW="120px" columns={4}>
+      <Label size={size}>{t("editor.targetDate").capitalize()}</Label>
       <Input
         size={size as ThemingProps<"Input">["size"]}
         type="datetime-local"
         id="target-date"
         name="target-date"
         onChange={onChangeDate}
-        gridColumn={"2 / -1"}
+        gridColumn={"2 / 5"}
         className="theme-font"
         fontSize={"sm"}
         value={targetDate}

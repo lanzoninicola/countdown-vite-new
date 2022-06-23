@@ -2,6 +2,7 @@ import { HStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { FaLaptop, FaMobileAlt, FaTabletAlt } from "react-icons/fa";
 import useCurrentTokenSelector from "../../../../countdown-widget-theme-provider/hooks/useCurrentTokenSelector";
+import BoxRadiusLg from "../../../layout/box-radius-lg/box-radius-lg";
 
 import TokenButton from "./components/token-button";
 
@@ -20,7 +21,7 @@ export default function BreakpointsBar({
   const { t } = useTranslation();
 
   return (
-    <HStack spacing={4}>
+    <BoxRadiusLg>
       <TokenButton
         label={t("global.desktop")}
         icon={<FaLaptop />}
@@ -39,6 +40,6 @@ export default function BreakpointsBar({
         onClick={onClickMobile}
         isActive={currentToken === "sm"}
       />
-    </HStack>
+    </BoxRadiusLg>
   );
 }

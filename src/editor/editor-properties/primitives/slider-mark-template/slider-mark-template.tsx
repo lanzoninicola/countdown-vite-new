@@ -6,13 +6,14 @@ import {
   SliderTrack,
   Text,
 } from "@chakra-ui/react";
-import { withUnit } from "../../../../countdown-widget-typography/countdown-widget-typography";
+
+import { StringOrNumber } from "../../../../countdown-widget/types";
 
 interface SliderMarkTemplateProps {
   min: number;
   max: number;
   step?: number;
-  sliderValue: number;
+  sliderValue?: StringOrNumber;
   onSliderChange: (value: number) => void;
 }
 

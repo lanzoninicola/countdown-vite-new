@@ -1,15 +1,22 @@
 import { Grid } from "@chakra-ui/react";
 
+interface PropertyWrapperProps {
+  children: React.ReactNode;
+  columns?: number;
+  firstColumnW?: string;
+}
+
 export default function PropertyWrapper({
   children,
+  columns = 3,
+  firstColumnW = "160px",
   ...props
-}: {
-  children: React.ReactNode;
-  [key: string]: any;
-}) {
+}: PropertyWrapperProps) {
   return (
     <Grid
-      gridTemplateColumns={"minmax(0,1.35fr) repeat(2,minmax(0,1fr))"}
+      gridTemplateColumns={`minmax(0,${firstColumnW}) repeat(${
+        columns - 1
+      },minmax(0,1fr))`}
       gridTemplateRows={"auto"}
       paddingBlock={".25rem"}
       columnGap={".5rem"}

@@ -15,8 +15,24 @@ const enUS = {
         mobile: "Mobile",
         desktop: "Desktop",
         tablet: "Tablet",
+        pagination: {
+          currentPage: "Page",
+          previousPage: "Previous page",
+          nextPage: "Next page",
+          totalPages: "Total pages:",
+        },
       },
-
+      countdowns: {
+        title: "Countdowns",
+        table: {
+          id: "ID",
+          name: "Name",
+          description: "Description",
+          actions: "Actions",
+          createdAt: "Created At",
+          updatedAt: "Updated At",
+        },
+      },
       countdown_edit_new: {
         buttonLabel: "Create",
         header: "New Countdown",
@@ -50,6 +66,15 @@ const enUS = {
         labelSize: "Label size",
         labelColor: "Label color",
         unitsShown: "Units shown",
+        breakpointInfoMessage: {
+          prefix: "This countdown will be displayed on ",
+          mobile: "Mobile devices.",
+          desktop: "Desktop devices.",
+          tablet: "Tablet devices.",
+        },
+        preview: {
+          tokenBadge: "Display size:",
+        },
       },
     },
   },

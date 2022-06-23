@@ -19,7 +19,7 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
   }
 
   return (
-    <PropertyWrapper>
+    <PropertyWrapper firstColumnW="120px" columns={4}>
       <Label size={size} htmlFor="timezone">
         {t("editor.timezone").capitalize()}
       </Label>
@@ -27,7 +27,7 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
         id="timezone-picker"
         size={size}
         placeholder="Select option"
-        gridColumn={"2 / -1"}
+        gridColumn={"2 / 5"}
         defaultValue={targetTimezone}
         onChange={onChangeTimezone}
         className="theme-font"
