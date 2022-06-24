@@ -1,7 +1,10 @@
-import { Typography } from "../../../countdown-widget-typography";
-import { GoogleFont } from "../types";
+import { Typography } from "../../../countdown-widget-typography/types";
 
 export const GOOGLE_FONTS_LIST: Typography[] = [
+  {
+    fontFamily: "Inter",
+    fontWeight: "400",
+  },
   {
     fontFamily: "Roboto",
     fontWeight: "400",

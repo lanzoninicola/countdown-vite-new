@@ -22,6 +22,7 @@ export default function PropertyWrapper({
       columnGap={".5rem"}
       alignItems={"center"}
       w="100%"
+      position={"relative"}
       {...props}
     >
       {children}

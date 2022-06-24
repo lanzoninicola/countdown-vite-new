@@ -1,4 +1,4 @@
-import { Box, Divider } from "@chakra-ui/react";
+import { Box, Button, Divider, Text } from "@chakra-ui/react";
 import GroupTitle from "./layout/group-title/group-title";
 import PropertyGroupWrapper from "./layout/property-group-wrapper/property-group-wrapper";
 import CountdownTitleText from "./components/countdown-title-text/countdown-title-text";
@@ -7,11 +7,11 @@ import FontFamily from "./components/font-family/font-family";
 import FontSize from "./components/font-size/font-size";
 import SeparatorChar from "./components/separator-char/separator-char";
 import ShowSeparator from "./components/show-separator/show-separator";
-import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
-import useThemeTitleSelector from "../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import { useTranslation } from "react-i18next";
-import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import Units from "./components/units/units";
+import useThemeTitleSelector from "../../countdown-provider/hooks/theme/useThemeTitleSelector";
+import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
+import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
 
 export default function EditorProperties() {
   const { t } = useTranslation();
@@ -31,6 +31,7 @@ export default function EditorProperties() {
           onSelectFontFamily={title.setFontFamily}
           onSelectFontWeight={title.setFontWeight}
         />
+
         <FontSize
           label={t("editor.textSize")}
           fontSizeSelected={title.fontSize[currentToken]}

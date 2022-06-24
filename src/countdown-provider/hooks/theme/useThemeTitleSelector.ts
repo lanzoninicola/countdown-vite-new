@@ -2,10 +2,7 @@ import { useContextSelector } from "use-context-selector";
 
 import { withUnit } from "../../../countdown-widget-typography/countdown-widget-typography";
 import { CountdownContext } from "../../context/countdown-context";
-import {
-  ChackraUIResponsiveValuesWithUnit,
-  Tokens,
-} from "../../types/theme/responsive";
+import { ChackraUIResponsiveValuesWithUnit } from "../../types/theme/responsive";
 import useCurrentTokenSelector from "../app/useCurrentTokenSelector";
 
 /**
@@ -20,7 +17,12 @@ export default function useThemeTitleSelector() {
     (ctx) => ctx?.theme.setTitle
   );
 
-  const { fontColor, fontFamily, fontSize, fontWeight, text } = title;
+  const fontFamily = useContextSelector(
+    CountdownContext,
+    (ctx) => ctx?.theme.title.fontFamily
+  );
+
+  const { fontColor, fontSize, fontWeight, text } = title;
 
   const fontSizeChackraUI: ChackraUIResponsiveValuesWithUnit =
     Object.values(fontSize);

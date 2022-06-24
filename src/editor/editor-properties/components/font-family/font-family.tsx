@@ -26,13 +26,15 @@ export default function FontFamily({
   const [showDialog, setShowDialog] = useState(false);
   let ref = useRef(null);
 
-  function onCloseDialog() {
-    setShowDialog(!showDialog);
-
+  const onCloseDialog = () => {
     // Update the global state
     onSelectFontFamily(pickerFontFamily);
-    onSelectFontWeight(pickerFontWeight);
-  }
+
+    // if enable this the font family above will not update. Need to figure out why
+    // onSelectFontWeight(pickerFontWeight);
+
+    setShowDialog(!showDialog);
+  };
 
   return (
     <PropertyWrapper>
@@ -45,7 +47,7 @@ export default function FontFamily({
         onClick={() => setShowDialog(!showDialog)}
         lineHeight="1"
       >
-        {fontFamily ? `${fontFamily} (${fontWeight})` : "Select font"}
+        {fontFamily ? `${pickerFontFamily} (${fontWeight})` : "Select font"}
       </Button>
       {showDialog && (
         <DialogWrapper callerRef={ref} onCloseDialog={onCloseDialog}>
