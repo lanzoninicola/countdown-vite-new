@@ -47,8 +47,12 @@ export default function CountdownProvider({
   const [targetDate, setTargetDate] = useState(
     SETTINGS_INITIAL_STATE.targetDate
   );
+
   const [targetTimezone, setTargetTimezone] = useState(
     SETTINGS_INITIAL_STATE.targetTimezone
+  );
+  const [unitLabelLanguage, setUnitLabelLanguage] = useState(
+    SETTINGS_INITIAL_STATE.unitLabelLanguage
   );
   const [title, setTitle] = useState(THEME_INITIAL_STATE.title);
   const [timer, setTimer] = useState(THEME_INITIAL_STATE.timer);
@@ -71,6 +75,8 @@ export default function CountdownProvider({
           setTargetDate,
           targetTimezone,
           setTargetTimezone,
+          unitLabelLanguage,
+          setUnitLabelLanguage,
         },
         theme: {
           title,

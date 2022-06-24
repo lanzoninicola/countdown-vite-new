@@ -12,6 +12,7 @@ import Units from "./components/units/units";
 import useThemeTitleSelector from "../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
 import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
+import UnitsLanguages from "./components/units-languages/untis-languages";
 
 export default function EditorProperties() {
   const { t } = useTranslation();
@@ -93,6 +94,8 @@ export default function EditorProperties() {
         />
 
         <Divider marginBlock={".5rem"} />
+
+        <UnitsLanguages />
 
         <FontFamily
           label={t("editor.labelFont")}

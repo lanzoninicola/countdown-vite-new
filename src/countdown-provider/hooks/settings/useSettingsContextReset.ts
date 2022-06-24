@@ -13,11 +13,18 @@ export default function useSettingsContextReset() {
     (ctx) => ctx?.settings.setTargetTimezone
   );
 
+  const setUnitLabelLanguage = useContextSelector(
+    CountdownContext,
+    (ctx) => ctx?.settings.setUnitLabelLanguage
+  );
+
   const resetSettingsContext = () => {
-    const { targetDate, targetTimezone } = SETTINGS_INITIAL_STATE;
+    const { targetDate, targetTimezone, unitLabelLanguage } =
+      SETTINGS_INITIAL_STATE;
 
     setTargetDate(targetDate);
     setTargetTimezone(targetTimezone);
+    setUnitLabelLanguage(unitLabelLanguage);
   };
 
   return {
