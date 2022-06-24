@@ -1,13 +1,13 @@
 import { Heading } from "@chakra-ui/react";
+import React from "react";
+
 import useAppContext from "../../../countdown-provider/hooks/app/useAppContext";
 import useCurrentTokenSelector from "../../../countdown-provider/hooks/app/useCurrentTokenSelector";
 import useThemeTitleSelector from "../../../countdown-provider/hooks/theme/useThemeTitleSelector";
 
-import { GoogleFontsLinkTag } from "../../../countdown-widget-typography/countdown-widget-typography";
-
 // TODO: custom unit size for the fontSize
 
-export default function CounterTitle() {
+function CounterTitle() {
   const {
     text,
     fontColor,
@@ -34,3 +34,7 @@ export default function CounterTitle() {
     </>
   );
 }
+
+const areEqual = () => true;
+const MemoizedCounterTitle = React.memo(CounterTitle, areEqual);
+export default MemoizedCounterTitle;

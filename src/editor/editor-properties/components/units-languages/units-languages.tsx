@@ -15,7 +15,7 @@ export default function UnitsLanguages() {
       <Label>{t("editor.labelLanguage")}</Label>
       <Select
         variant="outline"
-        size={"sm"}
+        size={"xs"}
         gridColumn={"2 / -1"}
         className="theme-font"
         onChange={(e) =>

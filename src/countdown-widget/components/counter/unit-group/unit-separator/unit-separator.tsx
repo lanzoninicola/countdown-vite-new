@@ -1,20 +1,17 @@
 import { Text } from "@chakra-ui/react";
-import { ThemeUnitDigit } from "../../../../../countdown-provider/types/theme/timer";
 
 interface UnitSeparatorProps {
-  children?: React.ReactNode;
-  theme: ThemeUnitDigit;
+  separatorText: string;
   [key: string]: any;
 }
 
 export default function UnitSeparator({
-  children,
-  theme,
+  separatorText,
   ...props
 }: UnitSeparatorProps) {
   return (
     <Text as="span" {...props} marginInline="1rem">
-      {children}
+      {separatorText}
     </Text>
   );
 }

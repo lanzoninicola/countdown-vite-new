@@ -12,7 +12,8 @@ import Units from "./components/units/units";
 import useThemeTitleSelector from "../../countdown-provider/hooks/theme/useThemeTitleSelector";
 import useThemeTimerSelector from "../../countdown-provider/hooks/theme/useThemeTimerSelector";
 import useCurrentTokenSelector from "../../countdown-provider/hooks/app/useCurrentTokenSelector";
-import UnitsLanguages from "./components/units-languages/untis-languages";
+import UnitsLanguages from "./components/units-languages/units-languages";
+import { useCallback } from "react";
 
 export default function EditorProperties() {
   const { t } = useTranslation();

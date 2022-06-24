@@ -1,3 +1,5 @@
+import React from "react";
+
 import useThemeTimer from "../../../../countdown-provider/hooks/theme/useThemeTimer";
 import { StringOrNumber } from "../../../types";
 import Digit from "./digit/digit";
@@ -12,12 +14,7 @@ interface UnitGroupProps {
   isLastDigit?: boolean;
 }
 
-export default function UnitGroup({
-  label,
-  value,
-  isDanger,
-  isLastDigit,
-}: UnitGroupProps) {
+function UnitGroup({ label, value, isDanger, isLastDigit }: UnitGroupProps) {
   const digitTheme = useThemeTimer("unit-digit");
   const labelTheme = useThemeTimer("unit-label");
   const separatorTheme = useThemeTimer("unit-separator");
@@ -38,10 +35,22 @@ export default function UnitGroup({
         theme={labelTheme}
       />
       {!isLastDigit && separatorTheme.showSeparator && (
-        <UnitSeparator gridArea={"separator"} theme={digitTheme}>
-          {separatorTheme.separatorChar}
-        </UnitSeparator>
+        <UnitSeparator
+          gridArea={"separator"}
+          theme={digitTheme}
+          separatorText={separatorTheme.separatorChar}
+        />
       )}
     </UnitGroupWrapper>
   );
 }
+
+const areEqual = (prevProps: UnitGroupProps, nextProps: UnitGroupProps) => {
+  return (
+    prevProps.label === nextProps.label && prevProps.value === nextProps.value
+  );
+};
+
+const MemoizedUnitGroup = React.memo(UnitGroup, areEqual);
+
+export default MemoizedUnitGroup;

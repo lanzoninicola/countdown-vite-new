@@ -1,8 +1,5 @@
 import { HStack } from "@chakra-ui/react";
-import ts from "typescript";
-import useSettingsUnitLabelLng from "../../../countdown-provider/hooks/settings/useSettingsUnitLabelLng";
 import useWidgetTranslation from "../../../countdown-widget-i18n/hooks/useWidgetTranslation";
-
 import { RemainingTime } from "../../types";
 import UnitGroup from "./unit-group/unit-group";
 

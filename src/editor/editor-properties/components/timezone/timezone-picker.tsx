@@ -28,7 +28,7 @@ export default function TimezonePicker({ size }: TargetTimezoneProps) {
         size={size}
         placeholder="Select option"
         gridColumn={"2 / 5"}
-        defaultValue={targetTimezone}
+        value={targetTimezone}
         onChange={onChangeTimezone}
         className="theme-font"
         bg="white"
