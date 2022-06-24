@@ -18,7 +18,7 @@ export default function CountdownTitleText() {
         name="countdownName"
         placeholder={t("editor.titlePlaceholder")}
         gridColumn={"2 / -1"}
-        defaultValue={text}
+        value={text}
         onChange={(e) => setText(e.target.value)}
         className="theme-font"
       />

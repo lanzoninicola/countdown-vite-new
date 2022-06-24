@@ -8,13 +8,7 @@ export default function useSettingsContext(): SettingsContext {
     (ctx) => ctx?.settings
   );
 
-  const { targetDate, targetTimezone, setTargetDate, setTargetTimezone } =
-    settingsContext;
-
   return {
-    targetDate,
-    setTargetDate,
-    targetTimezone,
-    setTargetTimezone,
+    ...settingsContext,
   };
 }

@@ -47,7 +47,7 @@ export default function FontFamily({
         onClick={() => setShowDialog(!showDialog)}
         lineHeight="1"
       >
-        {fontFamily ? `${pickerFontFamily} (${fontWeight})` : "Select font"}
+        {fontFamily ? `${fontFamily} (${fontWeight})` : "Select font"}
       </Button>
       {showDialog && (
         <DialogWrapper callerRef={ref} onCloseDialog={onCloseDialog}>

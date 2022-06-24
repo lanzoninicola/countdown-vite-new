@@ -41,7 +41,8 @@ export default function useEditorSettings({
 }: UseEditorSettingsProps): UseEditorSettingsAPIResponse {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { setTargetDate, setTargetTimezone } = useSettingsContext();
+  const { setTargetDate, setTargetTimezone, setUnitLabelLanguage } =
+    useSettingsContext();
   const { setTimer, setTitle } = useThemeContext();
 
   useEffect(() => {
@@ -59,10 +60,17 @@ export default function useEditorSettings({
           );
 
           if (settingsParsed) {
-            const { targetDate, targetTimezone, timer, title } = settingsParsed;
+            const {
+              targetDate,
+              targetTimezone,
+              unitLabelLanguage,
+              timer,
+              title,
+            } = settingsParsed;
 
             targetDate && setTargetDate(targetDate);
             targetTimezone && setTargetTimezone(targetTimezone);
+            unitLabelLanguage && setUnitLabelLanguage(unitLabelLanguage);
             timer && setTimer(timer);
             title && setTitle(title);
           }

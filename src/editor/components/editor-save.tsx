@@ -10,26 +10,26 @@ import {
 import { update } from "../../countdown-rest-api/services/editor";
 import useNotifications from "../../hooks/useNotification";
 import ButtonSave from "../layout/button-save/button-save";
+import useSettings from "../../countdown-provider/hooks/settings/useSettings";
 
 interface EditorSaveProps {
   currentCountdown: CountdownModel["id"] | null;
 }
 
 export default function EditorSave({ currentCountdown }: EditorSaveProps) {
-  const { targetDate, targetTimezone } = useSettingsContext();
-  const { timer, title } = useTheme();
+  const settings = useSettings();
+  const theme = useTheme();
   const { t } = useTranslation();
   const { success, error } = useNotifications();
   const [isLoading, setIsLoading] = useState(false);
 
   const savePayload: CountdownSettingsAndTheme = {
-    targetDate,
-    targetTimezone,
-    timer,
-    title,
+    ...settings,
+    ...theme,
   };
 
   function onSave() {
+    console.log(savePayload);
     setIsLoading(true);
     if (currentCountdown) {
       update(currentCountdown, savePayload)
