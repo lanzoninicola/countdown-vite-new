@@ -1,11 +1,11 @@
 import { Flex, Heading, HStack, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import CountdownNewModal from "../countdown-edit/new-modal/new-modal";
-import CountdownsTable from "../countdowns-table/countdown-table";
+import CountdownNewModal from "../../countdown-edit/new-modal/new-modal";
+import CountdownsTable from "../../countdowns-table/countdown-table";
 
-import useCountdownsList from "../countdowns-table/hooks/useCountdownList";
-import Pagination from "./pagination/pagination";
+import useCountdownsList from "../../countdowns-table/hooks/useCountdownList";
+import Pagination from "../pagination/pagination";
 
 export default function CountdownsPage() {
   const { t } = useTranslation();

@@ -1,4 +1,5 @@
 import { Checkbox } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
@@ -12,9 +13,13 @@ export default function showSeparator({
   showSeparator,
   onChangeShowSeparator,
 }: ShowSeparatorProps) {
+  const { t } = useTranslation();
+
   return (
     <PropertyWrapper>
-      <Label htmlFor="showSeparator">Show separator</Label>
+      <Label htmlFor="showSeparator">
+        {t("editor.separator.showSeparatorLabel")}
+      </Label>
       <Checkbox
         id="showSeparator"
         name="showSeparator"
@@ -23,7 +28,7 @@ export default function showSeparator({
         onChange={(e) => {
           onChangeShowSeparator(e.target.checked);
         }}
-        aria-label="Show or not the separator in the timer"
+        aria-label={t("editor.separator.showSeparatorAriaLabel")}
       />
     </PropertyWrapper>
   );

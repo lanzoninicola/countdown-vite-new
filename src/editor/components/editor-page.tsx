@@ -51,9 +51,9 @@ export default function EditorPage({ currentCountdown }: EditorPageProps) {
             </BoxRadiusLg>
             <EditorPreview />
           </CenterContent>
-          <RightSidebar>
+          {/* <RightSidebar>
             <Text>This is the countdown theme area</Text>
-          </RightSidebar>
+          </RightSidebar> */}
         </Box>
       )}
     </>

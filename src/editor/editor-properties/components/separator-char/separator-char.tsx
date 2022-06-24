@@ -1,4 +1,5 @@
 import { Input } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
@@ -14,9 +15,11 @@ export default function SeparatorChar({
   separatorChar,
   onChangeSeparatorChar,
 }: SeparatorCharProps) {
+  const { t } = useTranslation();
+
   return (
     <PropertyWrapper>
-      <Label htmlFor="separatorChar">Separator</Label>
+      <Label htmlFor="separatorChar">{t("editor.separator.label")}</Label>
       <Input
         id="separatorChar"
         name="separatorChar"
@@ -25,7 +28,7 @@ export default function SeparatorChar({
         onChange={(e) => {
           onChangeSeparatorChar(e.target.value);
         }}
-        aria-label="Define the separtor for the timer"
+        aria-label={t("editor.separator.ariaLabel")}
         isDisabled={showSeparator === false}
         value={separatorChar}
         className="theme-font"

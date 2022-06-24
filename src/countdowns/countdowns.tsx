@@ -1,5 +1,5 @@
 import useCurrentCountdownSelector from "../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import CountdownsPage from "./components/countdowns-page";
+import CountdownsPage from "./components/countdown-page/countdowns-page";
 
 /**
  *  This is the main entry point for the countdowns page.

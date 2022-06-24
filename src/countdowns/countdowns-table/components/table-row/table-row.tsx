@@ -1,5 +1,6 @@
 import { HStack, Td, Tr } from "@chakra-ui/react";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 import useAppContext from "../../../../countdown-provider/hooks/app/useAppContext";
 import { CountdownModel } from "../../../../countdown-widget/types";
@@ -15,6 +16,7 @@ interface TableRowProps {
 //TODO: how to present the Date in the right format?
 
 export default function TableRow({ countdown }: TableRowProps) {
+  const { t } = useTranslation();
   const { id, name, description, created_at, updated_at } = countdown;
   const { setCurrentCountdown, setIsEditorMode } = useAppContext();
 
@@ -35,7 +37,7 @@ export default function TableRow({ countdown }: TableRowProps) {
       <Td>
         <HStack>
           <ButtonSettings
-            label="Customize"
+            label={t("global.customize")}
             onClick={() => {
               setCurrentCountdown(id);
               setIsEditorMode(true);

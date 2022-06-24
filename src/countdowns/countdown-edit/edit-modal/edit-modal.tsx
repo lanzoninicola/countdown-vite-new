@@ -15,12 +15,14 @@ import ButtonEdit from "../../countdowns-table/primitives/button-edit/button-edi
 
 import EditForm from "./edit-form/edit-form";
 import { CountdownModel } from "../../../countdown-widget/types";
+import { useTranslation } from "react-i18next";
 
 interface EditModalProps {
   countdown: CountdownModel;
 }
 
 export default function EditModal({ countdown }: EditModalProps) {
+  const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -37,7 +39,9 @@ export default function EditModal({ countdown }: EditModalProps) {
       >
         <ModalOverlay />
         <ModalContent w="90%">
-          <ModalHeader className="theme-font">Edit</ModalHeader>
+          <ModalHeader className="theme-font">
+            {t("countdown_edit_edit.header")}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <EditForm initialFocusRef={initialRef} countdown={countdown} />
@@ -50,7 +54,7 @@ export default function EditModal({ countdown }: EditModalProps) {
               size={"sm"}
               onClick={() => upTask()}
             >
-              Save
+              {t("countdown_edit_edit.buttonLabel")}
             </Button>
           </ModalFooter>
         </ModalContent>

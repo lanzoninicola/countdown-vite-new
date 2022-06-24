@@ -13,14 +13,18 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import useCurrentCountdownSelector from "../../../countdown-provider/hooks/app/useCurrentCountdownSelector";
-import { CountdownModel } from "../../../countdown-widget/types";
+import {
+  CountdownModel,
+  StringOrNumber,
+} from "../../../countdown-widget/types";
 import { create as createCountdownRecord } from "../../../countdown-rest-api/services/countdowns";
 
 import { create as createCountdownSettingsRecord } from "../../../countdown-rest-api/services/editor";
 import useNotifications from "../../../hooks/useNotification";
 import NewForm from "./new-form/new-form";
 import { APIResponse } from "../../../countdown-rest-api/types";
-import { CreateCountdownResponse } from "../../../countdown-rest-api/types/editor";
+import useSWR, { useSWRConfig } from "swr";
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 
 export default function NewModal() {
   const [name, setName] = useState<CountdownModel["name"]>("");
@@ -39,6 +43,8 @@ export default function NewModal() {
 
   const { setCurrentCountdown } = useCurrentCountdownSelector();
 
+  const { mutate } = useSWRConfig();
+
   // TODO: refactor this chain
   function createCountdown() {
     setIsSuspense(true);
@@ -54,7 +60,11 @@ export default function NewModal() {
       });
   }
 
-  function createCountdownSettings(response: CreateCountdownResponse) {
+  function createCountdownSettings(
+    response: APIResponse<{
+      id: StringOrNumber;
+    }>
+  ) {
     if (!response.data.payload) {
       return;
     }
@@ -72,6 +82,8 @@ export default function NewModal() {
           onClick: () => setCurrentCountdown(id),
         },
       });
+
+      mutate(COUNTDOWNS_REST_API_ENDPOINTS.create.endpoint());
     });
   }
 

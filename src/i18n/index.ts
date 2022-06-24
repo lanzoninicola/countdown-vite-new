@@ -1,8 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import ptBR from "./translations/pt-br";
-import enUS from "./translations/en-us";
+import ptBR from "./locale/pt-br";
+import enUS from "./locale/en-us";
 
 declare global {
   interface String {

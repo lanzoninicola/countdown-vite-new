@@ -13,6 +13,11 @@ import { useTranslation } from "react-i18next";
 import { CountdownModel } from "../../../countdown-widget/types";
 import ButtonDelete from "../../countdowns-table/primitives/button-delete/button-delete";
 import Teext from "../../../components/layout/teext/teext";
+import { remove as removeCountdown } from "../../../countdown-rest-api/services/countdowns";
+import { useSWRConfig } from "swr";
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
+import { remove as removeCountdownSettings } from "../../../countdown-rest-api/services/editor";
+import { useState } from "react";
 
 interface ButtonDeleteProps {
   countdown: CountdownModel;
@@ -21,8 +26,23 @@ interface ButtonDeleteProps {
 export default function DeleteModal({ countdown }: ButtonDeleteProps) {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { mutate } = useSWRConfig();
+  const [isDeleteSuspense, setIsDeleteSuspense] = useState(false);
 
-  function deleteCountdown(ctd: any) {}
+  function deleteCountdown(ctd: any) {
+    setIsDeleteSuspense(true);
+    removeCountdown(ctd.id)
+      .then(() => {
+        removeCountdownSettings(ctd.id);
+      })
+      .then(() => {
+        mutate(COUNTDOWNS_REST_API_ENDPOINTS.create.endpoint());
+      })
+      .finally(() => {
+        onClose();
+        setIsDeleteSuspense(false);
+      });
+  }
 
   return (
     <>
@@ -45,6 +65,8 @@ export default function DeleteModal({ countdown }: ButtonDeleteProps) {
               colorScheme="red"
               size={"sm"}
               onClick={() => deleteCountdown(countdown)}
+              isLoading={isDeleteSuspense}
+              loadingText={t("global.removing").capitalize()}
             >
               {t("global.yes").capitalize()}
             </Button>

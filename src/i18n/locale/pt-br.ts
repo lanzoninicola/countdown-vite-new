@@ -6,6 +6,7 @@ const ptBR = {
         no: "não",
         save: "salvar",
         saving: "salvando",
+        removing: "removendo",
         name: "Nome",
         description: "Descrição",
         error: "Algo deu errado. Tente novamente.",
@@ -27,6 +28,8 @@ const ptBR = {
           nextPage: "Próxima página",
           totalPages: "Total de páginas:",
         },
+        customize: "Personalizar",
+        edit: "Editar",
       },
       countdowns: {
         title: "Contadores regressivos",
@@ -48,6 +51,10 @@ const ptBR = {
         createSuccess: "Agora você pode editar o contador regressivo.",
         openEditor: "Abrir editor",
       },
+      countdown_edit_edit: {
+        buttonLabel: "Atualizar",
+        header: "Atualizar informações",
+      },
       countdown_edit_delete: {
         header: "Tem certeza absoluta?",
         body: "Isto irá apagar o contador regressivo e todos os seus dados. Esta acção não pode ser desfeita.",
@@ -68,6 +75,7 @@ const ptBR = {
         digitsFont: "Fonte dos dígitos",
         digitsSize: "Tamanho dos dígitos",
         digitsColor: "Cor dos dígitos",
+        labelLanguage: "Idioma da etiqueta",
         labelFont: "Fonte da etiqueta",
         labelSize: "Tamanho da etiqueta",
         labelColor: "Cor da etiqueta",
@@ -80,6 +88,12 @@ const ptBR = {
         },
         preview: {
           tokenBadge: "Tamanho do display:",
+        },
+        separator: {
+          label: "Separador",
+          ariaLabel: "Define o separador do contador regressivo",
+          showSeparatorLabel: "Mostrar separador",
+          showSeparatorAriaLabel: "Mostrar separador",
         },
       },
     },
