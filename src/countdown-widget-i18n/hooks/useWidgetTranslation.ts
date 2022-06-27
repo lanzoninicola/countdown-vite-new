@@ -7,6 +7,18 @@ interface UseWidgetTranslation {
   tw: (slice: keyof WidgetTranslation) => string;
 }
 
+declare global {
+  interface String {
+    capitalize(): string;
+  }
+}
+
+String.prototype.capitalize = function (): string {
+  return Object.values(this)
+    .map((char, i) => (i === 0 ? char.toUpperCase() : char))
+    .join("");
+};
+
 /**
  *
  * @returns A function that let you translate the label of countdown unit

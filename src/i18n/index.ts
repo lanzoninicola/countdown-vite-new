@@ -4,18 +4,6 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import ptBR from "./locale/pt-br";
 import enUS from "./locale/en-us";
 
-declare global {
-  interface String {
-    capitalize(): string;
-  }
-}
-
-String.prototype.capitalize = function (): string {
-  return Object.values(this)
-    .map((char, i) => (i === 0 ? char.toUpperCase() : char))
-    .join("");
-};
-
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
