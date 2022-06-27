@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import useSettingsContextReset from "../../countdown-provider/hooks/settings/useSettingsContextReset";
 import useCurrentCountdownSelector from "../../countdown-provider/hooks/app/useCurrentCountdownSelector";
 import useThemeContextReset from "../../countdown-provider/hooks/theme/useThemeContextReset";
-import EditorSave from "../../editor/components/editor-save";
+import EditorSave from "../../editor/components/editor-save/editor-save";
 import ButtonClose from "../../editor/layout/button-close/button-close";
 import { Languages } from "../../i18n/types";
 import useAppContextReset from "../../countdown-provider/hooks/app/useAppContextReset";
