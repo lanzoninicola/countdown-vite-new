@@ -4,9 +4,11 @@ import { useTranslation } from "react-i18next";
 
 import useAppContext from "../../../../countdown-provider/hooks/app/useAppContext";
 import { CountdownModel } from "../../../../countdown-widget/types";
-import DeleteModal from "../../../countdown-edit/delete-modal/delete-modal";
-import EditModal from "../../../countdown-edit/edit-modal/edit-modal";
+import DeleteModal from "../../../components/modal-delete-countdown/modal-delete-countdown";
+import ModalEditCountdown from "../../../components/modal-edit-countdown/modal-edit-countdown";
+import ModalShortcode from "../../../components/modal-shortcode/modal-shortcode";
 import ButtonSettings from "../../primitives/button-settings/button-settings";
+import ButtonShortcode from "../../primitives/button-shortcode/button-shortcode";
 import TableCellText from "../../primitives/table-cell-text/table-cell-text";
 
 interface TableRowProps {
@@ -35,6 +37,9 @@ export default function TableRow({ countdown }: TableRowProps) {
         <TableCellText>{description ? description : "..."}</TableCellText>
       </Td>
       <Td>
+        <ModalShortcode countdown={countdown} />
+      </Td>
+      <Td>
         <HStack>
           <ButtonSettings
             label={t("global.customize")}
@@ -43,7 +48,7 @@ export default function TableRow({ countdown }: TableRowProps) {
               setIsEditorMode(true);
             }}
           />
-          <EditModal countdown={countdown} />
+          <ModalEditCountdown countdown={countdown} />
           <DeleteModal countdown={countdown} />
         </HStack>
       </Td>

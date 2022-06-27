@@ -11,22 +11,21 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import useSWR, { useSWRConfig } from "swr";
 
 import useCurrentCountdownSelector from "../../../countdown-provider/hooks/app/useCurrentCountdownSelector";
+import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
+import { create as createCountdownRecord } from "../../../countdown-rest-api/services/countdowns";
+import { create as createCountdownSettingsRecord } from "../../../countdown-rest-api/services/editor";
+import { APIResponse } from "../../../countdown-rest-api/types";
 import {
   CountdownModel,
   StringOrNumber,
 } from "../../../countdown-widget/types";
-import { create as createCountdownRecord } from "../../../countdown-rest-api/services/countdowns";
-
-import { create as createCountdownSettingsRecord } from "../../../countdown-rest-api/services/editor";
 import useNotifications from "../../../hooks/useNotification";
 import NewForm from "./new-form/new-form";
-import { APIResponse } from "../../../countdown-rest-api/types";
-import useSWR, { useSWRConfig } from "swr";
-import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 
-export default function NewModal() {
+export default function ModalNewCountdown() {
   const [name, setName] = useState<CountdownModel["name"]>("");
   const [description, setDescription] =
     useState<CountdownModel["description"]>("");

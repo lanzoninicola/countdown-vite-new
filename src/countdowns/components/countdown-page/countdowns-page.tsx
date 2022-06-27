@@ -1,7 +1,7 @@
 import { Flex, Heading, HStack, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
-import CountdownNewModal from "../../countdown-edit/new-modal/new-modal";
+import CountdownNewModal from "../modal-new-countdown/modal-new-countdown";
 import CountdownsTable from "../../countdowns-table/countdown-table";
 
 import useCountdownsList from "../../countdowns-table/hooks/useCountdownList";

@@ -19,11 +19,13 @@ import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/const
 import { remove as removeCountdownSettings } from "../../../countdown-rest-api/services/editor";
 import { useState } from "react";
 
-interface ButtonDeleteProps {
+interface ModalDeleteCountdownProps {
   countdown: CountdownModel;
 }
 
-export default function DeleteModal({ countdown }: ButtonDeleteProps) {
+export default function ModalDeleteCountdown({
+  countdown,
+}: ModalDeleteCountdownProps) {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { mutate } = useSWRConfig();

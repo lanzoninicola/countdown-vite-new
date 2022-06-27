@@ -17,6 +17,7 @@ export default function CountdownsTable({
     "id",
     "name",
     "description",
+    "shortcode",
     "actions",
     "createdAt",
     "updatedAt",

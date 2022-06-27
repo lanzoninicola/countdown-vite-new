@@ -7,6 +7,11 @@ const ptBR = {
         save: "salvar",
         saving: "salvando",
         removing: "removendo",
+        update: "atualizar",
+        updating: "atualizando",
+        copy: "copiar",
+        copying: "copiando",
+        copied: "copiado!",
         name: "Nome",
         description: "Descrição",
         error: "Algo deu errado. Tente novamente.",
@@ -37,6 +42,7 @@ const ptBR = {
           id: "ID",
           name: "Nome",
           description: "Descrição",
+          shortcode: "Shortcode",
           actions: "Ações",
           createdAt: "Criado em",
           updatedAt: "Atualizado em",
@@ -54,6 +60,8 @@ const ptBR = {
       countdown_edit_edit: {
         buttonLabel: "Atualizar",
         header: "Atualizar informações",
+        updateSuccessTitle: "Contador regressivo atualizado",
+        updateSuccess: "Agora você pode editar o contador regressivo.",
       },
       countdown_edit_delete: {
         header: "Tem certeza absoluta?",

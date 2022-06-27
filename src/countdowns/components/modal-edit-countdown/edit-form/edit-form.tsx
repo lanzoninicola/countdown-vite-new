@@ -4,12 +4,18 @@ import { CountdownModel } from "../../../../countdown-widget/types";
 
 interface EditFormProps {
   initialFocusRef?: React.MutableRefObject<HTMLInputElement>;
-  countdown: CountdownModel;
+  name: CountdownModel["name"];
+  description: CountdownModel["description"];
+  onNameChange: (value: CountdownModel["name"]) => void;
+  onDescriptionChange: (value: CountdownModel["description"]) => void;
 }
 
 export default function EditForm({
   initialFocusRef,
-  countdown,
+  name,
+  description,
+  onNameChange,
+  onDescriptionChange,
 }: EditFormProps) {
   const { t } = useTranslation();
   function handleTask() {}
@@ -28,10 +34,10 @@ export default function EditForm({
           id="countdown-name"
           ref={initialFocusRef}
           placeholder={t("countdown_edit_new.namePlaceholder")}
-          defaultValue={countdown.name}
-          onChange={handleTask}
-          onFocus={handleTask}
+          defaultValue={name}
+          onChange={(e) => onNameChange(e.target.value)}
           className="theme-font"
+          autoComplete="off"
         />
       </FormControl>
       <FormControl>
@@ -45,11 +51,11 @@ export default function EditForm({
         <Textarea
           id="countdown-desc"
           placeholder={t("countdown_edit_new.descriptionPlaceholder")}
-          defaultValue={countdown.description}
-          onChange={handleTask}
-          onFocus={handleTask}
+          defaultValue={description}
+          onChange={(e) => onDescriptionChange(e.target.value)}
           minH={"120px"}
           className="theme-font"
+          autoComplete="off"
         />
       </FormControl>
     </>

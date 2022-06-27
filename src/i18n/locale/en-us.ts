@@ -7,6 +7,11 @@ const enUS = {
         save: "save",
         saving: "saving",
         removing: "removing",
+        update: "update",
+        updating: "updating",
+        copy: "copy",
+        copying: "copying",
+        copied: "copied!",
         name: "Name",
         description: "Description",
         error: "Something went wrong. Please try again.",
@@ -37,6 +42,7 @@ const enUS = {
           id: "ID",
           name: "Name",
           description: "Description",
+          shortcode: "Shortcode",
           actions: "Actions",
           createdAt: "Created At",
           updatedAt: "Updated At",
@@ -54,6 +60,8 @@ const enUS = {
       countdown_edit_edit: {
         buttonLabel: "Update",
         header: "Update Information",
+        updateSuccessTitle: "Countdown updated",
+        updateSuccess: "Now you can edit the countdown.",
       },
       countdown_edit_delete: {
         header: "Are you absolutely sure?",
