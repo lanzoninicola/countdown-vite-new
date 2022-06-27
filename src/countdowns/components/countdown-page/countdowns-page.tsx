@@ -1,4 +1,4 @@
-import { Flex, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Flex, Heading, HStack, Skeleton, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 import CountdownNewModal from "../modal-new-countdown/modal-new-countdown";
@@ -6,14 +6,12 @@ import CountdownsTable from "../../countdowns-table/countdown-table";
 
 import useCountdownsList from "../../countdowns-table/hooks/useCountdownList";
 import Pagination from "../pagination/pagination";
+import ModalFirstCountdown from "../modal-first-countdown/modal-first-countdown";
+import TableSkeleton from "../table-skeleton/table-skeleton";
 
 export default function CountdownsPage() {
   const { t } = useTranslation();
   const { countdowns, isLoading, isError } = useCountdownsList();
-
-  if (isLoading) {
-    return <Heading>Loading...</Heading>;
-  }
 
   if (isError) {
     return <Heading>Error!</Heading>;
@@ -32,11 +30,21 @@ export default function CountdownsPage() {
         </Heading>
         <CountdownNewModal />
       </HStack>
-      <VStack alignItems={"flex-start"} p="1rem">
-        <Pagination data={countdowns}>
-          <CountdownsTable />
-        </Pagination>
-      </VStack>
+      {isLoading ? (
+        <TableSkeleton />
+      ) : (
+        <>
+          {countdowns && countdowns.length > 0 ? (
+            <VStack alignItems={"flex-start"} p="1rem">
+              <Pagination data={countdowns}>
+                <CountdownsTable />
+              </Pagination>
+            </VStack>
+          ) : (
+            <ModalFirstCountdown />
+          )}
+        </>
+      )}
     </Flex>
   );
 }
