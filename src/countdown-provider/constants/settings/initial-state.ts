@@ -1,4 +1,3 @@
-// TODO: Review the state structure with this subgroup: app / settings / theme
 import { SettingsStateData } from "../../types/settings";
 
 const SETTINGS_INITIAL_STATE: SettingsStateData = {

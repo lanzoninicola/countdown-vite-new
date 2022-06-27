@@ -1,5 +1,3 @@
-// TODO: Review the state structure with this subgroup: app / settings / theme
-
 import { AppStateData } from "../../types/app";
 
 const APP_INITIAL_STATE: AppStateData = {

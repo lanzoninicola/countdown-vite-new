@@ -25,8 +25,6 @@ interface ModalEditCountdownProps {
   countdown: CountdownModel;
 }
 
-// TODO: edit countdown API
-
 export default function ModalEditCountdown({
   countdown,
 }: ModalEditCountdownProps) {

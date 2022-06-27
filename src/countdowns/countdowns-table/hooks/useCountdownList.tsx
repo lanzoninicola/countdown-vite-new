@@ -11,7 +11,6 @@ interface UseCountdownListSWR {
   isError: boolean;
 }
 
-//TODO: useSWR update url
 export default function useCountdownsList(): UseCountdownListSWR {
   let { data: response, error } = useSWR<APIResponse<CountdownModel[]>>(
     COUNTDOWNS_REST_API_ENDPOINTS.create.endpoint(),

@@ -14,8 +14,6 @@ import LeftSidebar from "../../layout/left-sidebar/left-sidebar";
 import RightSidebar from "../../layout/right-sidebar/right-sidebar";
 import EditorSkeleton from "../editor-skeleton.tsx/editor-skeleton";
 
-// TODO: check if the isMockMode flag could be handled with npm scripts
-
 interface EditorPageProps {
   currentCountdown?: CountdownModel["id"];
 }

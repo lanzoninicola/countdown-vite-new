@@ -27,8 +27,6 @@ interface UseCountdownProps {
   withZeros?: boolean;
 }
 
-// TODO: stopping the interval when the timer is expired
-
 /**
  * @param {string} HTMLInputTargetDate the target date/time in the desired timezone
  * @param {string} HTMLInputTargetTimezone the desired timezone
