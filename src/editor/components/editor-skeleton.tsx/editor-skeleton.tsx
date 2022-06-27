@@ -1,4 +1,4 @@
-import { VStack, Skeleton } from "@chakra-ui/react";
+import { VStack, Skeleton, Divider } from "@chakra-ui/react";
 import CenterContent from "../../layout/center-content/center-content";
 import EditorWrapper from "../../layout/editor-wrapper/editor-wrapper";
 import LeftSidebar from "../../layout/left-sidebar/left-sidebar";
@@ -7,7 +7,28 @@ export default function EditorSkeleton() {
   return (
     <EditorWrapper>
       <LeftSidebar>
-        <Skeleton w="100%" h="100%" borderRadius={"lg"} />
+        <VStack spacing={2}>
+          <Skeleton w="350px" h="48px" borderRadius={"lg"} />
+          <SkeletonProp />
+          <SkeletonProp />
+          <SkeletonProp />
+          <SkeletonProp />
+          <Divider marginBlock={".5rem"} />
+          <Skeleton w="350px" h="48px" borderRadius={"lg"} />
+          <SkeletonProp />
+          <SkeletonProp />
+          <Divider marginBlock={".5rem"} />
+          <SkeletonProp />
+          <Divider marginBlock={".5rem"} />
+          <SkeletonProp />
+          <SkeletonProp />
+          <SkeletonProp />
+          <Divider marginBlock={".5rem"} />
+          <SkeletonProp />
+          <SkeletonProp />
+          <SkeletonProp />
+          <SkeletonProp />
+        </VStack>
       </LeftSidebar>
       <CenterContent>
         <Skeleton minH="60px" minW="650px" borderRadius={"lg"} />
@@ -18,4 +39,8 @@ export default function EditorSkeleton() {
       </CenterContent>
     </EditorWrapper>
   );
+}
+
+function SkeletonProp() {
+  return <Skeleton w="350px" h="32px" borderRadius={"lg"} />;
 }
