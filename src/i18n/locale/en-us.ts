@@ -47,6 +47,11 @@ const enUS = {
           createdAt: "Created At",
           updatedAt: "Updated At",
         },
+        firstCountdown: {
+          header: "Welcome!",
+          body: "You don't have any countdowns yet. Click the button below to create the first one.",
+          buttonLabel: "Add your first countdown",
+        },
       },
       countdown_edit_new: {
         buttonLabel: "Create",

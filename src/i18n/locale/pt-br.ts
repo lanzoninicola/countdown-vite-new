@@ -47,6 +47,11 @@ const ptBR = {
           createdAt: "Criado em",
           updatedAt: "Atualizado em",
         },
+        firstCountdown: {
+          header: "Bem vindo!",
+          body: "Você ainda não tem nenhum contador regressivo. Clique no botão abaixo para criar o primeiro.",
+          buttonLabel: "Adicionar seu primeiro contador regressivo",
+        },
       },
       countdown_edit_new: {
         buttonLabel: "Adicionar novo",
